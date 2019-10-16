@@ -1,0 +1,27 @@
+{
+  "name": "wsdot_evse_docs",
+  "version": "1.0.0",
+  "description": "You can use the [editor on GitHub](https://github.com/chintanp/wsdot_evse_docs/edit/master/README.md) to maintain and preview the content for your website in Markdown files.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chintanp/wsdot_evse_docs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chintanp/wsdot_evse_docs/issues"
+  },
+  "homepage": "https://github.com/chintanp/wsdot_evse_docs#readme",
+  "dependencies": {
+    "grunt": "^1.0.4",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-shell": "^3.0.1"
+  }
+}
