@@ -17,6 +17,7 @@ The decision to build EVI is a complex one and is dependent on several factors. 
 
    intro
    dss
+   evi_dss
    arch
    evi_des
    res_view
