@@ -11,13 +11,28 @@ from sphinx_materialdesign_theme  import __version__
 source_suffix = '.rst'
 master_doc = 'index'
 
+# Add any Sphinx extension module names here, as strings. They can be
+# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
+# ones.
+extensions = ['sphinx.ext.autodoc',
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.mathjax',
+    'sphinx.ext.viewcode']
+
+mathjax_path="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+
+mathjax_config = {
+    'extensions': ['tex2jax.js'],
+    'jax': ['input/TeX', 'output/SVG'],
+}
+
 version = __version__
 release = __version__
 
 
-project = 'Material Design Theme'
-copyright = '2016, Masahiko Yasuda'
-author = 'Masahiko Yasuda'
+project = 'EVI_DSS'
+copyright = '2019, Chintan Pathak, Don MacKenzie'
+author = 'Chintan Pathak, Don MacKenzie'
 
 language = 'en'
 
