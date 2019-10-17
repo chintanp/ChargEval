@@ -21,10 +21,10 @@ extensions = ['sphinx.ext.autodoc',
 
 mathjax_path="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
 
-mathjax_config = {
-    'extensions': ['tex2jax.js'],
-    'jax': ['input/TeX', 'output/SVG'],
-}
+# mathjax_config = {
+#     'extensions': ['tex2jax.js'],
+#     'jax': ['input/TeX', 'output/SVG'],
+# }
 
 version = __version__
 release = __version__
