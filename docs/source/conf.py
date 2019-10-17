@@ -41,7 +41,7 @@ html_sidebars = {
    '**': ['globaltoc.html']
 }
 html_favicon = '_static/favicon.ico'
-html_logo = '_static/logo.png'
+html_logo = '_static/logo2.png'
 
 html_theme = 'sphinx_materialdesign_theme'
 html_theme_path = ['../']
@@ -61,9 +61,7 @@ html_theme_options = {
     # https://material.io/icons/
     'header_links' : [
        ('Home', 'index', False, 'home'),
-       ("ExternalLink", "http://example.com", True, 'launch'),
-       ("NoIconLink", "http://example.com", True, ''),
-       ("GitHub", "https://github.com/myyasuda/sphinx_materialdesign_theme", True, 'link')
+       ("GitHub", " https://github.com/chintanp/wsdot_evse_docs", True, 'link')
     ],
 
     # Customize css colors.
