@@ -1,3 +1,5 @@
+.. _evi_dss:
+
 =======
 EVI-DSS
 =======
@@ -13,7 +15,7 @@ Components
 The various components of the EVI-DSS are described below. For an in-depth technical exposition refer to the corresponding paper or contact the authors. 
 
 Long Distance Travel Demand Model 
---------------------------------
+---------------------------------
 The necessity of charging on a route is directly proportional to the number of EV trips passing through the route. The trip counts between origin-destination (OD) pairs were estimated using INRIX data, as reported in previous work. The OD matrix is composed of around 300k+ rows for indicating trip counts from all origin zips to all destination zips within WA. The trip counts are dependent on several factors like the origin and destination population, respective counties, and distance between origin and destination. The total trip count between an OD pair is composed of two quantities, the traffic belonging to O, departing from O to D, and the traffic belonging to D, returning to D from O. It is imperative to separate the total traffic volume between an OD pair into returning and departing sub-volumes as the sub-volumes are dependent on the county that the EV belongs to. For techinal details refer to `this publication`_. 
 
 
@@ -21,8 +23,6 @@ Vehicle Choice Decision Model
 -----------------------------
 The vehicle choice decision model (VCDM) can tell us whether an EV is feasible for trip depending on various trip and vehicle characteristics. Ge `estimates`_ several discrete choice models generated through stated preference surveys. For the purpose of EVI-ABM a latent choice logistic regression model is used that makes a vehicle selection between an internal combustion engine vehicle (ICEV), a rental vehicle or a battery electric vehicle (BEV), and is described as under:
  
-When :math:`a \ne 0`, there are two solutions to :math:`ax^2 + bx + c = 0` and they are:
-
 .. math::
     :label: u_icev
     
@@ -38,8 +38,14 @@ When :math:`a \ne 0`, there are two solutions to :math:`ax^2 + bx + c = 0` and t
 
     u_{\text{bev}_i} = \theta_4 \times \frac { L }{ r_\text{full}} + \theta_5 \times \frac { \text{Max}_\text{Spacing} }{ r_\text{full} } + \theta_6 \times  l_\text{restrooms} + \theta_7 \times \text{Restaurants} + \theta_8 \times \text{Des}_{\text{charger}_\text{type(L2)}} + \theta_9 \times \text{Des}_{\text{charger}_\text{type(L3)}} + \text{ASC_BEV} + \varepsilon_{\text{rent}_i}
     
-In the above equations, :math:`u` represents the utility of the particular vehicle choice. :math:`\theta_i` are the model coefficients for the covariates: cost of gas for ICEV during the trip (:math:`\text{gas cost}_\text{i,icev}`), cost of a rental car (:math:`C_{\text{rental}_i}`), gas cost for a rental car (:math:`\text{gas cost}_\text{i,rent}`), ratio of trip length and full range of BEV (:math:`\frac { L }{ r_\text{full}}`), ratio of maximum spacing between chargers along the trip route and full range of a BEV (:math:`{ \text{Max}_\text{Spacing} }{ r_\text{full} }`), largest spacing between restrooms along the route (:math:`l_\text{restrooms}`), whether there is a restroom near the charging station (:math:`\text{Restaurants}`), whether the destination has a level-2 charger (:math:`\text{Des}_{\text{charger}_\text{type(L2)}}`), whether the destination has a fast charger (:math:`\text{Des}_{\text{charger}_\text{type(L3)}}`). :math:`\text{ASC_BEV}` is the alternative specific constant for BEV and :math:`\varepsilon` are the error terms. The coefficients for the variables used in this study are presented in Table 1.
+In the above equations, :math:`u` represents the utility of the particular vehicle choice. :math:`\theta_i` are the model coefficients for the covariates: cost of gas for ICEV during the trip (:math:`\text{gas cost}_\text{i,icev}`), cost of a rental car (:math:`C_{\text{rental}_i}`), gas cost for a rental car (:math:`\text{gas cost}_\text{i,rent}`), ratio of trip length and full range of BEV (:math:`\frac { L }{ r_\text{full}}`), ratio of maximum spacing between chargers along the trip route and full range of a BEV (:math:`{ \text{Max}_\text{Spacing} }{ r_\text{full} }`), largest spacing between restrooms along the route (:math:`l_\text{restrooms}`), whether there is a restroom near the charging station (:math:`\text{Restaurants}`), whether the destination has a level-2 charger (:math:`\text{Des}_{\text{charger}_\text{type(L2)}}`), whether the destination has a fast charger (:math:`\text{Des}_{\text{charger}_\text{type(L3)}}`). :math:`\text{ASC_BEV}` is the alternative specific constant for BEV and :math:`\varepsilon` are the error terms. The coefficients for the variables used in this study are presented in :num:`Table #my-csv-label`.
 
+.. figtable::
+   :label: my-csv-label
+   :caption: My CSV Table
+   :nofig:
+
+    Vehicle Choice Decision Model Parameter Estimates
 
 ===================================================  ===========        =======
 Covariates                                           Estimate           P-value
@@ -60,11 +66,56 @@ EV Infrastructure Agent-based Model
 -----------------------------------
 EV Infrastructure Agent-based Model (EVI-ABM), is an agent-based model for modeling the utilization of EVSE in the state of Washington. As such, it has the following attributes:
 
-1.	Agents
+1.	**Agents**:
 
 - *Electric vehicles in the state of WA*: We consider all the electric vehicles registered in the state of WA as our EV agents. While some EVs maybe travelling outside the state and some out of state vehicles maybe traveling within WA, for the present study, we ignore these vehicles. Source: `Washington State Department of Licensing`_.
 - *Washington road network*: The EVs move on roads and travel is restricted to roads. Currently, we ignore the elevation of the roads, but in future, the roadway elevation can be included, and the energy model can account for the changes in elevation. Source: `Washington State Department of Transportation`_.
 - *Electric Vehicle Supply Equipment / Charging Stations*: The charging stations are the agents where the EVs charge when they are charge depleted. The instantaneous power drawn and total energy consumed are the EVSE utilization outputs from the simulation that we are interested in. Source: `Alternative Fuels Data Center`_.
+
+2.	**Environment**: Currently, a two-dimensional simulation is bounded by the state of WA.
+
+3.	**Time**: A single simulation runs for 24 hours in 1-minute time-steps. This means that we simulate EV travel around the state for a period of one day at a time and update the states of our agents each minute. 
+
+EVI-ABM System Overview
+^^^^^^^^^^^^^^^^^^^^^^^
+The EVI-ABM system overview is shown in :numref:`evi_abm_sys_diagram`. We see that all agents, EVs, charging stations, and roads are children of the global agent “World”. All agents have attributes and possibly actions and states, which together define the agent’s characteristics. Some of these are built-in like location and speed, while some are user-defined like vehicle ID, capacity etc. :numref:`evi_abm_sys_diagram` shows the object-oriented nature of a GAMA model, and intuitively transfers to the real world. Depending on the problem at hand, we can define agents in as much detail as we choose. 
+
+.. _evi_abm_sys_diagram: 
+.. figure:: _static/WSDOT_EVSE_System_diagram.png
+    :width: 800px
+    :align: center
+    :alt: EVI-ABM System Diagram
+    :figclass: align-center
+    
+    EVI-ABM System Diagram
+
+Finite State Machine Control
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Finite state machine (FSM) is a commonly used control paradigm and divides the system into several states and transitions. Agents begin the simulation in a certain state and transition into any (one of the) other states when a certain condition is fulfilled. It is important to note that, at any time-step agents can be in only one state.
+
+FSM control is suitable to model the EV operation as we have deterministic and finite states the vehicle can be in (resting, driving, charging). The benefit of FSM control for our use case is that it helps in managing the complexity of operation and allows for easy testing. While modeling the infrastructure and driver behavior, FSM control allows us to observe in which state our agents are at any time step of the simulation and hence, we can get greater observability aiding in debugging. FSM control is also flexible, i.e. if we decide to add more complexity to the operation by adding more states (e.g. waiting in queue); we can do that by changing the transition conditions. The state diagram for our system is shown in :numref:`evi_abm_state_diagram`
+
+.. _evi_abm_state_diagram: 
+.. figure:: _static/WSDOT_EVSE_FSM.png
+    :width: 800px
+    :align: center
+    :alt: EVI-ABM State Diagram
+    :figclass: align-center
+
+    Finite state machine diagram for EVI-ABM
+
+To parse the state diagram, first observe the start and finished states. Other states in the system are “Resting”, “Driving”, “Locate Charger”, “Drive to Charger”, "Queue for Charging" and “Charging”, dark rectangular blocks. These are connected to diamond shaped decision boxes, that are the transition conditions, and the statements above the connecting lines are actions, or behaviors that are undertaken by agents at every time step, like “Go to Target”, “Update States” etc. While some decision questions like “Is T > T_rest?”, or “Is current location the target?” are easily answered in the ABM framework; some other EVI-ABM specific decision questions like “Does charging make sense?” are not so directly answerable and will depend on the trip and car related conditions as well as individual preferences. The linkages between these conditions and preferences are captured in behavioral models. 
+
+Charging Choice Decision Model
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+While the vehicle in enroute its destination, it might need to charge along the way. The choice of charging at a charging station can modeled by a decision choice model. Among the various models developed by `Ge`_, we use the static choice decision model. The model equations are as under: 
+
+.. math::
+    :label: u_scdm
+
+    u_{\text{charging}_\text{it}} = \theta_0 + \theta_1 \times \text{SOC}_\text{it} + \theta_2 \times \text{DEV}_\text{it} + \theta_3 \times \text{Hours} + \theta_4 \times C_{\text{charging}_\text{it}} + \theta_5 \times T_{\text{charging}_\text{it}} + \theta_6 \times T_{\text{access}_\text{it}} + \theta_7 \times \text{Amenity}_{\text{restroom}_\text{it}} + \theta_8 \times \text{Amenity}_{\text{more}_\text{it}} + \varepsilon_{\text{charging}_\text{it}}
+
+In :eq:`u_scdm`, :math:`u` represents the utility of charging, :math:`\theta_i` are the model coefficients, :math:`SOC` represents the state of charge of the BEV, :math:`DEV` is a Boolean denoting whether the vehicle has enough range to reach the next charger if it chooses to not charge at this charger, :math:`Hours` represents the hours the driver has been driving the vehicle, :math:`C_\text{charging}` represents the cost of charging the vehicle, :math:`T_\text{charging}` refers to the time taken to charge the vehicle, :math:`T_\text{access}` represents the time taken to access the charging station from the current route, :math:`\text{Amenity}_\text{restroom}` represents whether we have restroom as an amenity at the location of charging station, :math:`\text{Amenity}_\text{more}` represents whether we have more amenities like restaurants, Wi-Fi at the charging station location, and  :math:`\varepsilon_\text{charging}`  represents the error. The coefficients for the charging choice decision model used are as presented in Table 2.
 
 
 .. _this publication: https://trid.trb.org/view/1573197 
@@ -72,3 +123,4 @@ EV Infrastructure Agent-based Model (EVI-ABM), is an agent-based model for model
 .. _Washington State Department of Licensing: https://data.wa.gov/Transportation/Electric-Vehicle-Population-Data/f6w7-q2d2
 .. _Washington State Department of Transportation: http://geo.wa.gov/datasets/9c8deffdd8754c3e93ead52d18850f9f_13
 .. _Alternative Fuels Data Center: https://afdc.energy.gov/fuels/electricity_locations.html#/find/nearest?fuel=ELEC&ev_levels=dc_fast&ev_connectors=NEMA1450&ev_connectors=NEMA515&ev_connectors=NEMA520&ev_connectors=J1772&ev_connectors=CHADEMO&ev_connectors=J1772COMBO
+.. _Ge: https://digital.lib.washington.edu/researchworks/handle/1773/43650
