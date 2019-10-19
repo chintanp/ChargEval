@@ -42,7 +42,7 @@ In the above equations, :math:`u` represents the utility of the particular vehic
 
 .. _Table 1:
 
-    Vehicle Choice Decision Model Parameter Estimates
+    Table 1: Vehicle Choice Decision Model Parameter Estimates
 
 ===================================================  ===========        =======
 Covariates                                           Estimate           P-value
@@ -117,7 +117,7 @@ In :eq:`u_scdm`, :math:`u` represents the utility of charging, :math:`\theta_i` 
 
 .. _Table 2:
 
-    Charging Choice Decision Model Parameter Estimates
+    Table 2: Charging Choice Decision Model Parameter Estimates
 
 ==========================================================================================    ===========       
 Covariates                                                                                    Estimate         
