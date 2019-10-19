@@ -38,12 +38,9 @@ The vehicle choice decision model (VCDM) can tell us whether an EV is feasible f
 
     u_{\text{bev}_i} = \theta_4 \times \frac { L }{ r_\text{full}} + \theta_5 \times \frac { \text{Max}_\text{Spacing} }{ r_\text{full} } + \theta_6 \times  l_\text{restrooms} + \theta_7 \times \text{Restaurants} + \theta_8 \times \text{Des}_{\text{charger}_\text{type(L2)}} + \theta_9 \times \text{Des}_{\text{charger}_\text{type(L3)}} + \text{ASC_BEV} + \varepsilon_{\text{rent}_i}
     
-In the above equations, :math:`u` represents the utility of the particular vehicle choice. :math:`\theta_i` are the model coefficients for the covariates: cost of gas for ICEV during the trip (:math:`\text{gas cost}_\text{i,icev}`), cost of a rental car (:math:`C_{\text{rental}_i}`), gas cost for a rental car (:math:`\text{gas cost}_\text{i,rent}`), ratio of trip length and full range of BEV (:math:`\frac { L }{ r_\text{full}}`), ratio of maximum spacing between chargers along the trip route and full range of a BEV (:math:`{ \text{Max}_\text{Spacing} }{ r_\text{full} }`), largest spacing between restrooms along the route (:math:`l_\text{restrooms}`), whether there is a restroom near the charging station (:math:`\text{Restaurants}`), whether the destination has a level-2 charger (:math:`\text{Des}_{\text{charger}_\text{type(L2)}}`), whether the destination has a fast charger (:math:`\text{Des}_{\text{charger}_\text{type(L3)}}`). :math:`\text{ASC_BEV}` is the alternative specific constant for BEV and :math:`\varepsilon` are the error terms. The coefficients for the variables used in this study are presented in :num:`Table #my-csv-label`.
+In the above equations, :math:`u` represents the utility of the particular vehicle choice. :math:`\theta_i` are the model coefficients for the covariates: cost of gas for ICEV during the trip (:math:`\text{gas cost}_\text{i,icev}`), cost of a rental car (:math:`C_{\text{rental}_i}`), gas cost for a rental car (:math:`\text{gas cost}_\text{i,rent}`), ratio of trip length and full range of BEV (:math:`\frac { L }{ r_\text{full}}`), ratio of maximum spacing between chargers along the trip route and full range of a BEV (:math:`{ \text{Max}_\text{Spacing} }{ r_\text{full} }`), largest spacing between restrooms along the route (:math:`l_\text{restrooms}`), whether there is a restroom near the charging station (:math:`\text{Restaurants}`), whether the destination has a level-2 charger (:math:`\text{Des}_{\text{charger}_\text{type(L2)}}`), whether the destination has a fast charger (:math:`\text{Des}_{\text{charger}_\text{type(L3)}}`). :math:`\text{ASC_BEV}` is the alternative specific constant for BEV and :math:`\varepsilon` are the error terms. The coefficients for the variables used in this study are presented in `Table 1`_.
 
-.. figtable::
-   :label: my-csv-label
-   :caption: My CSV Table
-   :nofig:
+.. _Table 1:
 
     Vehicle Choice Decision Model Parameter Estimates
 
@@ -115,7 +112,28 @@ While the vehicle in enroute its destination, it might need to charge along the 
 
     u_{\text{charging}_\text{it}} = \theta_0 + \theta_1 \times \text{SOC}_\text{it} + \theta_2 \times \text{DEV}_\text{it} + \theta_3 \times \text{Hours} + \theta_4 \times C_{\text{charging}_\text{it}} + \theta_5 \times T_{\text{charging}_\text{it}} + \theta_6 \times T_{\text{access}_\text{it}} + \theta_7 \times \text{Amenity}_{\text{restroom}_\text{it}} + \theta_8 \times \text{Amenity}_{\text{more}_\text{it}} + \varepsilon_{\text{charging}_\text{it}}
 
-In :eq:`u_scdm`, :math:`u` represents the utility of charging, :math:`\theta_i` are the model coefficients, :math:`SOC` represents the state of charge of the BEV, :math:`DEV` is a Boolean denoting whether the vehicle has enough range to reach the next charger if it chooses to not charge at this charger, :math:`Hours` represents the hours the driver has been driving the vehicle, :math:`C_\text{charging}` represents the cost of charging the vehicle, :math:`T_\text{charging}` refers to the time taken to charge the vehicle, :math:`T_\text{access}` represents the time taken to access the charging station from the current route, :math:`\text{Amenity}_\text{restroom}` represents whether we have restroom as an amenity at the location of charging station, :math:`\text{Amenity}_\text{more}` represents whether we have more amenities like restaurants, Wi-Fi at the charging station location, and  :math:`\varepsilon_\text{charging}`  represents the error. The coefficients for the charging choice decision model used are as presented in Table 2.
+In :eq:`u_scdm`, :math:`u` represents the utility of charging, :math:`\theta_i` are the model coefficients, :math:`SOC` represents the state of charge of the BEV, :math:`DEV` is a Boolean denoting whether the vehicle has enough range to reach the next charger if it chooses to not charge at this charger, :math:`Hours` represents the hours the driver has been driving the vehicle, :math:`C_\text{charging}` represents the cost of charging the vehicle, :math:`T_\text{charging}` refers to the time taken to charge the vehicle, :math:`T_\text{access}` represents the time taken to access the charging station from the current route, :math:`\text{Amenity}_\text{restroom}` represents whether we have restroom as an amenity at the location of charging station, :math:`\text{Amenity}_\text{more}` represents whether we have more amenities like restaurants, Wi-Fi at the charging station location, and  :math:`\varepsilon_\text{charging}`  represents the error. The coefficients for the charging choice decision model used are as presented in `Table 2`_.
+
+
+.. _Table 2:
+
+    Charging Choice Decision Model Parameter Estimates
+
+==========================================================================================    ===========       
+Covariates                                                                                    Estimate         
+==========================================================================================    ===========        
+(Intercept) :math:`\theta_0`                                                                  2.034***
+SOC (%) :math:`\theta_1` \	                                                                  -4.584***
+Deviation (*DEV*) :math:`\theta_2`                                                            2.440***
+Time in car (h) (*Hours*) :math:`\theta_3`                                                    -0.069
+Charging cost ($) ( :math:`C_\text{charging}` ) :math:`\theta_4`                                 -0.010***
+Charging time (h) ( :math:`T_\text{charging}` ) :math:`\theta_5`	                           -0.242**
+Access time (min) ( :math:`T_\text{access}` ) :math:`\theta_6`                                   -0.025***
+Amenity: restroom only ( :math:`\text{Amenity}_\text{restroom}` ) :math:`\theta_7`               0.049
+Amenity: restroom, dining & WIFI ( :math:`\text{Amenity}_\text{more}` ) :math:`\theta_8`         0.213**          
+==========================================================================================    =========== 
+
+ - \* p-value < 0.1; **  p-value < 0.05;  \*** p-value < 0.01       
 
 
 .. _this publication: https://trid.trb.org/view/1573197 
@@ -124,3 +142,4 @@ In :eq:`u_scdm`, :math:`u` represents the utility of charging, :math:`\theta_i` 
 .. _Washington State Department of Transportation: http://geo.wa.gov/datasets/9c8deffdd8754c3e93ead52d18850f9f_13
 .. _Alternative Fuels Data Center: https://afdc.energy.gov/fuels/electricity_locations.html#/find/nearest?fuel=ELEC&ev_levels=dc_fast&ev_connectors=NEMA1450&ev_connectors=NEMA515&ev_connectors=NEMA520&ev_connectors=J1772&ev_connectors=CHADEMO&ev_connectors=J1772COMBO
 .. _Ge: https://digital.lib.washington.edu/researchworks/handle/1773/43650
+
