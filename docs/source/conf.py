@@ -17,9 +17,11 @@ master_doc = 'index'
 extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'sphinx.ext.mathjax',
-    'sphinx.ext.viewcode'
+    'sphinx.ext.viewcode', 
+    'sphinx.ext.autosectionlabel'
     ]
 
+autosectionlabel_prefix_document = True
 mathjax_path="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
 
 # mathjax_config = {
