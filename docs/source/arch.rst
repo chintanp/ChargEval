@@ -22,7 +22,7 @@ Read :ref:`database:Database Description` for details about the database.
 
 View
 ====
-The view refers to the interface exposed to the users of EVI-DSS. The users interact with the views. EVI-DSS has two views - the :ref:`evi_des:EVI Infrastructure Designer` can be used to select the locations of prospective charging stations and configure the details for the charging stations placed; and the :ref:`res_view:Results Viewer` can be used to view to the results of the simulation for the current EV infrastructure, which is the combination of built as well as proposed charging stations. 
+The view refers to the interface exposed to the users of EVI-DSS. The users interact with the views. EVI-DSS has two views - the :ref:`evi_des:EV Infrastructure Designer` can be used to select the locations of prospective charging stations and configure the details for the charging stations placed; and the :ref:`res_view:Results Viewer` can be used to view to the results of the simulation for the current EV infrastructure, which is the combination of built as well as proposed charging stations. 
 
 Controller
 ==========
@@ -30,7 +30,12 @@ The controller is the application that manages execution of simulation process w
 
 Read :ref:`sim_man:Simulation Manager` for more details about the controller. 
 
+Benefits of MVC Architecture
+============================
+MVC is a popular architecture for complex applications. The benefit in our case, is that we can deploy all the component applications of EVI-DSS namely the database, the EV Infrastructure Designer, the Results Viewer and Simuilation Manager on one machine, or we can deploy it across several machines allowing to scale the application as needed. Modular nature of EVI-DSS allows us to maintain the application with ease, and a develop can work on one component without affecting the others. This also makes deployment easier, as the components can all be containerized. 
 
+.. warning::
+    It would be prudent to note that EVI-DSS currently is not robust to database failure. So, if the database crashes, the processes depending on them are likely to crash or mis-behave. This is high on the wish-list along with reducing execution time for analysis.
 
 
 
