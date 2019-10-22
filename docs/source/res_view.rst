@@ -66,3 +66,8 @@ Stranded
 --------
 The `Stranded` tab is similar to the `Finished` tab - only it shows the vehicles that were stranded during the trip - i.e. they were out of charge.
 
+Implementation Details
+======================
+The code for the Results Viewer is hosted `here`_. The Results Viewer is a R Shiny web-app reading the data from the database. 
+
+.. _here: https://github.com/chintanp/wsdot_evse_results_viewer
