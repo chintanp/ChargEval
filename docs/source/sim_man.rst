@@ -19,6 +19,9 @@ Implementation Details
 ======================
 The Simulation Manager is written in NodeJS as it supports asynchronous processes. The code is hosted `here`_. The NodeJS library `bee-queue`_ is used for implementing the queueing. `bee-queue` utilizes `Redis`_ as backend for storing the jobs in queue and their states. The queue can be monitored using an instance of `Arena`_ which tells us the status of the current queue, jobs being processed, waiting etc. 
 
+.. warning
+    The agent-based model (EVI-ABM) only considers a constant charging rate of 50kW for each EV - since the `fueleconomy.gov` website used for collecting vehicle information does not contain information about maximum charge power for an EV. It also considers all chargers to be charging at 50 kW too, since AFDC does not maintain charging station maximum charging power information. This was not much of an issue when most vehicles allowed only 50 kW and most CHAdeMO and COMBO chargers allowed 50 kW too. With Electrify America charging stations, however, and advent of ultra-fast charging - the model will have to be updated to consider vehicle / charger specific charging rates. 
+
 Future Scope
 ============
 Currently, the Simulation Manager only executes the jobs on the local system on which it is deployed. With a little wiring, it should be able to distribute the analysis execution to a cluster, and possibly handle multiple jobs in parallel. 
