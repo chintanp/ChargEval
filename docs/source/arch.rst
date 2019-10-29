@@ -2,7 +2,7 @@
 System Architecture
 ===================
 
-EVI-DSS is based on the model-view-controller (MVC) architecture. In the MVC architecture, the model represents the data, the view refers to the interface expose to the user and the controller handles the user requests. The architecture of EVI-DSS is as shown in :numref:`evi_dss_arch`.
+EVI-DSS is based on the model-view-controller (MVC) architecture. In the MVC architecture, the model represents the data, the view refers to the interface(s) exposed to the user and the controller handles the user requests. The architecture of EVI-DSS is as shown in :numref:`evi_dss_arch`.
 
  
 .. _evi_dss_arch: 
@@ -26,7 +26,7 @@ The view refers to the interface exposed to the users of EVI-DSS. The users inte
 
 Controller
 ==========
-The controller is the application that manages execution of simulation process when a new analysis request is made. Due to the multi-user nature of EVI-DSS many users may simultaneously submit analysis execution requests. The controller queues the analysis requests and allocated the available resources. 
+The controller is the application that manages the execution of a simulation process when a new analysis request is made. Due to the multi-user nature of EVI-DSS, many users may simultaneously submit analysis execution requests. The controller queues the analysis requests and allocates the available resources. 
 
 Read :ref:`sim_man:Simulation Manager` for more details about the controller. 
 
