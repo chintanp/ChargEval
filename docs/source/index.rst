@@ -1,9 +1,9 @@
-.. WSDOT-EVSE documentation master file, created by
+.. EVI-DSS documentation master file, created by
    sphinx-quickstart on Wed Oct 16 12:00:00 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 ==========================
-WSDOT-EVSE documentation
+EVI-DSS documentation
 ==========================
 
 EVI-DSS is a decision support system for electric vehicle infrastructure (EVI)  design for the state of Washington, USA. The underlying modeling framework is general enough that the tool can be used at any scale, any where.

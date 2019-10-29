@@ -33,7 +33,7 @@ version = __version__
 release = __version__
 
 
-project = 'EVI_DSS'
+project = 'EVI-DSS'
 copyright = '2019, Chintan Pathak, Don MacKenzie'
 author = 'Chintan Pathak, Don MacKenzie'
 
@@ -64,7 +64,7 @@ html_theme_options = {
     # https://material.io/icons/
     'header_links' : [
        ('Home', 'index', False, 'home'),
-       ("GitHub", " https://github.com/chintanp/wsdot_evse_docs", True, 'link')
+       ("GitHub", " https://github.com/chintanp/evi-dss", True, 'link')
     ],
 
     # Customize css colors.
