@@ -16,9 +16,9 @@ UI Details
 ==========
 The key elements of the EV Infrastructure Designer are as under:
 
-WSDOT Road Network 
-------------------
-The WSDOT Road Network card shows the WSDOT road network overlayed with the infeasibility metric for CHAdeMO and COMBO charging - selectable from the radio buttons on the upper right corner as in :numref:`wsdot_road_network`. Besides the infeasibility overlay, the radio buttons also show the relevant type of charging stations on the road network. These locations are consistent with the database table :code:`built_evse`. 
+Washington EV DCFC System 
+-------------------------
+The "Washington EV DCFC System" card shows the WSDOT road network overlayed with the infeasibility metric for CHAdeMO and COMBO charging alongwith the as-built EV DCFC infrastructure - selectable from the radio buttons on the upper right corner as in :numref:`wsdot_road_network` . Besides the infeasibility overlay, the radio buttons also show the relevant type of charging stations on the road network. These locations are consistent with the database table :code:`built_evse`. 
 
 .. _wsdot_road_network: 
 .. figure:: _static/wsdot_road_network.PNG
@@ -27,7 +27,7 @@ The WSDOT Road Network card shows the WSDOT road network overlayed with the infe
     :alt: WSDOT Road Network
     :figclass: align-center
     
-    WSDOT Road Network
+    Washington EV DCFC System
 
 The infeasibility metric is an indication of sparsity of EV infrastrastructure on a path. A count is calculated for the total vehicle trips passing over a road segment belonging to a shortest path between an OD pair if the spacing between charging stations on the segment is greater than 70 miles (critical limit specified by WSDOT). The line weight of the overlay is directly proportional to the trip count passing over a segment. So, a thick overlay can mean that a high count of vehicles are passing over the segment. The low line weight indicates light traffic on the segment. The former indicates that the road segment is used by several OD pairs in the state, whereas the later indicates the vice-versa. No line weight on the roads mean that the charging station spacing on the segment is less than 70 miles. There are separate overlays for CHAdeMO and COMBO charging stations as not all charging stations feature both types of plugs. 
 
@@ -57,12 +57,12 @@ For all the selected locations, configuration can be done as shown in :numref:`s
     
     Station Configuration
 
-The station configuration modal allows the setting of number of plugs for CHAdeMO, COMBO and Level-2 as well the corresponding power per plug. Further configuration options like charging price, etc. can be easily added to allow custom configuration for all new proposed locations. 
+The station configuration modal allows the setting of number of plugs for DCFC and Level-2 as well as the corresponding power per plug and pricing structure. Total price can include charging price and parking price. For both parking and charging, there could be a fixed component (per session )and variable (per minute) component. 
 
-Once satisfactory counts of charging stations with appropriate configuration have been selected, the selection can be submitted for analysis by clicking the "Submit for analysis" button. This will insert a record in the database table :code:`analysis_record`, which will trigger an analysis request to the simulation manager. A successful analysis submission will also insert rows in the table :code:`new_evses` for the respective :code:`analysis_id`. As many rows as the number of charging sites selected will be entered with the columns like plug count and power as per the individual configuration.
+Once satisfactory counts of charging stations with appropriate configuration have been selected, the selection can be submitted for analysis by clicking the "Submit for analysis" button. This will insert a record in the database table :code:`analysis_record`, which will trigger an analysis request to the simulation manager. A successful analysis submission will also insert rows in the table :code:`new_evses` for the respective :code:`analysis_id`. As many rows as the number of charging sites selected will be entered with the columns like plug count, power, price etc. as per the individual configuration.
 
 .. note::
-    The user can bring down the count of plugs all the way to zero. When both CHAdeMO and COMBO plug count is set to zero for all new charging stations, the analysis is equivalent to the as-built scenario. This, therefore, is the way to get to the base-case analysis and the new charging station deployment scenarios can be compared against the base-case. 
+    The user can bring down the count of plugs all the way to zero. When DCFC plug count is set to zero for all new charging stations, the analysis is equivalent to the as-built scenario. This, therefore, is the way to get to the base-case analysis and the new charging station deployment scenarios can be compared against the base-case. 
 
 The New Site List card then displays a successful analysis submission message with the submission date time as shown in :numref:`submitted_analysis`. Since the analysis process involving re-calculation of destination chargers, charging distances, EV trips and subsequent agent-based simulation is a computationally-intensive long process, taking several hours at the time of this writing, the user is informed about the successful completion of analysis via an email at the registered email address. The results can then be viewed for the particular simulation date time of interest. 
 

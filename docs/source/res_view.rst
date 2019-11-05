@@ -18,7 +18,7 @@ After selecting the simulation datetime, the user has option to view the results
 
 Summary Stats
 -------------
-These stats presented on this tab represent the key statistics of interest for the simulated (consisting of as-built + proposed) EV infrastructure. "EVs in Simulation" is the count of EVs that were simulated for travel on a typical day. "EVs finishing trip" represent the number of EVs that reached their destination - i.e. finished their trip. "EVs stranded" represents the number of EVs that were stranded during the trip, i.e. they were out of charge due to lack of charging infrastructure along their charging route. "eVMT" refers to the electric vehicle miles travelled - this statistic does not include the added trip distance due to charging de-tours, but only counts the shortest path lenghts for EVs that finished their trips. "Number of charging sessions" represents the number of charging sessions as predicted by the model. "Number of EVs passed" represents the number of EVs that passed a charging station because it was occupied at the time they needed to charge. 
+These stats presented on this tab represent the key statistics of interest for the simulated (consisting of as-built + proposed) EV infrastructure. "EVs in Simulation" is the count of EVs that were simulated for travel on a typical day. "EVs finishing trip" represent the number of EVs that reached their destination - i.e. finished their trip. "EVs stranded" represents the number of EVs that were stranded during the trip, i.e. they were out of charge due to lack of charging infrastructure along their charging route. "eVMT" refers to the electric vehicle miles travelled - this statistic does not include the added trip distance due to charging de-tours, but only counts the shortest path lenghts for EVs that finished their trips. "Number of charging sessions" represents the number of charging sessions as predicted by the model. "Number of EVs waiting" represents the number of EVs that waited at a charging station because it was occupied at the time they needed to charge. 
 
 Finished
 --------
@@ -58,9 +58,9 @@ new proposed charging station for the time window selected. The table shows the 
     
     Results Viewer - EVSE Utilization Modal
 
-EVSE Served/Passed
+EVSE Served/Waited
 ------------------
-The `EVSE Served/Passed` tab shows the an overlay over the charging stations indicating the number of EVs served/passed. This allows for quick location of charging stations where the utilization is high and/or the charging stations where number of EVs passed is high. These charging stations can then be seen in detail using the `EVSE Utilization` tab to determine the time, and type of deficiency. 
+The `EVSE Served/Waited` tab shows the an overlay over the charging stations indicating the number of EVs served/waited. This allows for quick location of charging stations where the utilization is high and/or the charging stations where number of EVs waited is high. These charging stations can then be seen in detail using the `EVSE Utilization` tab to determine the time, and type of deficiency. 
 
 Stranded
 --------
