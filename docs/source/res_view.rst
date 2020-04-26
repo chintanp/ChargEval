@@ -12,6 +12,10 @@ The user gets an email at the registered email-id when a simulation has been suc
     
     Results Viewer - Summary Stats Tab 
 
+Live Demo
+=========
+`Click here`_ to access the live demo of Results Viewer.
+
 UI Details 
 ==========
 After selecting the simulation datetime, the user has option to view the results on the following tabs:
@@ -71,3 +75,4 @@ Implementation Details
 The code for the Results Viewer is hosted `here`_. The Results Viewer is a R Shiny web-app reading the data from the database. 
 
 .. _here: https://github.com/chintanp/wsdot_evse_results_viewer
+.. _Click here: https://cp84.shinyapps.io/res_view/
