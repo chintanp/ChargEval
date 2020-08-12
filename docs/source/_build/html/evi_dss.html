@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>3. EVI-DSS &#8212; EVI-DSS 0.1.11 documentation</title>
+
+    <link rel="stylesheet" href="_static/material-icons.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/notosanscjkjp.css" type="text/css" />
+    <link rel="stylesheet" href="_static/roboto.css" type="text/css" />
+    <link rel="stylesheet" href="_static/material-design-lite-1.3.0/material.indigo-pink.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/sphinx_materialdesign_theme.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. System Architecture" href="arch.html" />
+    <link rel="prev" title="2. Decision Support System" href="dss.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link is-active"><span class="section-number">3. </span>EVI-DSS</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+            <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="_sources/evi_dss.rst.txt" rel="nofollow">
+<i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          <a  class="mdl-navigation__link" href="index.html">
+                  <i class="material-icons navigation-link-icon">home</i>
+                  Home
+              </a>
+          
+              <a  class="mdl-navigation__link" href=" https://github.com/chintanp/evi-dss">
+                  <i class="material-icons navigation-link-icon">link</i>
+                  GitHub
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="index.html">
+              <img class="logo" src="_static/logo2.png" alt="EVI-DSS"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dss.html">2. Decision Support System</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. EVI-DSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">4. System Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">5. Database Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_des.html">6. EV Infrastructure Designer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="res_view.html">7. Results Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim_man.html">8. Simulation Manager</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+<header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="index.html">
+              <img class="logo" src="_static/logo2.png" alt="EVI-DSS"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dss.html">2. Decision Support System</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. EVI-DSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">4. System Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">5. Database Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_des.html">6. EV Infrastructure Designer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="res_view.html">7. Results Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim_man.html">8. Simulation Manager</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content">
+        
+  <blockquote>
+<div></div></blockquote>
+<div class="section" id="evi-dss">
+<span id="id1"></span><h1><span class="section-number">3. </span>EVI-DSS<a class="headerlink" href="#evi-dss" title="Permalink to this headline">¶</a></h1>
+<p>The electric vehicle infrastructure decision support system (EVI-DSS) is the tool to guide decision makers in planning the deployment of EV infrastructure. Public agencies as well as private companies can use the EVI-DSS, since it predicts KPIs relevant to each domain. The EVI-DSS has been developed in collaboration with and with funding from Washington State Department of Transportation. The results and scenarios presented in this paper are therefore for the Washington state region. However, the methodology described is general enough to be applied anywhere across the world.</p>
+<div class="section" id="goals-of-evi-dss">
+<h2><span class="section-number">3.1. </span>Goals of EVI-DSS<a class="headerlink" href="#goals-of-evi-dss" title="Permalink to this headline">¶</a></h2>
+<p>The EVI-DSS shows the infeasibility metric across the state and indication of where a high of volume of traffic flow is matched with a high spacing of charging stations. These areas are good candidates for charging stations if the objective is to maximize utilization. Once the sites are chosen, the EVI-DSS estimates the potential utilization for a chosen site. The utilization is outputted as energy and power. The total energy consumed per charging station in a month and the peak power draw in a month are important statistics that affect the economics of charging stations.</p>
+</div>
+<div class="section" id="components">
+<h2><span class="section-number">3.2. </span>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h2>
+<p>The various components of the EVI-DSS are described below. For an in-depth technical exposition refer to the corresponding paper or contact the authors.</p>
+<div class="section" id="long-distance-travel-demand-model">
+<h3><span class="section-number">3.2.1. </span>Long Distance Travel Demand Model<a class="headerlink" href="#long-distance-travel-demand-model" title="Permalink to this headline">¶</a></h3>
+<p>The necessity of charging on a route is directly proportional to the number of EV trips passing through the route. The trip counts between origin-destination (OD) pairs were estimated using INRIX data, as reported in previous work. The OD matrix is composed of around 300k+ rows for indicating trip counts from all origin zips to all destination zips within WA. The trip counts are dependent on several factors like the origin and destination population, respective counties, and distance between origin and destination. The total trip count between an OD pair is composed of two quantities, the traffic belonging to O, departing from O to D, and the traffic belonging to D, returning to D from O. It is imperative to separate the total traffic volume between an OD pair into returning and departing sub-volumes as the sub-volumes are dependent on the county that the EV belongs to. For techinal details refer to <a class="reference external" href="https://trid.trb.org/view/1573197">this publication</a>.</p>
+</div>
+<div class="section" id="vehicle-choice-decision-model">
+<h3><span class="section-number">3.2.2. </span>Vehicle Choice Decision Model<a class="headerlink" href="#vehicle-choice-decision-model" title="Permalink to this headline">¶</a></h3>
+<p>The vehicle choice decision model (VCDM) can tell us whether an EV is feasible for trip depending on various trip and vehicle characteristics. Ge <a class="reference external" href="https://digital.lib.washington.edu/researchworks/handle/1773/43650">estimates</a> several discrete choice models generated through stated preference surveys. For the purpose of EVI-ABM a latent choice logistic regression model is used that makes a vehicle selection between an internal combustion engine vehicle (ICEV), a rental vehicle or a battery electric vehicle (BEV), and is described as under:</p>
+<div class="math notranslate nohighlight" id="equation-u-icev">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-u-icev" title="Permalink to this equation">¶</a></span>\[u_{\text{icev}_i} = \theta_\text{1} \times \text{gas cost}_\text{i,icev} + \varepsilon_{\text{icev}_i}\]</div>
+<div class="math notranslate nohighlight" id="equation-u-rent">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-u-rent" title="Permalink to this equation">¶</a></span>\[u_{\text{rent}_i} = \theta_2 \times C_{\text{rental}_i} + \theta_3 \times \text{gas cost}_\text{i,rent} + \varepsilon_{\text{rent}_i}\]</div>
+<div class="math notranslate nohighlight" id="equation-u-bev">
+<span class="eqno">(3.3)<a class="headerlink" href="#equation-u-bev" title="Permalink to this equation">¶</a></span>\[u_{\text{bev}_i} = \theta_4 \times \frac { L }{ r_\text{full}} + \theta_5 \times \frac { \text{Max}_\text{Spacing} }{ r_\text{full} } + \theta_6 \times  l_\text{restrooms} + \theta_7 \times \text{Restaurants} + \theta_8 \times \text{Des}_{\text{charger}_\text{type(L2)}} + \theta_9 \times \text{Des}_{\text{charger}_\text{type(L3)}} + \text{ASC_BEV} + \varepsilon_{\text{rent}_i}\]</div>
+<p>In the above equations, <span class="math notranslate nohighlight">\(u\)</span> represents the utility of the particular vehicle choice. <span class="math notranslate nohighlight">\(\theta_i\)</span> are the model coefficients for the covariates: cost of gas for ICEV during the trip (<span class="math notranslate nohighlight">\(\text{gas cost}_\text{i,icev}\)</span>), cost of a rental car (<span class="math notranslate nohighlight">\(C_{\text{rental}_i}\)</span>), gas cost for a rental car (<span class="math notranslate nohighlight">\(\text{gas cost}_\text{i,rent}\)</span>), ratio of trip length and full range of BEV (<span class="math notranslate nohighlight">\(\frac { L }{ r_\text{full}}\)</span>), ratio of maximum spacing between chargers along the trip route and full range of a BEV (<span class="math notranslate nohighlight">\({ \text{Max}_\text{Spacing} }{ r_\text{full} }\)</span>), largest spacing between restrooms along the route (<span class="math notranslate nohighlight">\(l_\text{restrooms}\)</span>), whether there is a restroom near the charging station (<span class="math notranslate nohighlight">\(\text{Restaurants}\)</span>), whether the destination has a level-2 charger (<span class="math notranslate nohighlight">\(\text{Des}_{\text{charger}_\text{type(L2)}}\)</span>), whether the destination has a fast charger (<span class="math notranslate nohighlight">\(\text{Des}_{\text{charger}_\text{type(L3)}}\)</span>). <span class="math notranslate nohighlight">\(\text{ASC_BEV}\)</span> is the alternative specific constant for BEV and <span class="math notranslate nohighlight">\(\varepsilon\)</span> are the error terms. The coefficients for the variables used in this study are presented in <a class="reference internal" href="#table-1">Table 1</a>.</p>
+<blockquote id="table-1">
+<div><p>Table 1: Vehicle Choice Decision Model Parameter Estimates</p>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 72%" />
+<col style="width: 15%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Covariates</p></th>
+<th class="head"><p>Estimate</p></th>
+<th class="head"><p>P-value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ICEV gas cost ($) <span class="math notranslate nohighlight">\(\theta_1\)</span></p></td>
+<td><p>-0.040</p></td>
+<td><p>0.000</p></td>
+</tr>
+<tr class="row-odd"><td><p>RENT cost ($) <span class="math notranslate nohighlight">\(\theta_2\)</span></p></td>
+<td><p>0.059</p></td>
+<td><p>0.010</p></td>
+</tr>
+<tr class="row-even"><td><p>RENT gas cost ($) <span class="math notranslate nohighlight">\(\theta_3\)</span></p></td>
+<td><p>-0.075</p></td>
+<td><p>0.000</p></td>
+</tr>
+<tr class="row-odd"><td><p>relative distance <span class="math notranslate nohighlight">\(\theta_4\)</span></p></td>
+<td><p>-1.659</p></td>
+<td><p>0.002</p></td>
+</tr>
+<tr class="row-even"><td><p>relative max spacing <span class="math notranslate nohighlight">\(\theta_5\)</span></p></td>
+<td><p>-9.342</p></td>
+<td><p>0.000</p></td>
+</tr>
+<tr class="row-odd"><td><p>furthest restroom break (miles) <span class="math notranslate nohighlight">\(\theta_6\)</span></p></td>
+<td><p>0.002</p></td>
+<td><p>0.271</p></td>
+</tr>
+<tr class="row-even"><td><p>Restaurants <span class="math notranslate nohighlight">\(\theta_7\)</span></p></td>
+<td><p>0.197</p></td>
+<td><p>0.688</p></td>
+</tr>
+<tr class="row-odd"><td><p>Des charger (Level 2) <span class="math notranslate nohighlight">\(\theta_8\)</span></p></td>
+<td><p>-0.748</p></td>
+<td><p>0.141</p></td>
+</tr>
+<tr class="row-even"><td><p>Des charger (Level 3) <span class="math notranslate nohighlight">\(\theta_9\)</span></p></td>
+<td><p>1.428</p></td>
+<td><p>0.039</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{ASC_BEV}\)</span></p></td>
+<td><p>11.184</p></td>
+<td><p>0.000</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ev-infrastructure-agent-based-model">
+<h3><span class="section-number">3.2.3. </span>EV Infrastructure Agent-based Model<a class="headerlink" href="#ev-infrastructure-agent-based-model" title="Permalink to this headline">¶</a></h3>
+<p>EV Infrastructure Agent-based Model (EVI-ABM), is an agent-based model for modeling the utilization of EVSE in the state of Washington. As such, it has the following attributes:</p>
+<ol class="arabic simple">
+<li><p><strong>Agents</strong>:</p></li>
+</ol>
+<ul class="simple">
+<li><p><em>Electric vehicles in the state of WA</em>: We consider all the electric vehicles registered in the state of WA as our EV agents. While some EVs maybe travelling outside the state and some out of state vehicles maybe traveling within WA, for the present study, we ignore these vehicles. Source: <a class="reference external" href="https://data.wa.gov/Transportation/Electric-Vehicle-Population-Data/f6w7-q2d2">Washington State Department of Licensing</a>.</p></li>
+<li><p><em>Washington road network</em>: The EVs move on roads and travel is restricted to roads. Currently, we ignore the elevation of the roads, but in future, the roadway elevation can be included, and the energy model can account for the changes in elevation. Source: <a class="reference external" href="http://geo.wa.gov/datasets/9c8deffdd8754c3e93ead52d18850f9f_13">Washington State Department of Transportation</a>.</p></li>
+<li><p><em>Electric Vehicle Supply Equipment / Charging Stations</em>: The charging stations are the agents where the EVs charge when they are charge depleted. The instantaneous power drawn and total energy consumed are the EVSE utilization outputs from the simulation that we are interested in. Source: <a class="reference external" href="https://afdc.energy.gov/fuels/electricity_locations.html#/find/nearest?fuel=ELEC&amp;ev_levels=dc_fast&amp;ev_connectors=NEMA1450&amp;ev_connectors=NEMA515&amp;ev_connectors=NEMA520&amp;ev_connectors=J1772&amp;ev_connectors=CHADEMO&amp;ev_connectors=J1772COMBO">Alternative Fuels Data Center</a>.</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>Environment</strong>: Currently, a two-dimensional simulation is bounded by the state of WA.</p></li>
+<li><p><strong>Time</strong>: A single simulation runs for 24 hours in 1-minute time-steps. This means that we simulate EV travel around the state for a period of one day at a time and update the states of our agents each minute.</p></li>
+</ol>
+<div class="section" id="evi-abm-system-overview">
+<h4><span class="section-number">3.2.3.1. </span>EVI-ABM System Overview<a class="headerlink" href="#evi-abm-system-overview" title="Permalink to this headline">¶</a></h4>
+<p>The EVI-ABM system overview is shown in <a class="reference internal" href="#evi-abm-sys-diagram"><span class="std std-numref">Fig. 3.1</span></a>. We see that all agents, EVs, charging stations, and roads are children of the global agent “World”. All agents have attributes and possibly actions and states, which together define the agent’s characteristics. Some of these are built-in like location and speed, while some are user-defined like vehicle ID, capacity etc. <a class="reference internal" href="#evi-abm-sys-diagram"><span class="std std-numref">Fig. 3.1</span></a> shows the object-oriented nature of a GAMA model, and intuitively transfers to the real world. Depending on the problem at hand, we can define agents in as much detail as we choose.</p>
+<div class="align-center figure" id="id2">
+<span id="evi-abm-sys-diagram"></span><a class="reference internal image-reference" href="_images/WSDOT_EVSE_System_diagram.png"><img alt="EVI-ABM System Diagram" src="_images/WSDOT_EVSE_System_diagram.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 3.1 </span><span class="caption-text">EVI-ABM System Diagram</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="finite-state-machine-control">
+<h4><span class="section-number">3.2.3.2. </span>Finite State Machine Control<a class="headerlink" href="#finite-state-machine-control" title="Permalink to this headline">¶</a></h4>
+<p>Finite state machine (FSM) is a commonly used control paradigm and divides the system into several states and transitions. Agents begin the simulation in a certain state and transition into any (one of the) other states when a certain condition is fulfilled. It is important to note that, at any time-step agents can be in only one state.</p>
+<p>FSM control is suitable to model the EV operation as we have deterministic and finite states the vehicle can be in (resting, driving, charging). The benefit of FSM control for our use case is that it helps in managing the complexity of operation and allows for easy testing. While modeling the infrastructure and driver behavior, FSM control allows us to observe in which state our agents are at any time step of the simulation and hence, we can get greater observability aiding in debugging. FSM control is also flexible, i.e. if we decide to add more complexity to the operation by adding more states (e.g. waiting in queue); we can do that by changing the transition conditions. The state diagram for our system is shown in <a class="reference internal" href="#evi-abm-state-diagram"><span class="std std-numref">Fig. 3.2</span></a></p>
+<div class="align-center figure" id="id3">
+<span id="evi-abm-state-diagram"></span><a class="reference internal image-reference" href="_images/WSDOT_EVSE_FSM.png"><img alt="EVI-ABM State Diagram" src="_images/WSDOT_EVSE_FSM.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Finite state machine diagram for EVI-ABM</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>To parse the state diagram, first observe the start and finished states. Other states in the system are “Resting”, “Driving”, “Locate Charger”, “Drive to Charger”, “Queue for Charging” and “Charging”, dark rectangular blocks. These are connected to diamond shaped decision boxes, that are the transition conditions, and the statements above the connecting lines are actions, or behaviors that are undertaken by agents at every time step, like “Go to Target”, “Update States” etc. While some decision questions like “Is T &gt; T_rest?”, or “Is current location the target?” are easily answered in the ABM framework; some other EVI-ABM specific decision questions like “Does charging make sense?” are not so directly answerable and will depend on the trip and car related conditions as well as individual preferences. The linkages between these conditions and preferences are captured in behavioral models.</p>
+</div>
+<div class="section" id="charging-choice-decision-model">
+<h4><span class="section-number">3.2.3.3. </span>Charging Choice Decision Model<a class="headerlink" href="#charging-choice-decision-model" title="Permalink to this headline">¶</a></h4>
+<p>While the vehicle in enroute its destination, it might need to charge along the way. The choice of charging at a charging station can modeled by a decision choice model. Among the various models developed by <a class="reference external" href="https://digital.lib.washington.edu/researchworks/handle/1773/43650">Ge</a>, we use the static choice decision model. The model equations are as under:</p>
+<div class="math notranslate nohighlight" id="equation-u-scdm">
+<span class="eqno">(3.4)<a class="headerlink" href="#equation-u-scdm" title="Permalink to this equation">¶</a></span>\[u_{\text{charging}_\text{it}} = \theta_0 + \theta_1 \times \text{SOC}_\text{it} + \theta_2 \times \text{DEV}_\text{it} + \theta_3 \times \text{Hours} + \theta_4 \times C_{\text{charging}_\text{it}} + \theta_5 \times T_{\text{charging}_\text{it}} + \theta_6 \times T_{\text{access}_\text{it}} + \theta_7 \times \text{Amenity}_{\text{restroom}_\text{it}} + \theta_8 \times \text{Amenity}_{\text{more}_\text{it}} + \varepsilon_{\text{charging}_\text{it}}\]</div>
+<p>In <a class="reference internal" href="#equation-u-scdm">(3.4)</a>, <span class="math notranslate nohighlight">\(u\)</span> represents the utility of charging, <span class="math notranslate nohighlight">\(\theta_i\)</span> are the model coefficients, <span class="math notranslate nohighlight">\(SOC\)</span> represents the state of charge of the BEV, <span class="math notranslate nohighlight">\(DEV\)</span> is a Boolean denoting whether the vehicle has enough range to reach the next charger if it chooses to not charge at this charger, <span class="math notranslate nohighlight">\(Hours\)</span> represents the hours the driver has been driving the vehicle, <span class="math notranslate nohighlight">\(C_\text{charging}\)</span> represents the cost of charging the vehicle, <span class="math notranslate nohighlight">\(T_\text{charging}\)</span> refers to the time taken to charge the vehicle, <span class="math notranslate nohighlight">\(T_\text{access}\)</span> represents the time taken to access the charging station from the current route, <span class="math notranslate nohighlight">\(\text{Amenity}_\text{restroom}\)</span> represents whether we have restroom as an amenity at the location of charging station, <span class="math notranslate nohighlight">\(\text{Amenity}_\text{more}\)</span> represents whether we have more amenities like restaurants, Wi-Fi at the charging station location, and  <span class="math notranslate nohighlight">\(\varepsilon_\text{charging}\)</span>  represents the error. The coefficients for the charging choice decision model used are as presented in <a class="reference internal" href="#table-2">Table 2</a>.</p>
+<blockquote id="table-2">
+<div><p>Table 2: Charging Choice Decision Model Parameter Estimates</p>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 87%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Covariates</p></th>
+<th class="head"><p>Estimate</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>(Intercept) <span class="math notranslate nohighlight">\(\theta_0\)</span></p></td>
+<td><p>2.034***</p></td>
+</tr>
+<tr class="row-odd"><td><p>SOC (%) <span class="math notranslate nohighlight">\(\theta_1\)</span> </p></td>
+<td><p>-4.584***</p></td>
+</tr>
+<tr class="row-even"><td><p>Deviation (<em>DEV</em>) <span class="math notranslate nohighlight">\(\theta_2\)</span></p></td>
+<td><p>2.440***</p></td>
+</tr>
+<tr class="row-odd"><td><p>Time in car (h) (<em>Hours</em>) <span class="math notranslate nohighlight">\(\theta_3\)</span></p></td>
+<td><p>-0.069</p></td>
+</tr>
+<tr class="row-even"><td><p>Charging cost ($) ( <span class="math notranslate nohighlight">\(C_\text{charging}\)</span> ) <span class="math notranslate nohighlight">\(\theta_4\)</span></p></td>
+<td><p>-0.010***</p></td>
+</tr>
+<tr class="row-odd"><td><p>Charging time (h) ( <span class="math notranslate nohighlight">\(T_\text{charging}\)</span> ) <span class="math notranslate nohighlight">\(\theta_5\)</span></p></td>
+<td><p>-0.242**</p></td>
+</tr>
+<tr class="row-even"><td><p>Access time (min) ( <span class="math notranslate nohighlight">\(T_\text{access}\)</span> ) <span class="math notranslate nohighlight">\(\theta_6\)</span></p></td>
+<td><p>-0.025***</p></td>
+</tr>
+<tr class="row-odd"><td><p>Amenity: restroom only ( <span class="math notranslate nohighlight">\(\text{Amenity}_\text{restroom}\)</span> ) <span class="math notranslate nohighlight">\(\theta_7\)</span></p></td>
+<td><p>0.049</p></td>
+</tr>
+<tr class="row-even"><td><p>Amenity: restroom, dining &amp; WIFI ( <span class="math notranslate nohighlight">\(\text{Amenity}_\text{more}\)</span> ) <span class="math notranslate nohighlight">\(\theta_8\)</span></p></td>
+<td><p>0.213**</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul class="simple">
+<li><p>* p-value &lt; 0.1; **  p-value &lt; 0.05;  *** p-value &lt; 0.01</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+<div class="localtoc">
+    <p class="caption">
+      <span class="caption-text">Table Of Contents</span>
+    </p>
+    <ul>
+<li><a class="reference internal" href="#">3. EVI-DSS</a><ul>
+<li><a class="reference internal" href="#goals-of-evi-dss">3.1. Goals of EVI-DSS</a></li>
+<li><a class="reference internal" href="#components">3.2. Components</a><ul>
+<li><a class="reference internal" href="#long-distance-travel-demand-model">3.2.1. Long Distance Travel Demand Model</a></li>
+<li><a class="reference internal" href="#vehicle-choice-decision-model">3.2.2. Vehicle Choice Decision Model</a></li>
+<li><a class="reference internal" href="#ev-infrastructure-agent-based-model">3.2.3. EV Infrastructure Agent-based Model</a><ul>
+<li><a class="reference internal" href="#evi-abm-system-overview">3.2.3.1. EVI-ABM System Overview</a></li>
+<li><a class="reference internal" href="#finite-state-machine-control">3.2.3.2. Finite State Machine Control</a></li>
+<li><a class="reference internal" href="#charging-choice-decision-model">3.2.3.3. Charging Choice Decision Model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+     <a id="button-prev" href="dss.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+         <i class="pagenation-arrow-L material-icons">arrow_back</i>
+         <div class="pagenation-text">
+            <span class="pagenation-direction">Previous</span>
+            <div>2. Decision Support System</div>
+         </div>
+     </a>
+     <a id="button-next" href="arch.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+        <i class="pagenation-arrow-R material-icons">arrow_forward</i>
+        <div class="pagenation-text">
+            <span class="pagenation-direction">Next</span>
+            <div>4. System Architecture</div>
+        </div>
+     </a>
+  </div>
+        <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+      <div class="mdl-logo">EVI-DSS</div>
+      <div>
+        
+        <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dss.html">2. Decision Support System</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. EVI-DSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">4. System Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">5. Database Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_des.html">6. EV Infrastructure Designer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="res_view.html">7. Results Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim_man.html">8. Simulation Manager</a></li>
+</ul>
+
+      </div>
+    </div>
+
+    <div class="mdl-mini-footer__right-section">
+        <div>&copy; Copyright 2019, Chintan Pathak, Don MacKenzie.</div>
+      <div>Generated by <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.1.2 using <a href="https://github.com/myyasuda/sphinx_materialdesign_theme">sphinx_materialdesign_theme</a>.</div>
+    </div>
+</footer>
+        </main>
+    </div>
+  </body>
+</html>

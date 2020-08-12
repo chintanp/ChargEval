@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>8. Simulation Manager &#8212; EVI-DSS 0.1.11 documentation</title>
+
+    <link rel="stylesheet" href="_static/material-icons.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/notosanscjkjp.css" type="text/css" />
+    <link rel="stylesheet" href="_static/roboto.css" type="text/css" />
+    <link rel="stylesheet" href="_static/material-design-lite-1.3.0/material.indigo-pink.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/sphinx_materialdesign_theme.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="7. Results Viewer" href="res_view.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link is-active"><span class="section-number">8. </span>Simulation Manager</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+            <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="_sources/sim_man.rst.txt" rel="nofollow">
+<i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          <a  class="mdl-navigation__link" href="index.html">
+                  <i class="material-icons navigation-link-icon">home</i>
+                  Home
+              </a>
+          
+              <a  class="mdl-navigation__link" href=" https://github.com/chintanp/evi-dss">
+                  <i class="material-icons navigation-link-icon">link</i>
+                  GitHub
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="index.html">
+              <img class="logo" src="_static/logo2.png" alt="EVI-DSS"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dss.html">2. Decision Support System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_dss.html">3. EVI-DSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">4. System Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">5. Database Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_des.html">6. EV Infrastructure Designer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="res_view.html">7. Results Viewer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Simulation Manager</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+<header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="index.html">
+              <img class="logo" src="_static/logo2.png" alt="EVI-DSS"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dss.html">2. Decision Support System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_dss.html">3. EVI-DSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">4. System Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">5. Database Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_des.html">6. EV Infrastructure Designer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="res_view.html">7. Results Viewer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Simulation Manager</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content">
+        
+  <blockquote>
+<div></div></blockquote>
+<div class="section" id="simulation-manager">
+<h1><span class="section-number">8. </span>Simulation Manager<a class="headerlink" href="#simulation-manager" title="Permalink to this headline">¶</a></h1>
+<p>The Simulation Manager is the controller in the EVI-DSS. The purpose of the Simulation Manager is to watch for the inserts into the database table
+<code class="code docutils literal notranslate"><span class="pre">analysis_record</span></code>. A record is inserted into this table whenever a user submits a charging station deployment scenario for analysis. The Simulation Manager receives the insert notification through the database trigger <code class="code docutils literal notranslate"><span class="pre">notify_new_order()</span></code> with the payload including the <code class="code docutils literal notranslate"><span class="pre">analysis_id</span></code> etc. and queues the analysis request for execution. The Simulation Manager process is shown in <a class="reference internal" href="#sim-manager-flowchart"><span class="std std-numref">Fig. 8.1</span></a>.</p>
+<div class="align-center figure" id="id1">
+<span id="sim-manager-flowchart"></span><a class="reference internal image-reference" href="_images/sim_manager_queueing_model.png"><img alt="Simulation Manager Process Flowchart" src="_images/sim_manager_queueing_model.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Simulation Manager Process Flowchart</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>Simulation Manager and the sub-processes (in R and GAMA) all read the input data from the database and write the output to it. <code class="code docutils literal notranslate"><span class="pre">analysis_id</span></code> is passed between processes and all the relevant records from the database can be looked up using the <code class="code docutils literal notranslate"><span class="pre">analysis_id</span></code>.</p>
+<div class="section" id="implementation-details">
+<h2><span class="section-number">8.1. </span>Implementation Details<a class="headerlink" href="#implementation-details" title="Permalink to this headline">¶</a></h2>
+<p>The Simulation Manager is written in NodeJS as it supports asynchronous processes. The code is hosted <a class="reference external" href="https://github.com/chintanp/wsdot_evse_sim_manager">here</a>. The NodeJS library <a class="reference external" href="https://github.com/bee-queue/bee-queue">bee-queue</a> is used for implementing the queueing. <cite>bee-queue</cite> utilizes <a class="reference external" href="https://redis.io/">Redis</a> as backend for storing the jobs in queue and their states. The queue can be monitored using an instance of <a class="reference external" href="https://github.com/bee-queue/arena">Arena</a> which tells us the status of the current queue, jobs being processed, waiting etc.</p>
+</div>
+<div class="section" id="future-scope">
+<h2><span class="section-number">8.2. </span>Future Scope<a class="headerlink" href="#future-scope" title="Permalink to this headline">¶</a></h2>
+<p>Currently, the Simulation Manager only executes the jobs on the local system on which it is deployed. With a little wiring, it should be able to distribute the analysis execution to a cluster, and possibly handle multiple jobs in parallel.</p>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+<div class="localtoc">
+    <p class="caption">
+      <span class="caption-text">Table Of Contents</span>
+    </p>
+    <ul>
+<li><a class="reference internal" href="#">8. Simulation Manager</a><ul>
+<li><a class="reference internal" href="#implementation-details">8.1. Implementation Details</a></li>
+<li><a class="reference internal" href="#future-scope">8.2. Future Scope</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+     <a id="button-prev" href="res_view.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+         <i class="pagenation-arrow-L material-icons">arrow_back</i>
+         <div class="pagenation-text">
+            <span class="pagenation-direction">Previous</span>
+            <div>7. Results Viewer</div>
+         </div>
+     </a>
+  </div>
+        <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+      <div class="mdl-logo">EVI-DSS</div>
+      <div>
+        
+        <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dss.html">2. Decision Support System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_dss.html">3. EVI-DSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">4. System Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">5. Database Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_des.html">6. EV Infrastructure Designer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="res_view.html">7. Results Viewer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Simulation Manager</a></li>
+</ul>
+
+      </div>
+    </div>
+
+    <div class="mdl-mini-footer__right-section">
+        <div>&copy; Copyright 2019, Chintan Pathak, Don MacKenzie.</div>
+      <div>Generated by <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.1.2 using <a href="https://github.com/myyasuda/sphinx_materialdesign_theme">sphinx_materialdesign_theme</a>.</div>
+    </div>
+</footer>
+        </main>
+    </div>
+  </body>
+</html>

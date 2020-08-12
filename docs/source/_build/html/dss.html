@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>2. Decision Support System &#8212; EVI-DSS 0.1.11 documentation</title>
+
+    <link rel="stylesheet" href="_static/material-icons.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/notosanscjkjp.css" type="text/css" />
+    <link rel="stylesheet" href="_static/roboto.css" type="text/css" />
+    <link rel="stylesheet" href="_static/material-design-lite-1.3.0/material.indigo-pink.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/sphinx_materialdesign_theme.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. EVI-DSS" href="evi_dss.html" />
+    <link rel="prev" title="1. Introduction" href="intro.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link is-active"><span class="section-number">2. </span>Decision Support System</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+            <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="_sources/dss.rst.txt" rel="nofollow">
+<i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          <a  class="mdl-navigation__link" href="index.html">
+                  <i class="material-icons navigation-link-icon">home</i>
+                  Home
+              </a>
+          
+              <a  class="mdl-navigation__link" href=" https://github.com/chintanp/evi-dss">
+                  <i class="material-icons navigation-link-icon">link</i>
+                  GitHub
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="index.html">
+              <img class="logo" src="_static/logo2.png" alt="EVI-DSS"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Decision Support System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_dss.html">3. EVI-DSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">4. System Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">5. Database Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_des.html">6. EV Infrastructure Designer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="res_view.html">7. Results Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim_man.html">8. Simulation Manager</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+<header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="index.html">
+              <img class="logo" src="_static/logo2.png" alt="EVI-DSS"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Decision Support System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_dss.html">3. EVI-DSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">4. System Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">5. Database Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_des.html">6. EV Infrastructure Designer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="res_view.html">7. Results Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim_man.html">8. Simulation Manager</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content">
+        
+  <blockquote>
+<div></div></blockquote>
+<div class="section" id="decision-support-system">
+<h1><span class="section-number">2. </span>Decision Support System<a class="headerlink" href="#decision-support-system" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="definition">
+<h2><span class="section-number">2.1. </span>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
+<p>A decision support system is a tool to help assess the outcome of a decision. Since the outcome if often stochastic and dependent on several extraneous factors, there is an inherent uncertainty in the prediction of the outcome. To manage the uncertainty and validate the underlying models, the outcome of decision support systems should be validated against real-world data. Further, even with or in the absence of validation, the decision support systems should not be used to blindly to decide whether a decision makes sense. They should rather be used to compare the outcomes of two decisions.</p>
+</div>
+<div class="section" id="need">
+<h2><span class="section-number">2.2. </span>Need<a class="headerlink" href="#need" title="Permalink to this headline">¶</a></h2>
+<p>EV infrastructure is a facility location problem. Facility location problems are NP hard. There are multiple criteria for evaluating the feasibility of a fast charger siting scenario. In the absence of a deterministic optimal solution for fast charger locations, we need to manually evaluate which locations make more sense compared to others. Therefore, the decision support system can give us the key performance indicators (KPIs) of metrics relevant to the all stakeholders, so a sustainable solution to EV infrastructure development can be found.</p>
+</div>
+<div class="section" id="frameworks-available">
+<h2><span class="section-number">2.3. </span>Frameworks available<a class="headerlink" href="#frameworks-available" title="Permalink to this headline">¶</a></h2>
+<p>M.J. Bradley &amp; Associates (MJB&amp;A) released an <a class="reference external" href="https://mjbradley.com/content/electric-vehicle-infrastructure-planning-tools-0">EVI location tool</a> that uses proximity to existing charging stations, commercial activity, population, and traffic density, and outputs scores for all exits. Based on these scores, they generate a prioritized list of exits suitable for charging station siting. While the tool does use a combined metric of charging stations, population and activity density, it fails to account for trip feasibility, i.e. when vehicles start from a certain location, can they reach another location in the region. While the MJB&amp;A tool accounts for traffic density, it does not account for car traffic density, which may be different from the total traffic density. NREL developed a tool called <a class="reference external" href="https://maps.nrel.gov/cec/?aL=0&amp;bL=cdark&amp;cE=0&amp;lR=0&amp;mC=36.87962060502676%2C-116.34521484375001&amp;zL=6">EVI-Pro</a>, which uses the long distance travel data from the FHWA Traveler Analysis Framework, and generates city level charger counts and projected loads on these charging stations using the projected PEV sales for the target year. EVI-Pro considers the vehicle attributes of the current EVs on the road, the infrastructure attributes, that is the type of charging stations and creates driving and charging simulations, which ultimately lead to the target EVSE density and EVSE utilization. While EVI-Pro is quite exhaustive in its approach, it needs lot of travel data to generate the driving/charging simulations. Further, it does not take in to account the driver’s choice of vehicle for the trip. Finally, it only gives the city level counts, but does not tell us where in the city, or along which route the charging stations should be sited. An agent-based solution for EVSE siting is being developed by LBNL, <a class="reference external" href="http://beam.lbl.gov/#electric-vehicles">BEAM</a>, that extends the Multi-Agent Transportation Simulation Framework (MATSim). It is an approach to modeling the resource markets in the transportation sector. While it is open-source and quite detailed in its treatment of the problem, the PEV-only version of the solution is not supported anymore. Further, it is overly complex for the just the EVSE siting problem, as it also includes mobility services simulation.</p>
+</div>
+<div class="section" id="justification-of-selected-framework">
+<h2><span class="section-number">2.4. </span>Justification of selected framework<a class="headerlink" href="#justification-of-selected-framework" title="Permalink to this headline">¶</a></h2>
+<p>The available frameworks are either too simplistic, that they do not capture the local and regional travel models and propensities, or are too complex and time-consuming that their application for statewide EV infrastructure development would not warrant the cost and effort. The proposed framework is modular, so that as various sub-models can evolve over time. As we have better understanding of the dynamics of a system like EV adoption or energy consumed during a trip, the underlying model for the system can be switched or updated to test for the new hypothesis.  Further, none of the available decision support systems is available in an easy to deploy open-source format. The open-source nature of the proposed decision support system allows others to use the system in the same or other geographical area. Support, feedback and scrutiny from other users is another avenue for system advancement.</p>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+<div class="localtoc">
+    <p class="caption">
+      <span class="caption-text">Table Of Contents</span>
+    </p>
+    <ul>
+<li><a class="reference internal" href="#">2. Decision Support System</a><ul>
+<li><a class="reference internal" href="#definition">2.1. Definition</a></li>
+<li><a class="reference internal" href="#need">2.2. Need</a></li>
+<li><a class="reference internal" href="#frameworks-available">2.3. Frameworks available</a></li>
+<li><a class="reference internal" href="#justification-of-selected-framework">2.4. Justification of selected framework</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+     <a id="button-prev" href="intro.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+         <i class="pagenation-arrow-L material-icons">arrow_back</i>
+         <div class="pagenation-text">
+            <span class="pagenation-direction">Previous</span>
+            <div>1. Introduction</div>
+         </div>
+     </a>
+     <a id="button-next" href="evi_dss.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+        <i class="pagenation-arrow-R material-icons">arrow_forward</i>
+        <div class="pagenation-text">
+            <span class="pagenation-direction">Next</span>
+            <div>3. EVI-DSS</div>
+        </div>
+     </a>
+  </div>
+        <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+      <div class="mdl-logo">EVI-DSS</div>
+      <div>
+        
+        <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Decision Support System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_dss.html">3. EVI-DSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">4. System Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">5. Database Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_des.html">6. EV Infrastructure Designer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="res_view.html">7. Results Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim_man.html">8. Simulation Manager</a></li>
+</ul>
+
+      </div>
+    </div>
+
+    <div class="mdl-mini-footer__right-section">
+        <div>&copy; Copyright 2019, Chintan Pathak, Don MacKenzie.</div>
+      <div>Generated by <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.1.2 using <a href="https://github.com/myyasuda/sphinx_materialdesign_theme">sphinx_materialdesign_theme</a>.</div>
+    </div>
+</footer>
+        </main>
+    </div>
+  </body>
+</html>

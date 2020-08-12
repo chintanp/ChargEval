@@ -1,3 +1,7 @@
-## EVI-DSS Documentation Repository 
+## EVI-DSS Solution Repository 
 
-The documentation is hosted here: https://evi-dss.readthedocs.io/en/latest/
+All the code related to EVI-DSS will be consolidated here. 
+
+## EVI-DSS Documentation
+
+The documentation for the solution can be found online here: https://evi-dss.readthedocs.io/en/latest/

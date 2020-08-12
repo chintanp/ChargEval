@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>7. Results Viewer &#8212; EVI-DSS 0.1.11 documentation</title>
+
+    <link rel="stylesheet" href="_static/material-icons.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/notosanscjkjp.css" type="text/css" />
+    <link rel="stylesheet" href="_static/roboto.css" type="text/css" />
+    <link rel="stylesheet" href="_static/material-design-lite-1.3.0/material.indigo-pink.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/sphinx_materialdesign_theme.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="8. Simulation Manager" href="sim_man.html" />
+    <link rel="prev" title="6. EV Infrastructure Designer" href="evi_des.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link is-active"><span class="section-number">7. </span>Results Viewer</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+            <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="_sources/res_view.rst.txt" rel="nofollow">
+<i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          <a  class="mdl-navigation__link" href="index.html">
+                  <i class="material-icons navigation-link-icon">home</i>
+                  Home
+              </a>
+          
+              <a  class="mdl-navigation__link" href=" https://github.com/chintanp/evi-dss">
+                  <i class="material-icons navigation-link-icon">link</i>
+                  GitHub
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="index.html">
+              <img class="logo" src="_static/logo2.png" alt="EVI-DSS"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dss.html">2. Decision Support System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_dss.html">3. EVI-DSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">4. System Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">5. Database Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_des.html">6. EV Infrastructure Designer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Results Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim_man.html">8. Simulation Manager</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+<header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="index.html">
+              <img class="logo" src="_static/logo2.png" alt="EVI-DSS"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dss.html">2. Decision Support System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_dss.html">3. EVI-DSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">4. System Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">5. Database Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_des.html">6. EV Infrastructure Designer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Results Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim_man.html">8. Simulation Manager</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content">
+        
+  <blockquote>
+<div></div></blockquote>
+<div class="section" id="results-viewer">
+<h1><span class="section-number">7. </span>Results Viewer<a class="headerlink" href="#results-viewer" title="Permalink to this headline">¶</a></h1>
+<p>The user gets an email at the registered email-id when a simulation has been successfully solved. The email contains the link to the Results Viewer. The Results Viewer allows the user to browse through the results of all the simulations that they submitted and have been solved. Being able to view the detailed output of several simulations allows the user to compare the performance of charging station deployment scenarios. The Summary Stats tab shown in <a class="reference internal" href="#results-viewer-stats"><span class="std std-numref">Fig. 7.1</span></a> is the first view to appear on a simulation run datetime selection from the dropdown. This is the time when the simulation was submitted.</p>
+<div class="align-center figure" id="id1">
+<span id="results-viewer-stats"></span><a class="reference internal image-reference" href="_images/results_viewer_stats.PNG"><img alt="Results Viewer" src="_images/results_viewer_stats.PNG" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7.1 </span><span class="caption-text">Results Viewer - Summary Stats Tab</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="live-demo">
+<h2><span class="section-number">7.1. </span>Live Demo<a class="headerlink" href="#live-demo" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://cp84.shinyapps.io/res_view/">Click here</a> to access the live demo of Results Viewer.</p>
+</div>
+<div class="section" id="ui-details">
+<h2><span class="section-number">7.2. </span>UI Details<a class="headerlink" href="#ui-details" title="Permalink to this headline">¶</a></h2>
+<p>After selecting the simulation datetime, the user has option to view the results on the following tabs:</p>
+<div class="section" id="summary-stats">
+<h3><span class="section-number">7.2.1. </span>Summary Stats<a class="headerlink" href="#summary-stats" title="Permalink to this headline">¶</a></h3>
+<p>These stats presented on this tab represent the key statistics of interest for the simulated (consisting of as-built + proposed) EV infrastructure. “EVs in Simulation” is the count of EVs that were simulated for travel on a typical day. “EVs finishing trip” represent the number of EVs that reached their destination - i.e. finished their trip. “EVs stranded” represents the number of EVs that were stranded during the trip, i.e. they were out of charge due to lack of charging infrastructure along their charging route. “eVMT” refers to the electric vehicle miles travelled - this statistic does not include the added trip distance due to charging de-tours, but only counts the shortest path lenghts for EVs that finished their trips. “Number of charging sessions” represents the number of charging sessions as predicted by the model. “Number of EVs waiting” represents the number of EVs that waited at a charging station because it was occupied at the time they needed to charge.</p>
+</div>
+<div class="section" id="finished">
+<h3><span class="section-number">7.2.2. </span>Finished<a class="headerlink" href="#finished" title="Permalink to this headline">¶</a></h3>
+<p>The <cite>Finished</cite> tab allows one to look at the trajectory of the EVs for all the OD pairs that finished their trip. <a class="reference internal" href="#results-viewer-finished"><span class="std std-numref">Fig. 7.2</span></a> shows the trajectory of an OD pair based on selection from the origin and destination dropdown on the right. Besides the origin and destination, hte map shows the path taken by the EV using green dots. These dots represent the EV location at every timestep of the trip. Upon clicking a green dot the popup shows the EV info, from the <code class="code docutils literal notranslate"><span class="pre">ev_info</span></code> table, which includes the SOC, probability of charging, state etc. This can help debugging the underlying agent-based model and charging choice decision model. The trajectory also shows the charging stops made along the route (popups marked as 1, 2 and 3 in the path).</p>
+<div class="align-center figure" id="id2">
+<span id="results-viewer-finished"></span><a class="reference internal image-reference" href="_images/results_viewer_finished.PNG"><img alt="Results Viewer Finished Tab" src="_images/results_viewer_finished.PNG" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7.2 </span><span class="caption-text">Results Viewer - Finished Tab</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="evse-utilization">
+<h3><span class="section-number">7.2.3. </span>EVSE Utilization<a class="headerlink" href="#evse-utilization" title="Permalink to this headline">¶</a></h3>
+<p>The <cite>EVSE Utilization</cite> tab shows the WA road network with the charging stations simulated, as built and newly proposed (marked as new) as be seen in the <a class="reference internal" href="#results-viewer-evse-util"><span class="std std-numref">Fig. 7.3</span></a>.</p>
+<div class="align-center figure" id="id3">
+<span id="results-viewer-evse-util"></span><a class="reference internal image-reference" href="_images/results_viewer_evse_util.PNG"><img alt="Results Viewer EVSE Utilization" src="_images/results_viewer_evse_util.PNG" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7.3 </span><span class="caption-text">Results Viewer - EVSE Utilization Tab</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>The user can select the time window from the slider on the right and click on any charging station (new and as-built) to view the utilization. <a class="reference internal" href="#results-viewer-evse-util-modal"><span class="std std-numref">Fig. 7.4</span></a> shows the utilization for the
+new proposed charging station for the time window selected. The table shows the predicted EVSE energy utilization in the simulated day, the number of Combo and Chademo plugs, as well the number of EVs served and EVs passed.</p>
+<div class="align-center figure" id="id4">
+<span id="results-viewer-evse-util-modal"></span><a class="reference internal image-reference" href="_images/results_viewer_evse_util_modal.PNG"><img alt="Results Viewer EVSE Utilization Modal" src="_images/results_viewer_evse_util_modal.PNG" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7.4 </span><span class="caption-text">Results Viewer - EVSE Utilization Modal</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="evse-served-waited">
+<h3><span class="section-number">7.2.4. </span>EVSE Served/Waited<a class="headerlink" href="#evse-served-waited" title="Permalink to this headline">¶</a></h3>
+<p>The <cite>EVSE Served/Waited</cite> tab shows the an overlay over the charging stations indicating the number of EVs served/waited. This allows for quick location of charging stations where the utilization is high and/or the charging stations where number of EVs waited is high. These charging stations can then be seen in detail using the <cite>EVSE Utilization</cite> tab to determine the time, and type of deficiency.</p>
+</div>
+<div class="section" id="stranded">
+<h3><span class="section-number">7.2.5. </span>Stranded<a class="headerlink" href="#stranded" title="Permalink to this headline">¶</a></h3>
+<p>The <cite>Stranded</cite> tab is similar to the <cite>Finished</cite> tab - only it shows the vehicles that were stranded during the trip - i.e. they were out of charge.</p>
+</div>
+</div>
+<div class="section" id="implementation-details">
+<h2><span class="section-number">7.3. </span>Implementation Details<a class="headerlink" href="#implementation-details" title="Permalink to this headline">¶</a></h2>
+<p>The code for the Results Viewer is hosted <a class="reference external" href="https://github.com/chintanp/wsdot_evse_results_viewer">here</a>. The Results Viewer is a R Shiny web-app reading the data from the database.</p>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+<div class="localtoc">
+    <p class="caption">
+      <span class="caption-text">Table Of Contents</span>
+    </p>
+    <ul>
+<li><a class="reference internal" href="#">7. Results Viewer</a><ul>
+<li><a class="reference internal" href="#live-demo">7.1. Live Demo</a></li>
+<li><a class="reference internal" href="#ui-details">7.2. UI Details</a><ul>
+<li><a class="reference internal" href="#summary-stats">7.2.1. Summary Stats</a></li>
+<li><a class="reference internal" href="#finished">7.2.2. Finished</a></li>
+<li><a class="reference internal" href="#evse-utilization">7.2.3. EVSE Utilization</a></li>
+<li><a class="reference internal" href="#evse-served-waited">7.2.4. EVSE Served/Waited</a></li>
+<li><a class="reference internal" href="#stranded">7.2.5. Stranded</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#implementation-details">7.3. Implementation Details</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+     <a id="button-prev" href="evi_des.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+         <i class="pagenation-arrow-L material-icons">arrow_back</i>
+         <div class="pagenation-text">
+            <span class="pagenation-direction">Previous</span>
+            <div>6. EV Infrastructure Designer</div>
+         </div>
+     </a>
+     <a id="button-next" href="sim_man.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+        <i class="pagenation-arrow-R material-icons">arrow_forward</i>
+        <div class="pagenation-text">
+            <span class="pagenation-direction">Next</span>
+            <div>8. Simulation Manager</div>
+        </div>
+     </a>
+  </div>
+        <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+      <div class="mdl-logo">EVI-DSS</div>
+      <div>
+        
+        <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dss.html">2. Decision Support System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_dss.html">3. EVI-DSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">4. System Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">5. Database Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_des.html">6. EV Infrastructure Designer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Results Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim_man.html">8. Simulation Manager</a></li>
+</ul>
+
+      </div>
+    </div>
+
+    <div class="mdl-mini-footer__right-section">
+        <div>&copy; Copyright 2019, Chintan Pathak, Don MacKenzie.</div>
+      <div>Generated by <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.1.2 using <a href="https://github.com/myyasuda/sphinx_materialdesign_theme">sphinx_materialdesign_theme</a>.</div>
+    </div>
+</footer>
+        </main>
+    </div>
+  </body>
+</html>

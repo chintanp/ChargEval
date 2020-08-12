@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>6. EV Infrastructure Designer &#8212; EVI-DSS 0.1.11 documentation</title>
+
+    <link rel="stylesheet" href="_static/material-icons.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/notosanscjkjp.css" type="text/css" />
+    <link rel="stylesheet" href="_static/roboto.css" type="text/css" />
+    <link rel="stylesheet" href="_static/material-design-lite-1.3.0/material.indigo-pink.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/sphinx_materialdesign_theme.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7. Results Viewer" href="res_view.html" />
+    <link rel="prev" title="5. Database Description" href="database.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link is-active"><span class="section-number">6. </span>EV Infrastructure Designer</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+            <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="_sources/evi_des.rst.txt" rel="nofollow">
+<i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          <a  class="mdl-navigation__link" href="index.html">
+                  <i class="material-icons navigation-link-icon">home</i>
+                  Home
+              </a>
+          
+              <a  class="mdl-navigation__link" href=" https://github.com/chintanp/evi-dss">
+                  <i class="material-icons navigation-link-icon">link</i>
+                  GitHub
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="index.html">
+              <img class="logo" src="_static/logo2.png" alt="EVI-DSS"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dss.html">2. Decision Support System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_dss.html">3. EVI-DSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">4. System Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">5. Database Description</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. EV Infrastructure Designer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="res_view.html">7. Results Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim_man.html">8. Simulation Manager</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+<header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="index.html">
+              <img class="logo" src="_static/logo2.png" alt="EVI-DSS"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dss.html">2. Decision Support System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_dss.html">3. EVI-DSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">4. System Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">5. Database Description</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. EV Infrastructure Designer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="res_view.html">7. Results Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim_man.html">8. Simulation Manager</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content">
+        
+  <blockquote>
+<div></div></blockquote>
+<div class="section" id="ev-infrastructure-designer">
+<h1><span class="section-number">6. </span>EV Infrastructure Designer<a class="headerlink" href="#ev-infrastructure-designer" title="Permalink to this headline">¶</a></h1>
+<p>The EV Infrastructure Designer is the user-interface (UI) for inputting the location, type, count etc. details about the prospective charging stations. After logging in by providing email-id and password, the user is greeted with <a class="reference internal" href="#evi-des-home"><span class="std std-numref">Fig. 6.1</span></a>.</p>
+<div class="align-center figure" id="id2">
+<span id="evi-des-home"></span><a class="reference internal image-reference" href="_images/evi_des_home.png"><img alt="EV Infrastructure Designer" src="_images/evi_des_home.png" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 6.1 </span><span class="caption-text">EV Infrastructure Designer</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="live-demo">
+<h2><span class="section-number">6.1. </span>Live Demo<a class="headerlink" href="#live-demo" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://cp84.shinyapps.io/evi_des/">Click here</a> to access the live demo of EVI Designer.</p>
+</div>
+<div class="section" id="ui-details">
+<h2><span class="section-number">6.2. </span>UI Details<a class="headerlink" href="#ui-details" title="Permalink to this headline">¶</a></h2>
+<p>The key elements of the EV Infrastructure Designer are as under:</p>
+<div class="section" id="washington-state-dcfc-network">
+<h3><span class="section-number">6.2.1. </span>Washington State DCFC Network<a class="headerlink" href="#washington-state-dcfc-network" title="Permalink to this headline">¶</a></h3>
+<p>The “Washington State DCFC Network” card shows the WSDOT road network overlayed with the infeasibility metric for CHAdeMO and COMBO charging alongwith the as-built EV DCFC infrastructure - selectable from the radio buttons on the upper right corner as in <a class="reference internal" href="#wsdot-road-network"><span class="std std-numref">Fig. 6.2</span></a> . Besides the infeasibility overlay, the radio buttons also show the relevant type of charging stations on the road network. These locations are consistent with the database table <code class="code docutils literal notranslate"><span class="pre">built_evse</span></code>.</p>
+<div class="align-center figure" id="id3">
+<span id="wsdot-road-network"></span><a class="reference internal image-reference" href="_images/wsdot_road_network.PNG"><img alt="Washington State DCFC Network" src="_images/wsdot_road_network.PNG" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Washington State DCFC Network with overlay</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>The infeasibility metric is an indication of sparsity of EV infrastrastructure on a path. A count is calculated for the total vehicle trips passing over a road segment belonging to a shortest path between an OD pair if the spacing between charging stations on the segment is greater than 70 miles (critical limit specified by WSDOT). The line weight of the overlay is directly proportional to the trip count passing over a segment. So, a thick overlay can mean that a high count of vehicles are passing over the segment. The low line weight indicates light traffic on the segment. The former indicates that the road segment is used by several OD pairs in the state, whereas the later indicates the vice-versa. No line weight on the roads mean that the charging station spacing on the segment is less than 70 miles. There are separate overlays for CHAdeMO and COMBO charging stations as not all charging stations feature both types of plugs.</p>
+<p>The checkbox called “Buffer” toggles the display of a buffer around the road network. This buffer spans a length of 10 miles around the roads, and represent the feasible area for the location of prospective charging stations. The length of 10 miles is an indicator of the willing of an EV driver to divert from the road to charge.</p>
+<p><a class="reference internal" href="#wsdot-road-network"><span class="std std-numref">Fig. 6.2</span></a> shows a selected charger location with a marker. The UI will only allow charger placement in the buffer region around the roads and the successful click results in a marker as shown. As many charging station locations can be picked as desired.</p>
+</div>
+<div class="section" id="new-site-list">
+<h3><span class="section-number">6.2.2. </span>New Site List<a class="headerlink" href="#new-site-list" title="Permalink to this headline">¶</a></h3>
+<p>The New Site List card lists all the chosen sites with options to configure or cancel the selection as shown in <a class="reference internal" href="#new-site-list-closed"><span class="std std-numref">Fig. 6.3</span></a>.</p>
+<div class="align-center figure" id="id4">
+<span id="new-site-list-closed"></span><img alt="New Site List" src="_images/new_site_list_closed.PNG" />
+<p class="caption"><span class="caption-number">Fig. 6.3 </span><span class="caption-text">New Site List</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<p>For all the selected locations, configuration can be done as shown in <a class="reference internal" href="#station-config"><span class="std std-numref">Fig. 6.4</span></a>.</p>
+<div class="align-center figure" id="id5">
+<span id="station-config"></span><a class="reference internal image-reference" href="_images/station_config.PNG"><img alt="Station Configuration" src="_images/station_config.PNG" style="width: 800px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 6.4 </span><span class="caption-text">Station Configuration</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<p>The station configuration modal allows the setting of number of plugs for DCFC and Level-2 as well as the corresponding power per plug and pricing structure. Total price can include charging price and parking price. For both parking and charging, there could be a fixed component (per session )and variable (per minute) component.</p>
+<p>Once satisfactory counts of charging stations with appropriate configuration have been selected, the selection can be submitted for analysis by clicking the “Submit for analysis” button. This will insert a record in the database table <code class="code docutils literal notranslate"><span class="pre">analysis_record</span></code>, which will trigger an analysis request to the simulation manager. A successful analysis submission will also insert rows in the table <code class="code docutils literal notranslate"><span class="pre">new_evses</span></code> for the respective <code class="code docutils literal notranslate"><span class="pre">analysis_id</span></code>. As many rows as the number of charging sites selected will be entered with the columns like plug count, power, price etc. as per the individual configuration.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The user can bring down the count of plugs all the way to zero. When DCFC plug count is set to zero for all new charging stations, the analysis is equivalent to the as-built scenario. This, therefore, is the way to get to the base-case analysis and the new charging station deployment scenarios can be compared against the base-case.</p>
+</div>
+<p>The New Site List card then displays a successful analysis submission message with the submission date time as shown in <a class="reference internal" href="#submitted-analysis"><span class="std std-numref">Fig. 6.5</span></a>. Since the analysis process involving re-calculation of destination chargers, charging distances, EV trips and subsequent agent-based simulation is a computationally-intensive long process, taking several hours at the time of this writing, the user is informed about the successful completion of analysis via an email at the registered email address. The results can then be viewed for the particular simulation date time of interest.</p>
+<div class="align-center figure" id="id6">
+<span id="submitted-analysis"></span><img alt="Analysis Submission View" src="_images/submitted_analysis.png" />
+<p class="caption"><span class="caption-number">Fig. 6.5 </span><span class="caption-text">Analysis Submission View</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="implementation-details">
+<h2><span class="section-number">6.3. </span>Implementation Details<a class="headerlink" href="#implementation-details" title="Permalink to this headline">¶</a></h2>
+<p>The EV Infrastructure Designer is a web-app with an R Shiny backend. The code is hosted in the Github repo - <a class="reference external" href="https://github.com/chintanp/ev_infrastructure_designer">ev_infrastructure_designer</a>.</p>
+<div class="section" id="user-identity">
+<h3><span class="section-number">6.3.1. </span>User Identity<a class="headerlink" href="#user-identity" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://auth0.com/">Auth0</a> is used for user-identity management. It allows for authentication across devices and browsers using custom email/password as well as several external authentication services like Google, Github etc. allowing of easy sign-on. The integration of Auth0 with the R Shiny app was facilitated by the <a class="reference external" href="https://github.com/curso-r/auth0">R package auth0</a> that implements the Auth0 API in R.</p>
+</div>
+<div class="section" id="environment-variables">
+<h3><span class="section-number">6.3.2. </span>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h3>
+<p>The application depends on several environment variables. A template <code class="code docutils literal notranslate"><span class="pre">.Renviron</span></code> file is <a class="reference external" href="https://github.com/chintanp/ev_infrastructure_designer/blob/master/.Renviron_template">here</a>. The <code class="code docutils literal notranslate"><span class="pre">AUTH0*</span></code> variables allow access to AUTH0. The AFDC API key allows access to the information about charging stations. <code class="code docutils literal notranslate"><span class="pre">MAPBOX_ACCESS_TOKEN</span></code> allows access to the MapBox service that is responsible for the map tiles. The variables <code class="code docutils literal notranslate"><span class="pre">MAIN*</span></code> are related to the database. The database environment variables have to be consistent across the EV Infrastructure Designer, Results Viewer and Simulation Manager, so they all access the same database.</p>
+</div>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+<div class="localtoc">
+    <p class="caption">
+      <span class="caption-text">Table Of Contents</span>
+    </p>
+    <ul>
+<li><a class="reference internal" href="#">6. EV Infrastructure Designer</a><ul>
+<li><a class="reference internal" href="#live-demo">6.1. Live Demo</a></li>
+<li><a class="reference internal" href="#ui-details">6.2. UI Details</a><ul>
+<li><a class="reference internal" href="#washington-state-dcfc-network">6.2.1. Washington State DCFC Network</a></li>
+<li><a class="reference internal" href="#new-site-list">6.2.2. New Site List</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#implementation-details">6.3. Implementation Details</a><ul>
+<li><a class="reference internal" href="#user-identity">6.3.1. User Identity</a></li>
+<li><a class="reference internal" href="#environment-variables">6.3.2. Environment Variables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+     <a id="button-prev" href="database.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+         <i class="pagenation-arrow-L material-icons">arrow_back</i>
+         <div class="pagenation-text">
+            <span class="pagenation-direction">Previous</span>
+            <div>5. Database Description</div>
+         </div>
+     </a>
+     <a id="button-next" href="res_view.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+        <i class="pagenation-arrow-R material-icons">arrow_forward</i>
+        <div class="pagenation-text">
+            <span class="pagenation-direction">Next</span>
+            <div>7. Results Viewer</div>
+        </div>
+     </a>
+  </div>
+        <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+      <div class="mdl-logo">EVI-DSS</div>
+      <div>
+        
+        <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dss.html">2. Decision Support System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_dss.html">3. EVI-DSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">4. System Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">5. Database Description</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. EV Infrastructure Designer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="res_view.html">7. Results Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim_man.html">8. Simulation Manager</a></li>
+</ul>
+
+      </div>
+    </div>
+
+    <div class="mdl-mini-footer__right-section">
+        <div>&copy; Copyright 2019, Chintan Pathak, Don MacKenzie.</div>
+      <div>Generated by <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.1.2 using <a href="https://github.com/myyasuda/sphinx_materialdesign_theme">sphinx_materialdesign_theme</a>.</div>
+    </div>
+</footer>
+        </main>
+    </div>
+  </body>
+</html>

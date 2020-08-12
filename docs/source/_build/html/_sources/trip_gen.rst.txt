@@ -1,0 +1,10 @@
+===============
+Trip Generation
+===============
+
+The agent-based model simulates the EV trips happening in the state of WA in a day. The procedure to generate the trips is as follows: 
+
+Estimate Long Distance Trips
+============================
+
+First the long-distance trips in WA are estimated using the :ref:`evi_dss:Long Distance Travel Demand Model`.

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>5. Database Description &#8212; EVI-DSS 0.1.11 documentation</title>
+
+    <link rel="stylesheet" href="_static/material-icons.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/notosanscjkjp.css" type="text/css" />
+    <link rel="stylesheet" href="_static/roboto.css" type="text/css" />
+    <link rel="stylesheet" href="_static/material-design-lite-1.3.0/material.indigo-pink.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx_materialdesign_theme.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/sphinx_materialdesign_theme.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="6. EV Infrastructure Designer" href="evi_des.html" />
+    <link rel="prev" title="4. System Architecture" href="arch.html" /> 
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer"><header class="mdl-layout__header mdl-layout__header--waterfall ">
+    <div class="mdl-layout__header-row">
+        
+        <nav class="mdl-navigation breadcrumb">
+            <a class="mdl-navigation__link is-active"><span class="section-number">5. </span>Database Description</a>
+        </nav>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+        
+<form class="form-inline pull-sm-right" action="search.html" method="get">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+        <label id="quick-search-icon" class="mdl-button mdl-js-button mdl-button--icon"  for="waterfall-exp">
+            <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="q"  id="waterfall-exp" placeholder="Search" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+      </div>
+      <div class="mdl-tooltip" data-mdl-for="quick-search-icon">
+      Quick search
+      </div>
+</form>
+        
+<a id="button-show-source"
+    class="mdl-button mdl-js-button mdl-button--icon"
+    href="_sources/database.rst.txt" rel="nofollow">
+<i class="material-icons">code</i>
+</a>
+<div class="mdl-tooltip" data-mdl-for="button-show-source">
+Show Source
+</div>
+        </nav>
+    </div>
+    <div class="mdl-layout__header-row header-links">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+          <a  class="mdl-navigation__link" href="index.html">
+                  <i class="material-icons navigation-link-icon">home</i>
+                  Home
+              </a>
+          
+              <a  class="mdl-navigation__link" href=" https://github.com/chintanp/evi-dss">
+                  <i class="material-icons navigation-link-icon">link</i>
+                  GitHub
+              </a>
+      </nav>
+    </div>
+</header><header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="index.html">
+              <img class="logo" src="_static/logo2.png" alt="EVI-DSS"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dss.html">2. Decision Support System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_dss.html">3. EVI-DSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">4. System Architecture</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Database Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_des.html">6. EV Infrastructure Designer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="res_view.html">7. Results Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim_man.html">8. Simulation Manager</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+        <main class="mdl-layout__content" tabIndex="0">
+<header class="mdl-layout__drawer">
+    
+          <!-- Title -->
+      <span class="mdl-layout-title">
+          <a class="title" href="index.html">
+              <img class="logo" src="_static/logo2.png" alt="EVI-DSS"/>
+          </a>
+      </span>
+    
+    
+      <div class="globaltoc">
+        <span class="mdl-layout-title toc">Table Of Contents</span>
+        
+        
+            
+            <nav class="mdl-navigation">
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dss.html">2. Decision Support System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_dss.html">3. EVI-DSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">4. System Architecture</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Database Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_des.html">6. EV Infrastructure Designer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="res_view.html">7. Results Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim_man.html">8. Simulation Manager</a></li>
+</ul>
+
+            </nav>
+        
+        </div>
+    
+</header>
+
+    <div class="document">
+        <div class="page-content">
+        
+  <blockquote>
+<div></div></blockquote>
+<div class="section" id="database-description">
+<span id="database"></span><h1><span class="section-number">5. </span>Database Description<a class="headerlink" href="#database-description" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="database-overview">
+<h2><span class="section-number">5.1. </span>Database Overview<a class="headerlink" href="#database-overview" title="Permalink to this headline">¶</a></h2>
+<p>The script to <a class="reference external" href="https://github.com/chintanp/wsdot_evse_docs/blob/master/create_main_db.sql">create the database is here</a>. The scripts to create the <a class="reference external" href="https://github.com/chintanp/wsdot_evse_docs/blob/master/main_create2.sql">tables, functions and triggers are hosted here</a>. The script can be used to create the schema in the database. <a class="reference internal" href="#evi-dss-sql"><span class="std std-numref">Fig. 5.1</span></a> shows the various tables and relations in the database.</p>
+<div class="align-center figure" id="id1">
+<span id="evi-dss-sql"></span><a class="reference internal image-reference" href="_images/wsdot_evse_sql.png"><img alt="EVI-DSS Database Schema" src="_images/wsdot_evse_sql.png" style="width: 1200px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 5.1 </span><span class="caption-text">EVI-DSS Database Schema</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>Interactive diagram</p>
+<div style="position: relative; overflow: hidden; width: "1200"; ">
+    <iframe width="1200" src='https://dbdiagram.io/embed/5dabe2ca02e6e93440f26985'> </iframe>
+</div></div>
+<div class="section" id="tables">
+<h2><span class="section-number">5.2. </span>Tables<a class="headerlink" href="#tables" title="Permalink to this headline">¶</a></h2>
+<p>The database currently has the following tables:</p>
+<ol class="arabic">
+<li><p><strong>analysis_record</strong>: This is the key table in the database. Every time a user submits a request to perform analysis, a record is created in this table. The auto-increment primary key <code class="code docutils literal notranslate"><span class="pre">analysis_id</span></code> is used to create a one-to-many relation with several tables - <code class="code docutils literal notranslate"><span class="pre">evtrip_scenarios</span></code>, <code class="code docutils literal notranslate"><span class="pre">dest_charger</span></code>, <code class="code docutils literal notranslate"><span class="pre">evse_charging_session</span></code>, <code class="code docutils literal notranslate"><span class="pre">evse_evs_passed</span></code>, <code class="code docutils literal notranslate"><span class="pre">evse_power_draw</span></code>, <code class="code docutils literal notranslate"><span class="pre">evse_util</span></code>, <code class="code docutils literal notranslate"><span class="pre">ev_stranded</span></code>, <code class="code docutils literal notranslate"><span class="pre">ev_finished</span></code>, <code class="code docutils literal notranslate"><span class="pre">ev_info</span></code>, <code class="code docutils literal notranslate"><span class="pre">od_cd</span></code> and <code class="code docutils literal notranslate"><span class="pre">new_evses</span></code>. The table also has an associated trigger <code class="code docutils literal notranslate"><span class="pre">notify_new_order</span></code> that generates a notification using <code class="code docutils literal notranslate"><span class="pre">pg_notify()</span></code>, which can be used by processes listening for a notification. In the case of EVI-DSS, this notification is picked by the controller and an analysis request is queued. More details in the controller.</p></li>
+<li><p><strong>wa*</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>WA_roads</strong>: This table contains the geometry of the WA roads. The roads were made traversable for GAMA by using <a class="reference external" href="https://gama-platform.github.io/wiki/OperatorsBC#clean_network">clean_network()</a> and then transformed to the correct SRID as <a class="reference external" href="https://gis.stackexchange.com/a/332059/18956">explained here</a>. Further a topology is created using the table for finding the shortest path etc.</p></li>
+<li><p><strong>WA_roads_vertices_pgr</strong>: This is a vertices table auto-generated by pgRouting when a topology is created.</p></li>
+<li><p><strong>wa_evtrips</strong>: This table contains the output of the gravity model. For each origin and destination pair, the <code class="code docutils literal notranslate"><span class="pre">ret</span></code> and <code class="code docutils literal notranslate"><span class="pre">dep</span></code> column contain the number of returning and departing trips respectively. <code class="code docutils literal notranslate"><span class="pre">oevs</span></code> and <code class="code docutils literal notranslate"><span class="pre">devs</span></code> contain the count of EVs in origin and destination respectively, whereas <code class="code docutils literal notranslate"><span class="pre">ocars</span></code> and <code class="code docutils literal notranslate"><span class="pre">dcars</span></code> represent the count of total cars in the origin and destination respectively.</p></li>
+<li><p><strong>wa_gas_prices</strong>: This table contains the average price of gas for each zip code and should be updated periodically to get the current prices.</p></li>
+<li><p><strong>wa_bevs</strong>: This table contains the details about the BEVs registered in WA. This information is recieved from the WA DOL and columns like <code class="code docutils literal notranslate"><span class="pre">fuel_consumption</span></code> and <code class="code docutils literal notranslate"><span class="pre">range_fe</span></code> have been added by looking up these make and models from the fueleconomy.gov database. Column <code class="code docutils literal notranslate"><span class="pre">connector_code</span></code> has been added after, based on a EV manufacturer’s charging standard affiliation. For example: Tesla uses Superchargers, so for all Tesla vehicles <code class="code docutils literal notranslate"><span class="pre">connector_code</span> <span class="pre">=</span> <span class="pre">4</span></code>, Japanese automakers use CHAdeMO, therfore for Nissan etc. <code class="code docutils literal notranslate"><span class="pre">connector_code</span> <span class="pre">=</span> <span class="pre">1</span></code>, American and German automakers use CCS, therefore for BMW etc. <code class="code docutils literal notranslate"><span class="pre">connector_code</span> <span class="pre">=</span> <span class="pre">2</span></code>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>ev*</strong>: These tables are generated by the agent-based model EVI-ABM for the EVs in the simulation - hence they use the foreign key <code class="code docutils literal notranslate"><span class="pre">analysis_id</span></code>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>ev_finished</strong>: For each analysis, these are the EVs that have finished their respective trips. <code class="code docutils literal notranslate"><span class="pre">fin_ts</span></code> represents the timestamp when the trip was finished for the vehicle with ID <code class="code docutils literal notranslate"><span class="pre">veh_id</span></code>. <code class="code docutils literal notranslate"><span class="pre">trip_distance</span></code> is the length of the shortest path between <code class="code docutils literal notranslate"><span class="pre">origin_zip</span></code> and <code class="code docutils literal notranslate"><span class="pre">destination_zip</span></code> and the <code class="code docutils literal notranslate"><span class="pre">distance_travelled</span></code> represents the actual distance travelled by the EV in the GAMA simulation which could include charging detours. Therefore, <span class="math notranslate nohighlight">\(distance\_travelled &gt;= trip\_distance\)</span>. Additional constraint is that combination of <code class="code docutils literal notranslate"><span class="pre">veh_id</span></code> and <code class="code docutils literal notranslate"><span class="pre">analysis_id</span></code> is unique, i.e. for analysis, a vehicle can make only one trip and hence appear in this table only once.</p></li>
+<li><p><strong>ev_info</strong>: This table stores the EV info for each simulation at each timestamp. This is useful for debugging the simulation and writing to this table can be omitted once we have enough confidence in the simulation logic. This table can be deleted if the database is becoming too large. However, this will affect tabs “finished” and “stranded” in the <em>result viewer</em>. The EV info stored for the timestep <code class="code docutils literal notranslate"><span class="pre">simulation_ts</span></code> includes - the latitude, longitude, SOC, state, probability of charging (calculated using the charging choice decision model), to_charge boolean (probability passed to a binomial draw ultimately deciding whether the EV will charge at a charging station), and speed of the vehicle in the simulation.</p></li>
+<li><p><strong>ev_stranded</strong>: This table stores the record of all the EVs stranded during the simulation, i.e. they were out of charge. This could happen, if no charging stations were available when the charge was needed. This is an indication of insufficent charging infrastructure. <code class="code docutils literal notranslate"><span class="pre">stranded_ts</span></code> is the timestamp when the EV was stranded. Redundant columns <code class="code docutils literal notranslate"><span class="pre">origin_zip</span></code> and <code class="code docutils literal notranslate"><span class="pre">destination_zip</span></code> added to ease the lookup, where as redundant columns <code class="code docutils literal notranslate"><span class="pre">stranded_lat</span></code> and <code class="code docutils literal notranslate"><span class="pre">stranded_lng</span></code> could be helpful to pin-point the exact location where the EV was out of charge, and useful if the table <code class="code docutils literal notranslate"><span class="pre">ev_info</span></code> was eliminated.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>evse*</strong>: These tables are generated by the agent-based model EVI-ABM for the EVSEs in the simulation - hence they use the foreign key <code class="code docutils literal notranslate"><span class="pre">analysis_id</span></code>. The agent-based simulation (aka simulation in the documentation) treats all charging stations - built as well as new alike. The field <code class="code docutils literal notranslate"><span class="pre">evse_id</span></code> is generated in GAMA using</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>evse_charging_session</strong>: This table records all the charging sessions during a simulation. Additional constraint could be the combination of <code class="code docutils literal notranslate"><span class="pre">analysis_id</span></code>, <code class="code docutils literal notranslate"><span class="pre">veh_id</span></code> and <code class="code docutils literal notranslate"><span class="pre">evse_id</span></code> should be unique, i.e. a vehicle may not charge at the same charging station twice during a particular simulation.</p></li>
+<li><p><strong>evse_evs_passed</strong>: This table records all the EVs that passed a charging station since it was occupied. <code class="code docutils literal notranslate"><span class="pre">soc_val</span></code> records the SOC of the vehicle when it passed the said charging station. This is an important statistic currrently to denote EV infrastructure insufficiency and may change as a more sophisticated queueing model is implemented in GAMA.</p></li>
+<li><p><strong>evse_util</strong>: This table is redundant (and maybe deleted) but stores the EVSE utilization, i.e. the total energy used by a charging station durring a simulation. Additional constraint that the combination of <code class="code docutils literal notranslate"><span class="pre">analysis_id</span></code> and <code class="code docutils literal notranslate"><span class="pre">evse_id</span></code> should be unique can be enforced.</p></li>
+<li><p><strong>evse_power_draw</strong>: This table stores the instantaneous power draw for all EVSEs in the simulation.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>od*</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>od_sp</strong>: This is a static table and stores the shortest path lengths for all the OD pairs.</p></li>
+<li><p><strong>od_cd</strong>: This table stores the “charging distances” for the OD pairs. The “charging distance” for an OD pair is the maximum spacing between charging stations along the route. This is dependent on the charging infrastructure. Based on the “built infrastructure”, the charging distances are pre-calculated (will need to be regularly updated) with <code class="code docutils literal notranslate"><span class="pre">analysis_id</span> <span class="pre">=</span> <span class="pre">-1</span></code>. When a new analysis request is submitted, with new proposed charging stations, the charging distances are updated, for routes that are affected by the newly placed charging stations. Hence, we have entries for several OD pairs for a particular <code class="code docutils literal notranslate"><span class="pre">analysis_id</span></code>. The charging distances are calculated separately for CHAdeMO (<code class="code docutils literal notranslate"><span class="pre">cd_chademo</span></code>) and COMBO (<code class="code docutils literal notranslate"><span class="pre">cd_combo</span></code>) charging standards. Further, the table has columns, <code class="code docutils literal notranslate"><span class="pre">cd_chademo_geog</span></code> and <code class="code docutils literal notranslate"><span class="pre">cd_combo_geog</span></code> that contain the geography of the segment representing the farthest spacing between charging stations.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>built_evse</strong>: This table represents the charging stations that are built and operational. The charging station information is sourced from AFDC and will need to be updated regularly.</p></li>
+<li><p><strong>new_evses</strong>: This table stores the information about the location, type etc. of the new charging stations being planned.</p></li>
+<li><p><strong>evtrip_scenarios</strong>: This table stores the EV trips generated by the VCDM. For each analysis, based on the current infrastructure, the VCDM finds the number of EV trips between an origin and destination and determines if an EV if available in the origin zip, is likely to make a trip. If an EV is selected, then a random SOC (<code class="code docutils literal notranslate"><span class="pre">soc</span></code>) and a trip start time (<code class="code docutils literal notranslate"><span class="pre">trip_start_time</span></code>) is assigned such that the trip ends by 10pm. The <code class="code docutils literal notranslate"><span class="pre">veh_id</span></code> should belong to <code class="code docutils literal notranslate"><span class="pre">wa_bevs</span></code> and the combination of <code class="code docutils literal notranslate"><span class="pre">analysis_id</span></code> and <code class="code docutils literal notranslate"><span class="pre">veh_id</span></code> should be unique.</p></li>
+<li><p><strong>dest_charger</strong>: This table contains the booleans fields <code class="code docutils literal notranslate"><span class="pre">dc_chademo</span></code>, <code class="code docutils literal notranslate"><span class="pre">dc_combo</span></code> and <code class="code docutils literal notranslate"><span class="pre">dc_level2</span></code> to represent where a destination charger of the respective type exists at the zip code. Since, this is based on the charging infrastructure, a base value is calculated for all zip codes (and this will need to be updated periodically as the as-built condition changes), with <code class="code docutils literal notranslate"><span class="pre">analysis_id</span> <span class="pre">=</span> <span class="pre">-1</span></code> representing the as-built condition. For every analysis request, if the charging station acts a destination charger for a zip code, a record is added to the table with the respective <code class="code docutils literal notranslate"><span class="pre">analysis_id</span></code>.</p></li>
+<li><p><strong>zipcode_record</strong>: This table contains details about the location of centroid of all zip codes.</p></li>
+<li><p><strong>user_details</strong>: This table contains the details about the users logging onto the EVI-DSS.</p></li>
+</ol>
+</div>
+<div class="section" id="triggers">
+<h2><span class="section-number">5.3. </span>Triggers<a class="headerlink" href="#triggers" title="Permalink to this headline">¶</a></h2>
+<p>The only trigger currently in the database is <a class="reference external" href="https://github.com/chintanp/wsdot_evse_docs/blob/afdd3f7516e2e8c1ccbd116fa1e8e363001500e4/main_create2.sql#L60">notify_new_order()</a> on the table <code class="code docutils literal notranslate"><span class="pre">analysis_record</span></code> which notifies the listeners that a new record has been added to the table. It also converts the record to JSON and sends it along as a payload.</p>
+<p>More triggers can be added to the database for automatic operation, like auto-deleting the child records when a primary key is deleted, notify when an analysis fails, etc.</p>
+</div>
+<div class="section" id="functions">
+<h2><span class="section-number">5.4. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<p>The database has several functions that facilitate code re-use and modularity.</p>
+<ol class="arabic simple">
+<li><p><strong>sp_len(orig, dest)</strong>: The function <a class="reference external" href="https://github.com/chintanp/wsdot_evse_docs/blob/afdd3f7516e2e8c1ccbd116fa1e8e363001500e4/main_create2.sql#L77">sp_len(orig, dest)</a> takes the origin zip code and destination zip code as arguments and returns the shortest path length in miles between the origin and destination along the WA state road network. The shortest path is calculated using <a class="reference external" href="http://docs.pgrouting.org/3.0/en/pgr_dijkstra.html">pgr_dijkstra()</a> between the <code class="code docutils literal notranslate"><span class="pre">WA_roads</span></code> source vertices closest to the origin and destination zip centroids (from the <code class="code docutils literal notranslate"><span class="pre">zipcode_record</span></code> table)</p></li>
+<li><p><strong>sp_od2(orig, dest)</strong>: The function <a class="reference external" href="https://github.com/chintanp/wsdot_evse_docs/blob/afdd3f7516e2e8c1ccbd116fa1e8e363001500e4/main_create2.sql#L105">sp_od2(orig, dest)</a> takes the origin and destination zip code and returns the geometry of the shortest path using <cite>pgr_dijkstra()</cite>. Of special note is the <code class="code docutils literal notranslate"><span class="pre">case-when-end</span></code> clause that ensures a shortest path made of segments in the correct orientation. For details and solution, refer to the <a class="reference external" href="https://gis.stackexchange.com/questions/334302/pgr-dijkstra-gives-wacky-routes-sometimes-with-undirected-graph">discussion</a>.</p></li>
+</ol>
+</div>
+</div>
+
+
+        </div>
+        <div class="side-doc-outline">
+            <div class="side-doc-outline--content"> 
+<div class="localtoc">
+    <p class="caption">
+      <span class="caption-text">Table Of Contents</span>
+    </p>
+    <ul>
+<li><a class="reference internal" href="#">5. Database Description</a><ul>
+<li><a class="reference internal" href="#database-overview">5.1. Database Overview</a></li>
+<li><a class="reference internal" href="#tables">5.2. Tables</a></li>
+<li><a class="reference internal" href="#triggers">5.3. Triggers</a></li>
+<li><a class="reference internal" href="#functions">5.4. Functions</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+
+      <div class="clearer"></div>
+    </div><div class="pagenation">
+     <a id="button-prev" href="arch.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="P">
+         <i class="pagenation-arrow-L material-icons">arrow_back</i>
+         <div class="pagenation-text">
+            <span class="pagenation-direction">Previous</span>
+            <div>4. System Architecture</div>
+         </div>
+     </a>
+     <a id="button-next" href="evi_des.html" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" role="botton" accesskey="N">
+        <i class="pagenation-arrow-R material-icons">arrow_forward</i>
+        <div class="pagenation-text">
+            <span class="pagenation-direction">Next</span>
+            <div>6. EV Infrastructure Designer</div>
+        </div>
+     </a>
+  </div>
+        <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+      <div class="mdl-logo">EVI-DSS</div>
+      <div>
+        
+        <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dss.html">2. Decision Support System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_dss.html">3. EVI-DSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch.html">4. System Architecture</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Database Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evi_des.html">6. EV Infrastructure Designer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="res_view.html">7. Results Viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sim_man.html">8. Simulation Manager</a></li>
+</ul>
+
+      </div>
+    </div>
+
+    <div class="mdl-mini-footer__right-section">
+        <div>&copy; Copyright 2019, Chintan Pathak, Don MacKenzie.</div>
+      <div>Generated by <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.1.2 using <a href="https://github.com/myyasuda/sphinx_materialdesign_theme">sphinx_materialdesign_theme</a>.</div>
+    </div>
+</footer>
+        </main>
+    </div>
+  </body>
+</html>
