@@ -1,3 +1,5 @@
+.. _data_needed:
+
 ================
 Data Requirement
 ================
@@ -8,6 +10,12 @@ The data requirements of EVI-DSS can be classified into two categories, static a
 
 Static Datasets
 ===============
+
+These datasets do not change or may change very infrequently to warrant an update strategy. 
+
+WA State Road Network
+---------------------
+The WA State road network is used to simulate road travel. The road network was downloaded as shapefile from a source similar to `WA Public Roads Review Map`_ and its SRID converted to `EPSG:4326`_.
 
 Zipcode Details
 ---------------
@@ -20,5 +28,6 @@ Dynamic Datasets
 
 
 
-
+.. _WA Public Roads Review Map: https://wsdot.maps.arcgis.com/apps/Viewer/index.html?appid=e1d3bf7788c14584a816559c6ccf51e6
+.. _EPSG:4326: https://spatialreference.org/ref/epsg/wgs-84/
 .. _zipcode: https://CRAN.R-project.org/package=zipcode

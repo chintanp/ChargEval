@@ -1,0 +1,810 @@
+2020-08-13T22:53:47.196Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 35 column 12. Expected "COLUMN" or "TABLE" but "S" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected "COLUMN" or "TABLE" but "S" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":762,"line":35,"column":12},"end":{"offset":763,"line":35,"column":13}}
+
+2020-08-13T22:54:21.602Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 33 column 8. Expected "GLOBAL", "INDEX", "LOCAL", "SCHEMA", "SEQUENCE", "TABLE", "TEMP", "TEMPORARY", "TYPE", "UNIQUE", "UNLOGGED", or "VIEW" but "E" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected "GLOBAL", "INDEX", "LOCAL", "SCHEMA", "SEQUENCE", "TABLE", "TEMP", "TEMPORARY", "TYPE", "UNIQUE", "UNLOGGED", or "VIEW" but "E" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":738,"line":33,"column":8},"end":{"offset":739,"line":33,"column":9}}
+
+2020-08-13T22:54:54.880Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 33 column 8. Expected "GLOBAL", "INDEX", "LOCAL", "SCHEMA", "SEQUENCE", "TABLE", "TEMP", "TEMPORARY", "TYPE", "UNIQUE", "UNLOGGED", or "VIEW" but "E" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected "GLOBAL", "INDEX", "LOCAL", "SCHEMA", "SEQUENCE", "TABLE", "TEMP", "TEMPORARY", "TYPE", "UNIQUE", "UNLOGGED", or "VIEW" but "E" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":738,"line":33,"column":8},"end":{"offset":739,"line":33,"column":9}}
+
+2020-08-13T22:56:11.164Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 33 column 8. Expected "GLOBAL", "INDEX", "LOCAL", "SCHEMA", "SEQUENCE", "TABLE", "TEMP", "TEMPORARY", "TYPE", "UNIQUE", "UNLOGGED", or "VIEW" but "F" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected "GLOBAL", "INDEX", "LOCAL", "SCHEMA", "SEQUENCE", "TABLE", "TEMP", "TEMPORARY", "TYPE", "UNIQUE", "UNLOGGED", or "VIEW" but "F" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":757,"line":33,"column":8},"end":{"offset":758,"line":33,"column":9}}
+
+2020-08-13T22:56:43.199Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 50 column 20. Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "." found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "." found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":1261,"line":50,"column":20},"end":{"offset":1262,"line":50,"column":21}}
+
+2020-08-13T22:57:13.472Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 53 column 51. Expected ")" but "(" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected ")" but "(" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":1377,"line":53,"column":51},"end":{"offset":1378,"line":53,"column":52}}
+
+2020-08-13T22:57:59.728Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 54 column 1. Expected "(" but ")" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected "(" but ")" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":1448,"line":54,"column":1},"end":{"offset":1449,"line":54,"column":2}}
+
+2020-08-13T22:58:29.028Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 53 column 50. Expected "(" but ")" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected "(" but ")" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":1376,"line":53,"column":50},"end":{"offset":1377,"line":53,"column":51}}
+
+2020-08-13T22:58:46.600Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 72 column 39. Expected space but "." found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected space but "." found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":1895,"line":72,"column":39},"end":{"offset":1896,"line":72,"column":40}}
+
+2020-08-13T22:59:15.693Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 81 column 39. Expected space but "." found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected space but "." found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":2142,"line":81,"column":39},"end":{"offset":2143,"line":81,"column":40}}
+
+2020-08-13T23:00:19.217Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 238 column 7. Expected "TABLE" but "S" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected "TABLE" but "S" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":6943,"line":238,"column":7},"end":{"offset":6944,"line":238,"column":8}}
+
+2020-08-13T23:00:37.948Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 260 column 12. Expected "COLUMN" or "TABLE" but "V" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected "COLUMN" or "TABLE" but "V" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":7617,"line":260,"column":12},"end":{"offset":7618,"line":260,"column":13}}
+
+2020-08-13T23:00:57.210Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 272 column 16. Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "." found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "." found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":7913,"line":272,"column":16},"end":{"offset":7914,"line":272,"column":17}}
+
+2020-08-13T23:01:14.332Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 277 column 38. Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but ":" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but ":" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":8084,"line":277,"column":38},"end":{"offset":8085,"line":277,"column":39}}
+
+2020-08-13T23:01:46.277Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 294 column 20. Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "." found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "." found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":8443,"line":294,"column":20},"end":{"offset":8444,"line":294,"column":21}}
+
+2020-08-13T23:01:59.597Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 317 column 7. Expected "TABLE" but "S" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected "TABLE" but "S" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":8885,"line":317,"column":7},"end":{"offset":8886,"line":317,"column":8}}
+
+2020-08-13T23:02:14.446Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 317 column 7. Expected "TABLE" but "S" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected "TABLE" but "S" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":8885,"line":317,"column":7},"end":{"offset":8886,"line":317,"column":8}}
+
+2020-08-13T23:02:25.713Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 354 column 7. Expected "TABLE" but "S" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected "TABLE" but "S" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":9760,"line":354,"column":7},"end":{"offset":9761,"line":354,"column":8}}
+
+2020-08-13T23:04:31.050Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 451 column 20. Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "p" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "p" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":11979,"line":451,"column":20},"end":{"offset":11980,"line":451,"column":21}}
+
+2020-08-13T23:05:07.119Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 496 column 25. Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "p" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "p" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":13012,"line":496,"column":25},"end":{"offset":13013,"line":496,"column":26}}
+
+2020-08-13T23:05:17.312Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 799 column 21. Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "p" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "p" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":20143,"line":799,"column":21},"end":{"offset":20144,"line":799,"column":22}}
+
+2020-08-13T23:05:34.338Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 852 column 23. Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "p" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "p" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":21540,"line":852,"column":23},"end":{"offset":21541,"line":852,"column":24}}
+
+2020-08-13T23:05:47.550Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 855 column 27. Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "." found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "." found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":21622,"line":855,"column":27},"end":{"offset":21623,"line":855,"column":28}}
+
+2020-08-13T23:06:01.303Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 868 column 33. Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "p" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "p" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":21885,"line":868,"column":33},"end":{"offset":21886,"line":868,"column":34}}
+
+2020-08-13T23:06:10.634Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 1038 column 16. Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "." found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "." found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":25477,"line":1038,"column":16},"end":{"offset":25478,"line":1038,"column":17}}
+
+2020-08-13T23:06:28.801Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 1087 column 38. Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but ":" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but ":" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":26703,"line":1087,"column":38},"end":{"offset":26704,"line":1087,"column":39}}
+
+2020-08-13T23:06:40.745Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 1102 column 21. Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "p" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected ")", ",", "CHECK", "CONSTRAINT", "DEFAULT", "GENERATED", "NOT", "NULL", "PRIMARY", "REFERENCES", "UNIQUE", or space but "p" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":27044,"line":1102,"column":21},"end":{"offset":27045,"line":1102,"column":22}}
+
+2020-08-13T23:06:50.380Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 1532 column 26. Expected "ADD" or "ALTER" but "C" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected "ADD" or "ALTER" but "C" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":39264,"line":1532,"column":26},"end":{"offset":39265,"line":1532,"column":27}}
+
+2020-08-13T23:07:21.024Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 1572 column 8. Expected "GLOBAL", "INDEX", "LOCAL", "SCHEMA", "SEQUENCE", "TABLE", "TEMP", "TEMPORARY", "TYPE", "UNIQUE", "UNLOGGED", or "VIEW" but "T" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected "GLOBAL", "INDEX", "LOCAL", "SCHEMA", "SEQUENCE", "TABLE", "TEMP", "TEMPORARY", "TYPE", "UNIQUE", "UNLOGGED", or "VIEW" but "T" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":40247,"line":1572,"column":8},"end":{"offset":40248,"line":1572,"column":9}}
+
+2020-08-13T23:07:45.082Z
+SyntaxError: You have a syntax error at "evi_dss_dbdocs.sql" line 1660 column 1. Expected "ALTER", "COMMENT", "CREATE", "DROP", "INSERT", "RESET", "SELECT", "SET", "USE", end of input, or space but "G" found.
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:55:13
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+    at Object.sql2dbml (/usr/lib/node_modules/@dbml/cli/lib/cli/index.js:38:23)
+    at Object.<anonymous> (/usr/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (internal/modules/cjs/loader.js:1256:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1277:10)
+    at Module.load (internal/modules/cjs/loader.js:1105:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:967:14)
+
+ROOT_ERROR:
+SyntaxError: Expected "ALTER", "COMMENT", "CREATE", "DROP", "INSERT", "RESET", "SELECT", "SET", "USE", end of input, or space but "G" found.
+    at peg$buildStructuredError (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:33:6718)
+    at Object.peg$parse [as parse] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:41:339)
+    at Function.parsePostgresToJSON (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:51:41)
+    at Function.parse (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:79:32)
+    at Object._import [as import] (/usr/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:15:37)
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:68
+    at /usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:52:23
+    at Array.forEach (<anonymous>)
+    at generate (/usr/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:14)
+    at importHandler (/usr/lib/node_modules/@dbml/cli/lib/cli/import.js:38:27)
+{"start":{"offset":43188,"line":1660,"column":1},"end":{"offset":43189,"line":1660,"column":2}}
+

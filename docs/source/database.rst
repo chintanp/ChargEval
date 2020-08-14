@@ -6,7 +6,7 @@ Database Description
 
 Database Overview
 =================
-The script to `create the database is here`_. The scripts to create the `tables, functions and triggers are hosted here`_. The script can be used to create the schema in the database. :numref:`evi_dss_sql` shows the various tables and relations in the database. 
+The script to `create the database is here`_. The scripts to create the `tables, functions and triggers are hosted here`_. The script can be used to create the schema in the database. The database documentation is hosted `here`_. :numref:`evi_dss_sql` shows the various tables and relations in the database. 
 
 .. _evi_dss_sql: 
 .. figure:: _static/wsdot_evse_sql.png
@@ -93,8 +93,6 @@ The database has several functions that facilitate code re-use and modularity.
 
 2. **sp_od2(orig, dest)**: The function `sp_od2(orig, dest)`_ takes the origin and destination zip code and returns the geometry of the shortest path using `pgr_dijkstra()`. Of special note is the :code:`case-when-end` clause that ensures a shortest path made of segments in the correct orientation. For details and solution, refer to the `discussion`_. 
 
-
-
 .. _create the database is here: https://github.com/chintanp/wsdot_evse_docs/blob/master/create_main_db.sql
 .. _tables, functions and triggers are hosted here: https://github.com/chintanp/wsdot_evse_docs/blob/master/main_create2.sql 
 .. _notify_new_order(): https://github.com/chintanp/wsdot_evse_docs/blob/afdd3f7516e2e8c1ccbd116fa1e8e363001500e4/main_create2.sql#L60
@@ -104,4 +102,4 @@ The database has several functions that facilitate code re-use and modularity.
 .. _discussion: https://gis.stackexchange.com/questions/334302/pgr-dijkstra-gives-wacky-routes-sometimes-with-undirected-graph
 .. _clean_network(): https://gama-platform.github.io/wiki/OperatorsBC#clean_network
 .. _explained here: https://gis.stackexchange.com/a/332059/18956
-
+.. _here: https://dbdocs.io/chintanp/EVI_DSS

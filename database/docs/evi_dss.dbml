@@ -1,0 +1,406 @@
+Project EVI_DSS {
+database_type: 'PostgreSQL'
+description: 'Tested on PG 12, needs extensions PostGIS, pgRouting and hstore.'
+note: '''
+### EVI-DSS Database
+
+The database contains the data needed by the various applications for the simulations as well as stores the outputs of simulations. 
+
+#### About this documentation 
+This documentation was generated using dbdocs.io using the DBML script "./database/docs/evi_dss.dbml" in the EVI-DSS repository. The portal is password protected. To update the documentation, update the DBML and then run "dbdocs build {DBML filename}".
+
+#### Migrate using Flyway
+The database uses "flyway" for applying the migrations. The migrations are located in the "./database/migrations" directory. To apply the migrations use "flyway -configFiles={CONFIG_FILE_LOCATION} migrate", or specifying the parameters on the CLI, like so: "flyway -url=jdbc:postgresql://${MAIN_HOST}:${MAIN_PORT}/${MAIN_DB} -schemas=public -user=${MAIN_USER} -password=${MAIN_PWD} -locations=filesystem:{MIGRATION_FOLDER_PATH} migrate", where MAIN_HOST is database hostname or IP address, MAIN_PORT is the database port, MAIN_DB is the name of the database, MAIN_USER is the database username with appropriate rights, and MAIN_PWD is the database password. 
+
+All schema related database changes must be applied using schema. Data changes maybe applied using Flyway if possible. 
+
+#### Database details not captured by this documentation
+As of this writing, dbdocs is unable to document the following:
+
+1. *Extensions*: This database needs extensions: PostGIS (for GIS queries and pgRouting), pgRouting (for shortest path calculation) and hstore (for audit).
+
+2. *Triggers*:  Triggers exist on table `analysis_record` to notify of insert, as well as record audits. Auditing functionality was copied from here https://wiki.postgresql.org/wiki/Audit_trigger_91plus .
+
+3. *Functions*: Functions exist to give the shortest path between an origin and destination zip code, etc. 
+
+4. *Miscellaneous*: Other things improperly documented include:
+    i. logged_actions: This table actually exists in the schema 'audit'. There is not other table in the audit schema. 
+    ii. gist: The geom index is of type 'gist' which had to be changed to 'btree' to satisfy the build. 
+    iii. double precision is logged as double. 
+'''
+} 
+
+
+Table "logged_actions" {
+  "event_id" bigint [not null]
+  "schema_name" text [not null]
+  "table_name" text [not null]
+  "relid" oid [not null]
+  "session_user_name" text
+  "action_tstamp_tx" timestamp [not null]
+  "action_tstamp_stm" timestamp [not null]
+  "action_tstamp_clk" timestamp [not null]
+  "transaction_id" bigint
+  "application_name" text
+  "client_addr" inet
+  "client_port" integer
+  "client_query" text
+  "action" text [not null]
+  "row_data" hstore
+  "changed_fields" hstore
+  "statement_only" boolean [not null]
+  "CONSTRAINT" logged_actions_action_check
+
+Indexes {
+  action [type: btree, name: "logged_actions_action_idx"]
+  action_tstamp_stm [type: btree, name: "logged_actions_action_tstamp_tx_stm_idx"]
+  relid [type: btree, name: "logged_actions_relid_idx"]
+}
+}
+
+Table "WA_roads" {
+  "id" integer [not null]
+  "geom" "geometry(LineString, 4326)"
+  "spd" "character varying(80)"
+  "source" integer
+  "target" integer
+  "trip_count_chademo" integer [default: 0]
+  "od_pairs_chademo" text [default: " "]
+  "trip_count_combo" integer [default: 0]
+  "od_pairs_combo" text [default: " "]
+
+Indexes {
+  geom [type: btree, name: "sidx_geom__wa_roads"]
+  source [type: btree, name: "sidx_source__wa_roads"]
+  target [type: btree, name: "sidx_target__wa_roads"]
+}
+}
+
+Table "WA_roads_vertices_pgr" {
+  "id" bigint [not null]
+  "cnt" integer
+  "chk" integer
+  "ein" integer
+  "eout" integer
+  "the_geom" "geometry(Point, 4326)"
+
+Indexes {
+  the_geom [type: btree, name: "WA_roads_vertices_pgr_the_geom_idx"]
+}
+}
+
+Table "analysis_record" {
+  "analysis_id" integer [not null]
+  "user_id" text [not null]
+  "sim_date_time" timestamp [not null, default: `now()`]
+  "status" text [not null]
+  "include_tesla" boolean
+}
+
+Table "built_evse" {
+  "bevse_id" real
+  "city" text
+  "state" text
+  "zip" real
+  "level2_count" real
+  "level1_count" real
+  "dcfc_count" real
+  "ev_network" text
+  "latitude" real
+  "longitude" real
+  "open_date" date
+  "ev_connector_types" text
+  "ev_pricing" text
+  "country" text
+  "connector_code" real
+  "dcfc_fixed_charging_price" real
+  "dcfc_var_charging_price_unit" text
+  "dcfc_var_charging_price" real
+  "dcfc_fixed_parking_price" real
+  "dcfc_var_parking_price_unit" text
+  "dcfc_var_parking_price" real
+}
+
+Table "dest_charger" {
+  "analysis_id" integer [not null]
+  "zip" integer [not null]
+  "dc_chademo" boolean
+  "dc_combo" boolean
+  "dc_level2" boolean
+}
+
+Table "ev_finished" {
+  "fin_id" integer [not null]
+  "fin_ts" text [not null]
+  "veh_id" text [not null]
+  "origin_zip" integer [not null]
+  "destination_zip" integer [not null]
+  "analysis_id" integer [not null]
+  "trip_distance" numeric [not null]
+  "distance_travelled" numeric [not null]
+}
+
+Table "ev_info" {
+  "info_id" bigint [not null]
+  "simulation_ts" text [not null]
+  "analysis_id" integer [not null]
+  "veh_id" text [not null]
+  "lat_val" double [not null]
+  "lng_val" double [not null]
+  "soc_val" numeric [not null]
+  "prob_val" numeric [not null]
+  "state_val" text [not null]
+  "tocharge_val" boolean [not null]
+  "speed_val" numeric [not null]
+  "nearest_evse_id" text
+  "chargers_nearby" text
+  "nearest_evses" text
+  "charging_decision_time" text
+
+Indexes {
+  (analysis_id, veh_id) [type: btree, name: "idx_aid_vid_evinfo"]
+}
+}
+
+Table "ev_stranded" {
+  "stranded_id" integer [not null]
+  "stranded_ts" text [not null]
+  "veh_id" text [not null]
+  "stranded_lat" double [not null]
+  "stranded_lng" double [not null]
+  "origin_zip" integer [not null]
+  "destination_zip" integer [not null]
+  "analysis_id" integer [not null]
+}
+
+Table "evse_charging_session" {
+  "cs_id" integer [not null]
+  "charge_start_time" text [not null]
+  "charge_end_time" text [not null]
+  "veh_id" text [not null]
+  "starting_soc" numeric [not null]
+  "ending_soc" numeric [not null]
+  "evse_id" text [not null]
+  "analysis_id" integer [not null]
+}
+
+Table "evse_evs_passed" {
+  "pass_id" integer [not null]
+  "simulation_ts" text [not null]
+  "evse_id" text [not null]
+  "veh_id" text [not null]
+  "soc_val" numeric [not null]
+  "analysis_id" integer [not null]
+}
+
+Table "evse_evs_waiting" {
+  "wait_id" integer [not null]
+  "wait_start_time" text
+  "wait_end_time" text
+  "veh_id" text
+  "soc_val" numeric
+  "evse_id" text
+  "analysis_id" integer
+  "evs_waiting" text
+}
+
+Table "evse_power_draw" {
+  "pd_id" integer [not null]
+  "simulation_ts" text [not null]
+  "evse_id" text [not null]
+  "analysis_id" integer
+  "power_val" integer [not null]
+
+Indexes {
+  (analysis_id, evse_id) [type: btree, name: "idx_aid_evseid_evsepd"]
+}
+}
+
+Table "evse_util" {
+  "util_id" integer [not null]
+  "analysis_id" integer [not null]
+  "evse_id" text [not null]
+  "util_val" numeric [not null]
+}
+
+Table "evtrip_scenarios" {
+  "evtrip_id" integer [not null]
+  "analysis_id" integer [not null]
+  "simulated_date" text [not null]
+  "veh_id" text [not null]
+  "origin_zip" integer [not null]
+  "destination_zip" integer [not null]
+  "soc" numeric [not null]
+  "trip_start_time" text [not null]
+  "created_at" timestamp [default: `now()`]
+}
+
+Table "flyway_schema_history" {
+  "installed_rank" integer [not null]
+  "version" "character varying(50)"
+  "description" "character varying(200)" [not null]
+  "type" "character varying(20)" [not null]
+  "script" "character varying(1000)" [not null]
+  "checksum" integer
+  "installed_by" "character varying(100)" [not null]
+  "installed_on" timestamp [not null, default: `now()`]
+  "execution_time" integer [not null]
+  "success" boolean [not null]
+
+Indexes {
+  success [type: btree, name: "flyway_schema_history_s_idx"]
+}
+}
+
+Table "new_evses" {
+  "nevse_id" integer [not null]
+  "analysis_id" integer [not null]
+  "input_evse_id" integer [not null]
+  "trip_count" integer
+  "od_pairs" text
+  "latitude" double [not null]
+  "longitude" double [not null]
+  "dcfc_plug_count" integer [not null]
+  "dcfc_power" integer [not null]
+  "level2_plug_count" integer [not null]
+  "level2_power" numeric [not null]
+  "dcfc_fixed_charging_price" numeric
+  "dcfc_var_charging_price_unit" text
+  "dcfc_var_charging_price" numeric
+  "dcfc_fixed_parking_price" numeric
+  "dcfc_var_parking_price_unit" text
+  "dcfc_var_parking_price" numeric
+  "level2_fixed_charging_price" numeric
+  "level2_var_charging_price_unit" text
+  "level2_var_charging_price" numeric
+  "level2_fixed_parking_price" numeric
+  "level2_var_parking_price_unit" text
+  "level2_var_parking_price" numeric
+  "connector_code" integer
+}
+
+Table "od_cd" {
+  "origin" integer [not null]
+  "destination" integer [not null]
+  "cd_chademo" double
+  "cd_combo" double
+  "analysis_id" integer [not null]
+  "cd_chademo_geog" geography
+  "cd_combo_geog" geography
+
+Indexes {
+  cd_chademo_geog [type: btree, name: "sidx_cd_chademo_geog__od_cd"]
+  cd_combo_geog [type: btree, name: "sidx_cd_combo_geog__od_cd"]
+}
+}
+
+Table "od_sp" {
+  "origin" integer [not null]
+  "destination" integer [not null]
+  "shortest_path_length" double
+}
+
+Table "table_stats" {
+  "table_id" integer [not null]
+  "table_name" text
+  "last_updated" text
+}
+
+Table "user_details" {
+  "user_id" text [not null]
+  "user_name" text
+  "email_id" text
+  "last_submit_date" timestamp [default: `now()`]
+}
+
+Table "wa_bevs" {
+  "county" text
+  "city" text
+  "state" text
+  "zip_code" integer
+  "model_year" integer
+  "make" text
+  "model" text
+  "electric_range" integer
+  "base_msrp" real
+  "legislative_district" real
+  "veh_id" text
+  "range_fe" real
+  "capacity" real
+  "fuel_consumption" real
+  "connector_code" real
+}
+
+Table "wa_evtrips" {
+  "destination" real
+  "origin" real
+  "ocars" real
+  "dcars" real
+  "ret" real
+  "dep" real
+  "oevs" real
+  "devs" real
+  "oevs_no_tesla" integer
+  "devs_no_tesla" integer
+}
+
+Table "wa_gas_prices" {
+  "zip" text
+  "avg_gas_price" real
+}
+
+Table "wa_long_distance_passenger_trips" {
+  "ldtrip_id" integer [not null]
+  "origin_zip" integer [not null]
+  "destination_zip" integer [not null]
+  "ldtrip_count" integer [not null]
+}
+
+Table "wa_state_boundary" {
+  "id" integer [not null]
+  "geom" "geometry(MultiPolygon, 4326)"
+  "objectid" bigint
+  "shapearea" numeric
+  "shapelen" numeric
+  "jurisdict_" bigint
+  "jurisdic_1" "character varying(80)"
+  "jurisdic_2" "character varying(80)"
+  "jurisdic_3" "character varying(80)"
+  "jurisdic_4" bigint
+  "jurisdic_5" bigint
+  "jurisdic_6" "character varying(80)"
+  "edit_date" "character varying(80)"
+  "edit_statu" "character varying(80)"
+  "edit_who" "character varying(80)"
+}
+
+Table "wa_trip_inf" {
+  "road_id" integer [not null]
+  "analysis_id" integer [not null]
+  "trip_count_chademo" integer [not null, default: 0]
+  "od_pairs_chademo" text [not null, default: " "]
+  "trip_count_combo" integer [not null, default: 0]
+  "od_pairs_combo" text [not null, default: " "]
+}
+
+Table "zipcode_record" {
+  "zip" text [not null]
+  "city" text
+  "state" text [not null]
+  "latitude" double
+  "longitude" double
+}
+
+Ref:"analysis_record"."analysis_id" < "ev_finished"."analysis_id"
+
+Ref:"analysis_record"."analysis_id" < "ev_info"."analysis_id"
+
+Ref:"analysis_record"."analysis_id" < "ev_stranded"."analysis_id"
+
+Ref:"analysis_record"."analysis_id" < "evse_power_draw"."analysis_id"
+
+Ref:"analysis_record"."analysis_id" < "evse_util"."analysis_id"
+
+Ref:"analysis_record"."analysis_id" < "evtrip_scenarios"."analysis_id"
+
+Ref:"WA_roads"."id" < "wa_trip_inf"."road_id"
