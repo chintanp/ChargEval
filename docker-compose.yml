@@ -1,0 +1,101 @@
+version: '3'
+services:
+  pgdb:
+    build: './database'
+    ports:
+      - "${PG_PORT_EXPOSED}:${MAIN_PORT}"
+    networks:
+      - evidssnet
+    environment:
+      - POSTGRES_PASSWORD=$DBWRITE_PWD
+      - POSTGRES_USER=$DBWRITE_USER
+      - POSTGRES_DB=$MAIN_DB
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "${MAIN_DB}", "-U", "${DBWRITE_USER}"]
+      interval: 5s
+      timeout: 1s
+      retries: 2
+  flyway:
+    image: flyway/flyway
+    command: -url=jdbc:postgresql://${MAIN_HOST}:${MAIN_PORT}/${MAIN_DB} -schemas=public -user=${DBWRITE_USER} -password=${DBWRITE_PWD} migrate
+    volumes:
+      - ./database/migrations:/flyway/sql
+    depends_on:
+      - pgdb
+    networks:
+      - evidssnet    
+  evides:
+    build: './evides'
+    depends_on: 
+      - pgdb
+    ports:
+      - '${EVIDES_PORT}:${EVIDES_PORT}'
+    networks:
+      - evidssnet
+    environment:
+      - GITHUB_PAT=$GITHUB_PAT
+      - EVIDES_PORT=$EVIDES_PORT
+      - AUTH0_USER=$AUTH0_USER
+      - AUTH0_KEY=$AUTH0_KEY
+      - AUTH0_SECRET=$AUTH0_SECRET
+      - AFDC_API_KEY=$AFDC_API_KEY
+      - MAPBOX_ACCESS_TOKEN=$MAPBOX_ACCESS_TOKEN
+      - MAIN_USER=$DBWRITE_USER
+      - MAIN_PWD=$DBWRITE_PWD
+      - MAIN_HOST=$MAIN_HOST
+      - MAIN_PORT=$MAIN_PORT
+      - MAIN_DB=$MAIN_DB
+  resview:
+    build: './resview'
+    depends_on: 
+      - pgdb
+    ports:
+      - '${RESVIEW_PORT}:${RESVIEW_PORT}'
+    networks:
+      - evidssnet
+    environment:
+      - GITHUB_PAT=$GITHUB_PAT
+      - RESVIEW_PORT=$RESVIEW_PORT
+      - AFDC_API_KEY=$AFDC_API_KEY
+      - MAPBOX_ACCESS_TOKEN=$MAPBOX_ACCESS_TOKEN
+      - MAIN_USER=$DBREAD_USER
+      - MAIN_PWD=$DBREAD_PWD
+      - MAIN_HOST=$MAIN_HOST
+      - MAIN_PORT=$MAIN_PORT
+      - MAIN_DB=$MAIN_DB
+  redis:
+    image: 'redis:6.0.6'
+    ports:
+      - '6379:6379'
+    networks:
+      - evidssnet
+
+  simman:
+    build: './simman'
+    depends_on:
+      - redis
+      - pgdb
+    ports:
+      - '${SIMMAN_PORT}:${SIMMAN_PORT}'
+    networks:
+      - evidssnet
+    volumes:
+      - $HOME/.aws/credentials:/home/app/.aws/credentials:ro
+    environment:
+      - SIMMAN_PORT=$SIMMAN_PORT
+      - REDIS_HOST=$REDIS_HOST
+      - MAIN_USER=$DBWRITE_USER
+      - MAIN_PWD=$DBWRITE_PWD
+      - MAIN_HOST=$MAIN_HOST
+      - MAIN_PORT=$MAIN_PORT
+      - MAIN_DB=$MAIN_DB
+      - EC2_SECURITY_GROUPNAME=$EC2_SECURITY_GROUPNAME
+      - EC2_KEYPAIR_NAME=$EC2_KEYPAIR_NAME
+      - EC_R_AMI_ID=$EC_R_AMI_ID
+      - IAM_INSTANCE_PROFILE_ARN=$IAM_INSTANCE_PROFILE_ARN
+      - EC_GAMA_AMI_ID=$EC_GAMA_AMI_ID
+    command:
+      - nodemon
+      - index.js
+networks:
+  evidssnet: null

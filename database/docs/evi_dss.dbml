@@ -59,7 +59,7 @@ Indexes {
 }
 
 Table "WA_roads" {
-  "id" integer [not null]
+  "id" integer [primary key, not null]
   "geom" "geometry(LineString, 4326)"
   "spd" "character varying(80)"
   "source" integer
@@ -90,15 +90,16 @@ Indexes {
 }
 
 Table "analysis_record" {
-  "analysis_id" integer [not null]
+  "analysis_id" integer [primary key, not null]
   "user_id" text [not null]
-  "sim_date_time" timestamp [not null, default: `now()`]
+  "sim_date_time" timestamp [not null, default: `now()`, note: 'This column represents when the simulation was submitted by the user for analysis.']
   "status" text [not null]
   "include_tesla" boolean
+  "sim_start_time" text [note: 'This column represents when the simulation should be started in GAMA. The value is generated at the end of the tripgen by finding the earliest trip start time.']
 }
 
 Table "built_evse" {
-  "bevse_id" real
+  "bevse_id" real [primary key]
   "city" text
   "state" text
   "zip" real
@@ -130,7 +131,7 @@ Table "dest_charger" {
 }
 
 Table "ev_finished" {
-  "fin_id" integer [not null]
+  "fin_id" integer [primary key, not null]
   "fin_ts" text [not null]
   "veh_id" text [not null]
   "origin_zip" integer [not null]
@@ -141,7 +142,7 @@ Table "ev_finished" {
 }
 
 Table "ev_info" {
-  "info_id" bigint [not null]
+  "info_id" bigint [primary key, not null]
   "simulation_ts" text [not null]
   "analysis_id" integer [not null]
   "veh_id" text [not null]
@@ -163,7 +164,7 @@ Indexes {
 }
 
 Table "ev_stranded" {
-  "stranded_id" integer [not null]
+  "stranded_id" integer [primary key, not null]
   "stranded_ts" text [not null]
   "veh_id" text [not null]
   "stranded_lat" double [not null]
@@ -174,7 +175,7 @@ Table "ev_stranded" {
 }
 
 Table "evse_charging_session" {
-  "cs_id" integer [not null]
+  "cs_id" integer [primary key, not null]
   "charge_start_time" text [not null]
   "charge_end_time" text [not null]
   "veh_id" text [not null]
@@ -185,7 +186,7 @@ Table "evse_charging_session" {
 }
 
 Table "evse_evs_passed" {
-  "pass_id" integer [not null]
+  "pass_id" integer [primary key, not null]
   "simulation_ts" text [not null]
   "evse_id" text [not null]
   "veh_id" text [not null]
@@ -194,7 +195,7 @@ Table "evse_evs_passed" {
 }
 
 Table "evse_evs_waiting" {
-  "wait_id" integer [not null]
+  "wait_id" integer [primary key, not null]
   "wait_start_time" text
   "wait_end_time" text
   "veh_id" text
@@ -205,7 +206,7 @@ Table "evse_evs_waiting" {
 }
 
 Table "evse_power_draw" {
-  "pd_id" integer [not null]
+  "pd_id" integer [primary key, not null]
   "simulation_ts" text [not null]
   "evse_id" text [not null]
   "analysis_id" integer
@@ -217,14 +218,14 @@ Indexes {
 }
 
 Table "evse_util" {
-  "util_id" integer [not null]
+  "util_id" integer [primary key, not null]
   "analysis_id" integer [not null]
   "evse_id" text [not null]
   "util_val" numeric [not null]
 }
 
 Table "evtrip_scenarios" {
-  "evtrip_id" integer [not null]
+  "evtrip_id" integer [primary key, not null]
   "analysis_id" integer [not null]
   "simulated_date" text [not null]
   "veh_id" text [not null]
@@ -253,7 +254,7 @@ Indexes {
 }
 
 Table "new_evses" {
-  "nevse_id" integer [not null]
+  "nevse_id" integer [primary key, not null]
   "analysis_id" integer [not null]
   "input_evse_id" integer [not null]
   "trip_count" integer
@@ -301,13 +302,13 @@ Table "od_sp" {
 }
 
 Table "table_stats" {
-  "table_id" integer [not null]
+  "table_id" integer [primary key, not null]
   "table_name" text
   "last_updated" text
 }
 
 Table "user_details" {
-  "user_id" text [not null]
+  "user_id" text [primary key, not null]
   "user_name" text
   "email_id" text
   "last_submit_date" timestamp [default: `now()`]
@@ -324,7 +325,7 @@ Table "wa_bevs" {
   "electric_range" integer
   "base_msrp" real
   "legislative_district" real
-  "veh_id" text
+  "veh_id" text [primary key]
   "range_fe" real
   "capacity" real
   "fuel_consumption" real
@@ -345,7 +346,7 @@ Table "wa_evtrips" {
 }
 
 Table "wa_gas_prices" {
-  "zip" text
+  "zip" text [primary key]
   "avg_gas_price" real
 }
 
@@ -384,7 +385,7 @@ Table "wa_trip_inf" {
 }
 
 Table "zipcode_record" {
-  "zip" text [not null]
+  "zip" text [primary key, not null]
   "city" text
   "state" text [not null]
   "latitude" double

@@ -1,0 +1,9 @@
+[submodule "evides"]
+	path = evides
+	url = https://github.com/chintanp/ev_infrastructure_designer
+[submodule "resview"]
+	path = resview
+	url = https://github.com/chintanp/wsdot_evse_results_viewer
+[submodule "simman"]
+	path = simman
+	url = https://github.com/chintanp/wsdot_evse_sim_manager
