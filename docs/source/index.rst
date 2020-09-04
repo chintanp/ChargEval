@@ -27,6 +27,7 @@ The decision to build EVI is a complex one and is dependent on several factors. 
    evi_des
    res_view
    sim_man
+   deploy
 
 .. _here: https://cp84.shinyapps.io/evi_des/
 .. _Results Viewer here: https://cp84.shinyapps.io/res_view/
