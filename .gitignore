@@ -5,3 +5,5 @@ database/conf
 redash/
 resview/.Renviron
 evides/.Renviron
+shiny_logs/
+ssl/

@@ -1,25 +1,32 @@
 version: '3'
 services:
-  pgdb:
+  nginx:
     logging:
       driver: awslogs
       options:
         awslogs-group: "cp84-evi-dss-mainEC2"
-        awslogs-stream: "pgdb"
-    build: './database'
+        awslogs-stream: "nginx"
+    image: nginx:1.19.2
+    restart: always
     ports:
-      - "${PG_PORT_EXPOSED}:${MAIN_PORT}"
+      - 80:80
+      - 443:443
+    volumes:
+      - ./templates:/etc/nginx/templates/
+      - './ssl:/ssl/'
+    depends_on:
+      - evides
+      - resview
     networks:
-      - evidssnet
+      - evidssnet 
     environment:
-      - POSTGRES_PASSWORD=$DBWRITE_PWD
-      - POSTGRES_USER=$DBWRITE_USER
-      - POSTGRES_DB=$MAIN_DB
-    healthcheck:
-      test: ["CMD", "pg_isready", "-q", "-d", "${MAIN_DB}", "-U", "${DBWRITE_USER}"]
-      interval: 5s
-      timeout: 1s
-      retries: 2
+      - EVIDSSDOCS_IP=$EVIDSSDOCS_IP
+      - EVIDES_IP=$EVIDES_IP
+      - RESVIEW_IP=$RESVIEW_IP
+      - REDASH_IP=$REDASH_IP
+      - EVIDSS_DOMAINNAME=$EVIDSS_DOMAINNAME
+      - EVIDES_PORT=$EVIDES_PORT
+      - RESVIEW_PORT=$RESVIEW_PORT
   flyway:
     logging:
       driver: awslogs
@@ -30,8 +37,6 @@ services:
     command: -url=jdbc:postgresql://${MAIN_HOST}:${MAIN_PORT}/${MAIN_DB} -schemas=public -user=${DBWRITE_USER} -password=${DBWRITE_PWD} migrate
     volumes:
       - ./database/migrations:/flyway/sql
-    depends_on:
-      - pgdb
     networks:
       - evidssnet    
   evides:
@@ -41,8 +46,6 @@ services:
         awslogs-group: "cp84-evi-dss-mainEC2" 
         awslogs-stream: "evides"
     build: './evides'
-    depends_on: 
-      - pgdb
     ports:
       - '${EVIDES_PORT}:${EVIDES_PORT}'
     networks:
@@ -60,6 +63,7 @@ services:
       - MAIN_HOST=$MAIN_HOST
       - MAIN_PORT=$MAIN_PORT
       - MAIN_DB=$MAIN_DB
+    restart: always
   resview:
     logging:
       driver: awslogs
@@ -67,8 +71,6 @@ services:
         awslogs-group: "cp84-evi-dss-mainEC2" 
         awslogs-stream: "resview"
     build: './resview'
-    depends_on: 
-      - pgdb
     ports:
       - '${RESVIEW_PORT}:${RESVIEW_PORT}'
     networks:
@@ -83,6 +85,7 @@ services:
       - MAIN_HOST=$MAIN_HOST
       - MAIN_PORT=$MAIN_PORT
       - MAIN_DB=$MAIN_DB
+    restart: always
   tripgen:
     logging:
       driver: awslogs
@@ -90,8 +93,6 @@ services:
         awslogs-group: "cp84-evi-dss-mainEC2" 
         awslogs-stream: "tripgen"
     build: './tripgen'
-    depends_on: 
-      - pgdb
     networks:
       - evidssnet
     environment:
@@ -116,7 +117,7 @@ services:
       - '6379:6379'
     networks:
       - evidssnet
-
+    restart: always
   simman:
     logging:
       driver: awslogs
@@ -126,7 +127,6 @@ services:
     build: './simman'
     depends_on:
       - redis
-      - pgdb
     ports:
       - '${SIMMAN_PORT}:${SIMMAN_PORT}'
     networks:
@@ -149,5 +149,7 @@ services:
     command:
       - nodemon
       - index.js
+    restart: always
+
 networks:
   evidssnet: null
