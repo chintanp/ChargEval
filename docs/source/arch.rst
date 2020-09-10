@@ -37,10 +37,19 @@ MVC is a popular architecture for complex applications. The benefit in our case,
 .. warning::
     It would be prudent to note that EVI-DSS currently is not robust to database failure. So, if the database crashes, the processes depending on them are likely to crash or mis-behave. This is high on the wish-list along with reducing execution time for analysis.
 
+System Diagram
+==============
 
+:numref:`evi_dss_sys_diagram` shows the EVI-DSS System Diagram. Using `docker-compose`_ script
 
+.. _evi_dss_sys_diagram: 
+.. figure:: _static/evi_dss_sys_diagram.png
+    :width: 800px
+    :align: center
+    :alt: EVI-DSS System Diagram
+    :figclass: align-center
 
-
+    EVI-DSS System Diagram
 
 
 
