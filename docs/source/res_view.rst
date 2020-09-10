@@ -1,6 +1,8 @@
-==============
-Results Viewer
-==============
+.. _res_view:
+
+========================
+Results Viewer (resview)
+========================
 The user gets an email at the registered email-id when a simulation has been successfully solved. The email contains the link to the Results Viewer. The Results Viewer allows the user to browse through the results of all the simulations that they submitted and have been solved. Being able to view the detailed output of several simulations allows the user to compare the performance of charging station deployment scenarios. The Summary Stats tab shown in :numref:`results_viewer_stats` is the first view to appear on a simulation run datetime selection from the dropdown. This is the time when the simulation was submitted.
 
 .. _results_viewer_stats: 

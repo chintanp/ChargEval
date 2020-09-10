@@ -2,6 +2,7 @@
    sphinx-quickstart on Wed Oct 16 12:00:00 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
+
 ==========================
 EVI-DSS documentation
 ==========================
@@ -25,9 +26,11 @@ The decision to build EVI is a complex one and is dependent on several factors. 
    data_needed
    database
    evi_des
-   res_view
    sim_man
-   deploy
+   trip_gen
+   evi_abm
+   res_view
+
 
 .. _here: https://cp84.shinyapps.io/evi_des/
 .. _Results Viewer here: https://cp84.shinyapps.io/res_view/

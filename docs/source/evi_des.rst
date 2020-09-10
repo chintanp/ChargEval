@@ -1,6 +1,8 @@
-==========================
-EV Infrastructure Designer
-==========================
+.. _evi_des:
+
+===================================
+EV Infrastructure Designer (evides)
+===================================
 
 The EV Infrastructure Designer is the user-interface (UI) for inputting the location, type, count etc. details about the prospective charging stations. After logging in by providing email-id and password, the user is greeted with :numref:`evi_des_home`. 
 

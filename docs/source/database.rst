@@ -1,12 +1,10 @@
-.. _database:
-
-====================
-Database Description
-====================
+========
+Database
+========
 
 Database Overview
 =================
-The script to `create the database is here`_. The scripts to create the `tables, functions and triggers are hosted here`_. The script can be used to create the schema in the database. The database documentation is hosted `here`_. :numref:`evi_dss_sql` shows the various tables and relations in the database. 
+The database is indeed the backbone of the system. The database documentation is hosted `here`_. :numref:`evi_dss_sql` shows the various tables and relations in the database. 
 
 .. _evi_dss_sql: 
 .. figure:: _static/wsdot_evse_sql.png
@@ -25,9 +23,13 @@ Interactive diagram
         <iframe width="1200" src='https://dbdiagram.io/embed/5dabe2ca02e6e93440f26985'> </iframe>
     </div>
 
+Flyway
+======
+`Flyway`_ is used for to perform database migrations. This allows version control on database migration scripts, which is just plain sql. The `migration scripts are located here`_. The containered flyway service can be run when any database schema changes are needed.
+
 Tables
 ======
-The database currently has the following tables: 
+The database currently has the following tables in the public schema: 
 
 #. **analysis_record**: This is the key table in the database. Every time a user submits a request to perform analysis, a record is created in this table. The auto-increment primary key :code:`analysis_id` is used to create a one-to-many relation with several tables - :code:`evtrip_scenarios`, :code:`dest_charger`, :code:`evse_charging_session`, :code:`evse_evs_passed`, :code:`evse_power_draw`, :code:`evse_util`, :code:`ev_stranded`, :code:`ev_finished`, :code:`ev_info`, :code:`od_cd` and :code:`new_evses`. The table also has an associated trigger :code:`notify_new_order` that generates a notification using :code:`pg_notify()`, which can be used by processes listening for a notification. In the case of EVI-DSS, this notification is picked by the controller and an analysis request is queued. More details in the controller.
 
@@ -61,11 +63,7 @@ The database currently has the following tables:
 
     * **evse_power_draw**: This table stores the instantaneous power draw for all EVSEs in the simulation. 
 
-#. **od\***: 
-
-    * **od_sp**: This is a static table and stores the shortest path lengths for all the OD pairs. 
-
-    * **od_cd**: This table stores the "charging distances" for the OD pairs. The "charging distance" for an OD pair is the maximum spacing between charging stations along the route. This is dependent on the charging infrastructure. Based on the "built infrastructure", the charging distances are pre-calculated (will need to be regularly updated) with :code:`analysis_id = -1`. When a new analysis request is submitted, with new proposed charging stations, the charging distances are updated, for routes that are affected by the newly placed charging stations. Hence, we have entries for several OD pairs for a particular :code:`analysis_id`. The charging distances are calculated separately for CHAdeMO (:code:`cd_chademo`) and COMBO (:code:`cd_combo`) charging standards. Further, the table has columns, :code:`cd_chademo_geog` and :code:`cd_combo_geog` that contain the geography of the segment representing the farthest spacing between charging stations. 
+#. **od_sp**: This is a static table and stores the shortest path lengths for all the OD pairs. 
 
 #. **built_evse**: This table represents the charging stations that are built and operational. The charging station information is sourced from AFDC and will need to be updated regularly. 
 
@@ -79,11 +77,17 @@ The database currently has the following tables:
 
 #. **user_details**: This table contains the details about the users logging onto the EVI-DSS. 
 
+Besides the above tables in the public schema, the database also has an "audit" schema, that is responsible for capturing the changes on certain field. This is implemented using the `Audit Trigger`_. For example, when implemented on the :code:`analysis_record` table, the trigger captures when the status of the particular column changes. This way the time taken for a particular step (tripgen, eviabm) can be calculated and monitored over time to deduce performance trends.
+
 Triggers 
 ========
-The only trigger currently in the database is `notify_new_order()`_ on the table :code:`analysis_record` which notifies the listeners that a new record has been added to the table. It also converts the record to JSON and sends it along as a payload. 
 
-More triggers can be added to the database for automatic operation, like auto-deleting the child records when a primary key is deleted, notify when an analysis fails, etc.
+1. :code:`notify_new_order()`: The trigger `notify_new_order()`_ on the table :code:`analysis_record` which notifies the listeners that a new record has been added to the table. It also converts the record to JSON and sends it along as a payload. The listener in the :Ref:`sim_man:Simulation Manager (simman)` upon receiving the notification begins the execution process. The first step is the EC2 instance launch to perform trip generation.
+
+2. :code:`notify_trips_generated()`: The trigger `notify_trips_generated()`_ notifies its listener that the status for the analysis record row has been updated to "trips_generated". Upon this notification the :code:`simman` terminates the :code:`tripgen` EC2 instance and launches another EC2 instance to simulate the agent-based model :code:`eviabm`.
+
+3. :code:`notify_solved()`: The trigger `notify_solved()`_ notifies that the agent-based model has solved and the :code:`simman` then terminates the said EC2 instance.
+
 
 Functions
 =========
@@ -93,9 +97,8 @@ The database has several functions that facilitate code re-use and modularity.
 
 2. **sp_od2(orig, dest)**: The function `sp_od2(orig, dest)`_ takes the origin and destination zip code and returns the geometry of the shortest path using `pgr_dijkstra()`. Of special note is the :code:`case-when-end` clause that ensures a shortest path made of segments in the correct orientation. For details and solution, refer to the `discussion`_. 
 
-.. _create the database is here: https://github.com/chintanp/wsdot_evse_docs/blob/master/create_main_db.sql
-.. _tables, functions and triggers are hosted here: https://github.com/chintanp/wsdot_evse_docs/blob/master/main_create2.sql 
-.. _notify_new_order(): https://github.com/chintanp/wsdot_evse_docs/blob/afdd3f7516e2e8c1ccbd116fa1e8e363001500e4/main_create2.sql#L60
+
+.. _notify_new_order(): https://github.com/chintanp/evi-dss/blob/0a8de620a86907342f6645e18468e37d3b5f47e0/database/migrations/V1__base_version.sql#L26
 .. _sp_len(orig, dest): https://github.com/chintanp/wsdot_evse_docs/blob/afdd3f7516e2e8c1ccbd116fa1e8e363001500e4/main_create2.sql#L77
 .. _pgr_dijkstra(): http://docs.pgrouting.org/3.0/en/pgr_dijkstra.html
 .. _sp_od2(orig, dest): https://github.com/chintanp/wsdot_evse_docs/blob/afdd3f7516e2e8c1ccbd116fa1e8e363001500e4/main_create2.sql#L105
@@ -103,3 +106,8 @@ The database has several functions that facilitate code re-use and modularity.
 .. _clean_network(): https://gama-platform.github.io/wiki/OperatorsBC#clean_network
 .. _explained here: https://gis.stackexchange.com/a/332059/18956
 .. _here: https://dbdocs.io/chintanp/EVI_DSS
+.. _Flyway: https://flywaydb.org/
+.. _migration scripts are located here: https://github.com/chintanp/evi-dss/tree/master/database/migrations
+.. _Audit Trigger: https://wiki.postgresql.org/wiki/Audit_trigger_91plus
+.. _notify_trips_generated: https://github.com/chintanp/evi-dss/blob/0a8de620a86907342f6645e18468e37d3b5f47e0/database/migrations/V4.1.1__tripgen_trigger.sql#L7
+.. _notify_solved: https://github.com/chintanp/evi-dss/blob/master/database/migrations/V6.1.2__solved_trigger.sql

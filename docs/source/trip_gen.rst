@@ -1,6 +1,6 @@
-===============
-Trip Generation
-===============
+=========================
+Trip Generation (tripgen)
+=========================
 
 .. detail the complete algorithm here (from the file generate_evtrip_scenarios.R)
 
