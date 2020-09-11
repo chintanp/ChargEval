@@ -109,5 +109,5 @@ The database has several functions that facilitate code re-use and modularity.
 .. _Flyway: https://flywaydb.org/
 .. _migration scripts are located here: https://github.com/chintanp/evi-dss/tree/master/database/migrations
 .. _Audit Trigger: https://wiki.postgresql.org/wiki/Audit_trigger_91plus
-.. _notify_trips_generated: https://github.com/chintanp/evi-dss/blob/0a8de620a86907342f6645e18468e37d3b5f47e0/database/migrations/V4.1.1__tripgen_trigger.sql#L7
-.. _notify_solved: https://github.com/chintanp/evi-dss/blob/master/database/migrations/V6.1.2__solved_trigger.sql
+.. _notify_trips_generated(): https://github.com/chintanp/evi-dss/blob/0a8de620a86907342f6645e18468e37d3b5f47e0/database/migrations/V4.1.1__tripgen_trigger.sql#L7
+.. _notify_solved(): https://github.com/chintanp/evi-dss/blob/master/database/migrations/V6.1.2__solved_trigger.sql

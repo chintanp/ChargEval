@@ -77,6 +77,20 @@ Services
 
 - :code:`flyway`: This service can be executed to implement database migrations. 
 
+To start a docker container after making a change, use the following command to recreate the container (will take some time to execute):
+
+.. code-block:: bash
+
+   $ docker-compose up -d --build --force-recreate <container-name(s)> 
+
+Replace <container-name(s)> with the name(s) of the docker container you wish to start, for example, :code:`evides`, :code:`nginx` etc. 
+
+To start a stopped container, or start a container without (re)building it, use the following command:
+
+.. code-block:: bash
+
+   $ docker-compose up -d <container-name> 
+
 Observability
 -------------
 
@@ -95,6 +109,8 @@ While no centralized dashboard for monitoring all services was not created, foll
 - pgAdmin: pgAdmin's in-built dashboard allows insight into the database and can be used to see the number of active connections as well as transaction metrics. 
 
 - AWS EC2 Dashboard: The AWS EC2 dashboard provides basic monitoring capabilities on the launched EC2 instances, namely the number and specification of the launched instances as well as coarse system metrics like CPU and memory utilization. 
+
+- ssh: All the EC2 instances have ssh access which means a user can log in and view the system state and debug it as needed. 
 
 Distributed Tracing
 ^^^^^^^^^^^^^^^^^^^

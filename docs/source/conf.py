@@ -18,7 +18,8 @@ extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode', 
-    'sphinx.ext.autosectionlabel'
+    'sphinx.ext.autosectionlabel', 
+    'sphinxcontrib.video'
     ]
 
 autosectionlabel_prefix_document = True

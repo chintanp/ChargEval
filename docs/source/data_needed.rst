@@ -39,6 +39,8 @@ Dynamic Datasets
 
 These datasets should be periodically updated. Currently, this process is manual. The suggested update frequency is explained with the dataset description. 
 
+.. _wa-evses:
+
 WA EVSEs
 --------
 This dataset contains information about the location and specifications including price, plug count and plug type for the various EVSEs in the state of WA. The location, plug type and plug count information is available from `AFDC portal`_. The portal also features a developer API which allows programmtic access to the locations in real-time. The price information provided by AFDC is in a string format ranging from 'Free' for free to use charging stations to more complex pricing schemes like '$2 per hour, minimum payment of $2' and 'Pricing is by session. $2 per session, maximum session time is 24 hours'. This information is hard to process for the Vehicle Choice Decision Model and Charging Choice Decision Model. Further, AFDC does not mention anything about the parking price while charging, which is an additional cost while charging. Hence, a simplistic pricing scheme is assumed for all non-free charging stations, which considers the total charging price (and similarly parking price) to consist of fixed charging price plus a variable charging price, which depends on the time or energy used. To represent this information, six new columns are added in the dataset, namely:
@@ -59,6 +61,8 @@ This dataset aims to capture the variation of gas prices across WA. This dataset
 
 .. warning::
     While originally gasbuddy API was used for harvesting the data for all zip codes across WA, the API is undocumented and unsupported. Therefore, this method of gas price update is not stable and subject to error. A manual audit of harvested data is highly recommended. 
+
+.. _wa-bevs:
 
 WA BEVs
 -------
