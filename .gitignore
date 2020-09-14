@@ -7,3 +7,4 @@ resview/.Renviron
 evides/.Renviron
 shiny_logs/
 ssl/
+redis-data/

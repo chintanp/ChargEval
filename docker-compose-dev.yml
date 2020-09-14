@@ -83,6 +83,8 @@ services:
       - MAILGUN_API_KEY=$MAILGUN_API_KEY
   redis:
     image: 'redis:6.0.6'
+    volumes:
+      - $PWD/redis-data:/var/lib/redis
     ports:
       - '6379:6379'
     networks:

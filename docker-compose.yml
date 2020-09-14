@@ -114,6 +114,8 @@ services:
         awslogs-group: "cp84-evi-dss-mainEC2" 
         awslogs-stream: "redis"
     image: 'redis:6.0.6'
+    volumes:
+      - $PWD/redis-data:/var/lib/redis
     ports:
       - '6379:6379'
     networks:

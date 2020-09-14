@@ -4,7 +4,20 @@
 EV Infrastructure Designer (evides)
 ===================================
 
-The EV Infrastructure Designer is the user-interface (UI) for inputting the location, type, count etc. details about the prospective charging stations. After logging in by providing email-id and password, the user is greeted with :numref:`evi_des_home`. 
+The EV Infrastructure Designer is the user-interface (UI) for inputting the location, type, count etc. details about the prospective charging stations. The video shows a demonstrative use of :code:`evides`. 
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/bBJi0hEugR4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Live Demo
+=========
+`Click here`_ to access the live demo of EVI Designer.
+
+UI Details
+==========
+
+After logging in by providing email-id and password, the user is greeted with :numref:`evi_des_home`. 
 
 .. _evi_des_home: 
 .. figure:: _static/evi_des_home.png
@@ -15,12 +28,6 @@ The EV Infrastructure Designer is the user-interface (UI) for inputting the loca
     
     EV Infrastructure Designer 
 
-Live Demo
-=========
-`Click here`_ to access the live demo of EVI Designer.
-
-UI Details
-==========
 The key elements of the EV Infrastructure Designer are as under:
 
 Washington State DCFC Network 
@@ -35,7 +42,6 @@ The "Washington State DCFC Network" card shows the WSDOT road network overlayed 
     :figclass: align-center
     
     Washington State DCFC Network with overlay
-
 
 Trip Infeasibility
 ******************
@@ -63,7 +69,7 @@ The script for calculating the `trip infeasibility is here`_. The basic algorith
 
 Plotting
 ^^^^^^^^
-The above algorithm resulted in a geometry table with 6000+ rows and size 700 MB+. While this data is not too much for the database, it is pretty large to load on a web-page in a reasonable amount of time. Therefore, the vector dataset was converted to `vector tilesets`_, a `MapBox open specification`_. The following methodlogy was used to generate fast loading map showing this data: 
+The above algorithm resulted in a geometry table with 6000+ rows and size 700 MB+. While this data is not too much for the database, it is pretty large to load on a web-page in a reasonable amount of time. Therefore, the vector dataset was converted to `vector tilesets`_, a `MapBox open specification`_. The following methodology was used to generate a fast loading map showing this data: 
 
 - The geometry table(s) was used to generate the dataset in the GeoJSON format, using a GDAL utility `ogr2ogr`_, like so : 
 
@@ -138,9 +144,10 @@ User Identity
 -------------
 `Auth0`_ is used for user-identity management. It allows for authentication across devices and browsers using custom email/password as well as several external authentication services like Google, Github etc. allowing of easy sign-on. The integration of Auth0 with the R Shiny app was facilitated by the `R package auth0`_ that implements the Auth0 API in R. 
 
-Environment Variables
+
+.. Environment Variables
 ---------------------
-The application depends on several environment variables. A template :code:`.Renviron` file is `here`_. The :code:`AUTH0*` variables allow access to AUTH0. The AFDC API key allows access to the information about charging stations. :code:`MAPBOX_ACCESS_TOKEN` allows access to the MapBox service that is responsible for the map tiles. The variables :code:`MAIN*` are related to the database. The database environment variables have to be consistent across the EV Infrastructure Designer, Results Viewer and Simulation Manager, so they all access the same database.
+The application depends on several environment variables. A template :code:`.Renviron` file is `here`_. The :code:`AUTH0*` variables allow access to AUTH0. The AFDC API key allows access to the information about charging stations. :code:`MAPBOX_ACCESS_TOKEN` allows access to the MapBox service that is responsible for the map tiles. The variables :code:`MAIN*` are related to the database. The database environment variables have to be consistent across the EV Infrastructure Designer, Results Viewer and Simulation Manager, so they all access the same database. 
 
 .. _ev_infrastructure_designer: https://github.com/chintanp/ev_infrastructure_designer
 .. _Auth0: https://auth0.com/
