@@ -9,6 +9,10 @@
     server ${RESVIEW_IP}:${RESVIEW_PORT};
   }
 
+  upstream grafana {
+    server 127.0.0.1:${GRAFANA_PORT};
+  }
+
   server {
     listen 80;
     server_name ${EVIDSS_DOMAINNAME};
@@ -27,8 +31,8 @@
     ssl_prefer_server_ciphers on;
     ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-RSA-RC4-SHA:ECDHE-ECDSA-RC4-SHA:AES128:AES256:RC4-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK;
 
-    access_log /var/log/nginx/data-access.log combined;
-    error_log /var/log/nginx/error.log debug;
+    # access_log /var/log/nginx/data-access.log combined;
+    # error_log /var/log/nginx/error.log debug;
 
     client_body_buffer_size 1m;
     proxy_http_version 1.1;
@@ -39,6 +43,10 @@
      
     location ~ ^/redash(?:/(.*))?$ {
       return 301 http://${REDASH_IP}/;
+    }
+
+    location ~ ^/grafana(?:/(.*))?$ {
+      return 301 http://${GRAFANA_HOST}:${GRAFANA_PORT};
     }
  
     location /evides/ {

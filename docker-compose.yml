@@ -27,6 +27,8 @@ services:
       - EVIDSS_DOMAINNAME=$EVIDSS_DOMAINNAME
       - EVIDES_PORT=$EVIDES_PORT
       - RESVIEW_PORT=$RESVIEW_PORT
+      - GRAFANA_PORT=$GRAFANA_PORT
+      - GRAFANA_HOST=$GRAFANA_HOST
   flyway:
     logging:
       driver: awslogs
