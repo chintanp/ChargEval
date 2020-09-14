@@ -91,6 +91,14 @@ To start a stopped container, or start a container without (re)building it, use 
 
    $ docker-compose up -d <container-name> 
 
+To log into a specific container for debugging etc. use the following command: 
+
+.. code-block:: bash
+
+   $ docker exec -it <container-id> /bin/bash 
+
+
+
 Observability
 -------------
 

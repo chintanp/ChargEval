@@ -2,7 +2,15 @@
 EV Infrastructure Agent-based Model (eviabm)
 ============================================
 
+Organization of the Model
+=========================
 
+Agent-based model in GAMA follows the object-oriented design to the core. All GAMA objects inherit from the :code:`model` object which is defined in the first line of any model. Other objects in the simulation are:
+
+Global 
+------
+
+The :code:`global` species (class)
 
 
 .. warning::

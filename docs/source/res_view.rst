@@ -67,56 +67,51 @@ Besides the stats, the tab also shows the graphs of:
 .. figure:: _static/resview_summary_stats.png
     :width: 800px
     :align: center
-    :alt: Results Viewer 
+    :alt: Results Viewer Summary Stats
     :figclass: align-center
     
     Results Viewer - Summary Stats Tab 
 
-Finished
---------
-The `Finished` tab allows one to look at the trajectory of the EVs for all the OD pairs that finished their trip. :numref:`results_viewer_finished` shows the trajectory of an OD pair based on selection from the origin and destination dropdown on the right. Besides the origin and destination, hte map shows the path taken by the EV using green dots. These dots represent the EV location at every timestep of the trip. Upon clicking a green dot the popup shows the EV info, from the :code:`ev_info` table, which includes the SOC, probability of charging, state etc. This can help debugging the underlying agent-based model and charging choice decision model. The trajectory also shows the charging stops made along the route (popups marked as 1, 2 and 3 in the path). 
+BEVs
+----
 
-.. _results_viewer_finished: 
-.. figure:: _static/results_viewer_finished.PNG
+The BEVs tab shows the detailed informatiion about EVs in our simulation. The components in the BEVs tab include the following:
+
+- **List of EVs**: This table contains columns specifying the trip details like origin, destination and trip start time as well as vehicle specific details like the vehicle id, city and county of registration, model year, make, range, capacity etc. The table can be searched and filtered on any of the columns, so it is very easy to say look up EVs from a particular zip code, or particular make etc. Clicking on a row in the table shows the trajectory of the EV on its journey from origin zip to the destination zip on the "EV trajectory" map. 
+
+- **EV trajectory**: The adjoining card, EV trajectory, shows the charging stations on the map in toggleable layers, i.e. CHAdeMO and Combo can be both selected or one or none. It also shows the new charging stations in the simulation. When a row in the "List of EVs" table is clicked, the trajectory is shown on the map as points. The points represent the location of the EV as recorded in the database, at every timestep (1 minute at the time of this writing). Moving the mouse over the trajectory markers shows a popup with the EV states at the instant. This is helpful in debugging the simulation, as well as understanding the exact path taken by the EV during the trip. The trajectory also shows the various charging stops made by the EV during the trip. 
+
+- **EV Trajectory Info**: The EV Trajectory Info table shows the EV states in a table at each timestep, for the clicked row in the "list of EVs" table. 
+
+.. _results_viewer_bevs: 
+.. figure:: _static/resview_bevs.png
     :width: 800px
     :align: center
-    :alt: Results Viewer Finished Tab
+    :alt: Results Viewer BEVs
     :figclass: align-center
     
-    Results Viewer - Finished Tab 
+    Results Viewer - BEVs Tab 
 
-EVSE Utilization
-----------------
-The `EVSE Utilization` tab shows the WA road network with the charging stations simulated, as built and newly proposed (marked as new) as be seen in the :numref:`results_viewer_evse_util`. 
+EVSEs
+-----
 
-.. _results_viewer_evse_util: 
-.. figure:: _static/results_viewer_evse_util.PNG
+The EVSEs tab shows the details about all the EVSE agents in the simulations. The tab has the following components:
+
+- **List of DCFCs**: This table lists all the vital information related to the EVSEs including the EVSE id, the number of fast charging plugs, connector_code (whether CHAdeMO or Combo or both), the number of EVSEs served and number of EVSEs waited etc. The table can searched and filtered for any of the columns and the table can be exported to a csv or printed. Clicking on a row of the table, displays the relevant charging and waiting sessions in the adjoining table, and shows marker at the location of the charger in the "EVSE Utilization Details" map below.  
+
+- **Charging Sessions / Waiting Sessions**: This card shows two tabs, namely charging sessions and waiting sessions. These are populated when the user clicks a certain row in the "List of DCFCs" table. Each row representing a charging session, shows the time of start and end as well as well as the vehicle id and starting and ending SOC of the charged vehicle.  Waiting sessions tab shows the waiting start and end time, as well as the vehicle ID and SOC of the waiting vehicle.
+
+- **EVSE Utilization Details**: The map shows markers at the locations of charging stations, separating the newly proposed one. The chargers are overlaid with circles indicating the number of vehicles served and number of vehicle waited. On clicking a particular charging station, a popup modal shows the power draw profile as well as the total energy consumption for the charging station. The overlay circles and profile can be filtered for a particular time interval by using the "Start and End Time Selector" slider. The overlaid circle layers can be toggled between waiting and serving by the corresponding radio buttons on the left. 
+
+.. _results_viewer_evses: 
+.. figure:: _static/resview_evses.png
     :width: 800px
     :align: center
-    :alt: Results Viewer EVSE Utilization
+    :alt: Results Viewer EVSEs
     :figclass: align-center
     
-    Results Viewer - EVSE Utilization Tab 
+    Results Viewer - EVSEs Tab 
 
-The user can select the time window from the slider on the right and click on any charging station (new and as-built) to view the utilization. :numref:`results_viewer_evse_util_modal` shows the utilization for the 
-new proposed charging station for the time window selected. The table shows the predicted EVSE energy utilization in the simulated day, the number of Combo and Chademo plugs, as well the number of EVs served and EVs passed.
-
-.. _results_viewer_evse_util_modal: 
-.. figure:: _static/results_viewer_evse_util_modal.PNG
-    :width: 800px
-    :align: center
-    :alt: Results Viewer EVSE Utilization Modal
-    :figclass: align-center
-    
-    Results Viewer - EVSE Utilization Modal
-
-EVSE Served/Waited
-------------------
-The `EVSE Served/Waited` tab shows the an overlay over the charging stations indicating the number of EVs served/waited. This allows for quick location of charging stations where the utilization is high and/or the charging stations where number of EVs waited is high. These charging stations can then be seen in detail using the `EVSE Utilization` tab to determine the time, and type of deficiency. 
-
-Stranded
---------
-The `Stranded` tab is similar to the `Finished` tab - only it shows the vehicles that were stranded during the trip - i.e. they were out of charge.
 
 Implementation Details
 ======================
@@ -124,12 +119,11 @@ The code for the Results Viewer is hosted `here`_. The Results Viewer is a R Shi
 
 Redash
 ======
-`Redash`_ is a browser-based data analysis and visualization tool that help comparing the results. We can add our database as the datasource in Redash and write parameterized SQL queries that help us compare the results across simulations. An example can be seen in the video below. Redash can be used as a paid online service or using a `free and open-source self-hosted deployment`_. 
+`Redash`_ is a browser-based data analysis and visualization tool that can help with comparing the results. We can add our database as the datasource in Redash and write parameterized SQL queries that help us compare the results across simulations. An example can be seen in the video below. Redash can be used as a paid online service or using a `free and open-source self-hosted deployment`_. 
 
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/8ud7pJlq8H4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 
 .. _here: https://github.com/chintanp/wsdot_evse_results_viewer
 .. _Click here: https://cp84.shinyapps.io/res_view/
