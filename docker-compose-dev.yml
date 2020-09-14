@@ -1,11 +1,6 @@
 version: '3'
 services:
   nginx:
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: "cp84-evi-dss-mainEC2"
-        awslogs-stream: "nginx"
     image: nginx:1.19.2
     restart: always
     ports:
@@ -28,11 +23,6 @@ services:
       - EVIDES_PORT=$EVIDES_PORT
       - RESVIEW_PORT=$RESVIEW_PORT
   flyway:
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: "cp84-evi-dss-mainEC2"
-        awslogs-stream: "flyway"
     image: flyway/flyway
     command: -url=jdbc:postgresql://${MAIN_HOST}:${MAIN_PORT}/${MAIN_DB} -schemas=public -user=${DBWRITE_USER} -password=${DBWRITE_PWD} migrate
     volumes:
@@ -40,11 +30,6 @@ services:
     networks:
       - evidssnet    
   evides:
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: "cp84-evi-dss-mainEC2" 
-        awslogs-stream: "evides"
     build: './evides'
     ports:
       - '${EVIDES_PORT}:${EVIDES_PORT}'
@@ -65,12 +50,6 @@ services:
       - MAIN_DB=$MAIN_DB
     restart: always
   resview:
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: "cp84-evi-dss-mainEC2" 
-        awslogs-stream: "resview"
-        awslogs-region: us-west-2
     build: './resview'
     ports:
       - '${RESVIEW_PORT}:${RESVIEW_PORT}'
@@ -88,11 +67,6 @@ services:
       - MAIN_DB=$MAIN_DB
     restart: always
   tripgen:
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: "cp84-evi-dss-mainEC2" 
-        awslogs-stream: "tripgen"
     build: './tripgen'
     networks:
       - evidssnet
@@ -108,11 +82,6 @@ services:
       - SOCRATA_APP_TOKEN=$SOCRATA_APP_TOKEN
       - MAILGUN_API_KEY=$MAILGUN_API_KEY
   redis:
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: "cp84-evi-dss-mainEC2" 
-        awslogs-stream: "redis"
     image: 'redis:6.0.6'
     ports:
       - '6379:6379'
@@ -120,11 +89,6 @@ services:
       - evidssnet
     restart: always
   simman:
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: "cp84-evi-dss-mainEC2" 
-        awslogs-stream: "simman"
     build: './simman'
     depends_on:
       - redis
