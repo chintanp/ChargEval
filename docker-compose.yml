@@ -151,6 +151,7 @@ services:
       - EC_R_AMI_ID=$EC_R_AMI_ID
       - IAM_INSTANCE_PROFILE_ARN=$IAM_INSTANCE_PROFILE_ARN
       - EC_GAMA_AMI_ID=$EC_GAMA_AMI_ID
+      - RESVIEW_HOST=$RESVIEW_HOST
     command:
       - nodemon
       - index.js
