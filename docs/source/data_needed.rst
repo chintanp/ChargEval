@@ -19,6 +19,7 @@ The WA State road network is used to simulate road travel. The road network was 
 
 Shortest Paths
 --------------
+The shortest path between an origin and destination zip was calculated using the function :code:`sp_len()` which utilizes the pgRouting function :code:`pgr_dijkstra()`. The shortest path lengths are used in the trip generation process, for calculating the utility of travel in different modes. 
 
 Zipcode Details
 ---------------
@@ -62,6 +63,8 @@ This dataset aims to capture the variation of gas prices across WA. This dataset
 .. warning::
     While originally gasbuddy API was used for harvesting the data for all zip codes across WA, the API is undocumented and unsupported. Therefore, this method of gas price update is not stable and subject to error. A manual audit of harvested data is highly recommended. 
 
+The gas prices are needed for the trip generation stage, specifically for calculating the vehicle choice, in calculating the utility of own ICE vehicle and rental ICE travel. The cost of gas is assumed same for personal ICE and rental ICE.
+
 .. _wa-bevs:
 
 WA BEVs
@@ -76,6 +79,58 @@ Further, a connector code of 4 is assigned to Tesla vehicles. A connector code o
 
 .. note::
     This step of encoding vehicles charging type (whether DC fast, charging power and charging standard) is manual since no free database was found that presents this information. 
+
+Maximum Spacing Between Charging Stations Along a Route
+-------------------------------------------------------
+
+The maximum spacing is dependent on the type of charger, i.e. CHAdeMO, Combo or Tesla. This value changes if new chargers are added.  Following algorithm is used in the `get_max_spacing()`_ implementation: 
+
+- A table is created that contains the EVSEs for simulation that includes the build EVSEs as well as the proposed EVSEs. 
+
+- EVSEs are selected that are within, a certain distance (10 miles) from the route (shortest path between origin and destination zip).
+
+- Ratio of points that are closest to the said charging stations along the route are found using PostGIS function :code:`ST_LineLocatePoint()`. 
+
+- The ratios are sorted, and ratios with maximum consecutive difference are found. 
+
+- The difference in ratios multiplied with the length of the route, gives the max spacing of charging stations for the route, for the particular charging station deployment scenario. 
+
+This data is needed in trip generation, for calculating the utility of using an EV during a trip. As more chargers are added, the maximum spacing can go down for certain routes. 
+
+Restaurant Availability
+-----------------------
+
+This boolean keeps a record of availability of restaurant at the site of charging station and is currently kept constant at 1 (meaning restaurant is available). It is used in the trip generation to calculate the utility of EV for the trip.
+
+Cost of a Rental Car 
+--------------------
+
+Currently, this is kept fixed at $50 (per day). This is needed in trip generation, for calculating the utility of using a rental car for the trip. 
+
+Fuel Economy of Rental Car
+--------------------------
+
+Currently, this is kept fixed at 25 (miles per gallon). This is needed in trip generation, for calculating the utility of using a rental car for the trip. 
+
+Fuel Economy of Personally Owned ICE Car
+----------------------------------------
+
+Currently, this is kept fixed at 23 (miles per gallon). This is needed in trip generation, for calculating the utility of using own ICE car for the trip. 
+
+Restroom Spacing Along the Route
+--------------------------------
+
+Currently, this is kept fixed at 20 (miles). This is needed in trip generation, for calculating the utility of using an EV for the trip. 
+
+Destination Charger (L2 and Fast)
+---------------------------------
+
+This boolen value captures whether there is a charge station at the destination. This dataset is captured in the table :code:`dest_charger` of the database. This table contains a row for each zip code with values whether a destination charger exists within 10 miles of the destination zip. Further, this table is updated with new rows for each simulation request based consider the additional charging stations. This is needed for trip generation. 
+
+Amenity (restroom and more) at Charging Station
+-----------------------------------------------
+
+These variables (amenity-restroom, and amenity-more) are booleans that capture the extent of amenities at the charging station. Amenity-more refers to the availability of restaurant (and Wifi) at the site. Currently, both these are kept constant at 1 for all charging stations. 
 
 WA EV Trips
 -----------
@@ -94,3 +149,4 @@ TBD
 .. _CHAdeMO: https://en.wikipedia.org/wiki/CHAdeMO
 .. _CCS: https://en.wikipedia.org/wiki/Combined_Charging_System
 .. _AFDC portal: https://afdc.energy.gov/fuels/electricity_locations.html#/find/nearest?fuel=ELEC
+.. _get_max_spacing(): https://github.com/chintanp/wsdot_evse_update_states/blob/c2d4b2d8224dfd1996922ccd018ce7991889e2b1/R/generate_evtrip_scenarios.R#L528

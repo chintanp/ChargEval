@@ -93,15 +93,17 @@ Functions
 =========
 The database has several functions that facilitate code re-use and modularity. 
 
+.. _splen:
+
 1. **sp_len(orig, dest)**: The function `sp_len(orig, dest)`_ takes the origin zip code and destination zip code as arguments and returns the shortest path length in miles between the origin and destination along the WA state road network. The shortest path is calculated using `pgr_dijkstra()`_ between the :code:`WA_roads` source vertices closest to the origin and destination zip centroids (from the :code:`zipcode_record` table)
 
 2. **sp_od2(orig, dest)**: The function `sp_od2(orig, dest)`_ takes the origin and destination zip code and returns the geometry of the shortest path using `pgr_dijkstra()`. Of special note is the :code:`case-when-end` clause that ensures a shortest path made of segments in the correct orientation. For details and solution, refer to the `discussion`_. 
 
 
 .. _notify_new_order(): https://github.com/chintanp/evi-dss/blob/0a8de620a86907342f6645e18468e37d3b5f47e0/database/migrations/V1__base_version.sql#L26
-.. _sp_len(orig, dest): https://github.com/chintanp/wsdot_evse_docs/blob/afdd3f7516e2e8c1ccbd116fa1e8e363001500e4/main_create2.sql#L77
+.. _sp_len(orig, dest): https://github.com/chintanp/evi-dss/blob/2aae33d0599b0fcb2fa45e807901e59132a3ec91/database/migrations/V1__base_version.sql#L41
 .. _pgr_dijkstra(): http://docs.pgrouting.org/3.0/en/pgr_dijkstra.html
-.. _sp_od2(orig, dest): https://github.com/chintanp/wsdot_evse_docs/blob/afdd3f7516e2e8c1ccbd116fa1e8e363001500e4/main_create2.sql#L105
+.. _sp_od2(orig, dest): https://github.com/chintanp/evi-dss/blob/2aae33d0599b0fcb2fa45e807901e59132a3ec91/database/migrations/V1__base_version.sql#L67
 .. _discussion: https://gis.stackexchange.com/questions/334302/pgr-dijkstra-gives-wacky-routes-sometimes-with-undirected-graph
 .. _clean_network(): https://gama-platform.github.io/wiki/OperatorsBC#clean_network
 .. _explained here: https://gis.stackexchange.com/a/332059/18956

@@ -53,13 +53,13 @@ System Diagram
 
 
 Deployment
-----------
+==========
 
-EVI-DSS is planned to be deployed on an AWS EC2 instance using :code:`docker-compose`. The docker-compose `script is located here`_. It is suggested that the script be launched in an instance of type t3a.medium (2 vCPUs, 4 GB RAM) or larger. 
+EVI-DSS can be readily deployed on an AWS EC2 instance using :code:`docker-compose`. The docker-compose `script is located here`_. It is suggested that the script be launched in an instance of type t3a.medium (2 vCPUs, 4 GB RAM) or larger. 
 
 
 Services
-^^^^^^^^
+--------
 
 - :code:`nginx`: The Nginx webserver is used as a reverse proxy for the R Shiny applications :code:`evides` and :code:`resview`. 
 
@@ -97,6 +97,9 @@ To log into a specific container for debugging etc. use the following command:
 
    $ docker exec -it <container-id> /bin/bash 
 
+.. AWS-Specific Settings
+    ^^^^^^^^^^^^^^^^^^^^^
+    Talk about the IAM policies.
 
 
 Observability
@@ -110,7 +113,16 @@ EVI-DSS uses AWS CloudWatch as centralized log destination for all systems. Logs
 
 Monitoring
 ^^^^^^^^^^
-While no centralized dashboard for monitoring all services was not created, following tools are used in combination to monitor the various services in the application:
+- AWS CloudWatch Dashboard - :numref:`evi_dss_sys_diagram` shows the EVI-DSS CloudWatch Dashboard. The dashboard shows the plot of average CPU utilization of the main EC2 instance, status of alarms, plot of database metrics like CPU utilization, number of database connections, free storage space, as well as logs from :code:`evides`, :code:`nginx` and :code:`simman`. 
+
+.. _evi_dss_cw_dashboard: 
+.. figure:: _static/evidss_cw_dashboard.png
+    :width: 800px
+    :align: center
+    :alt: EVI-DSS CloudWatch Dashboard
+    :figclass: align-center
+
+    EVI-DSS CloudWatch Dashboard
 
 - dockprom: `dockprom`_ gives fine grained statistics for all the docker containers on the system. 
 

@@ -99,7 +99,7 @@ services:
     networks:
       - evidssnet
     volumes:
-      - $HOME/.aws/credentials:/home/app/.aws/credentials:ro
+      - $HOME/.aws/:/home/app/.aws/:ro
     environment:
       - SIMMAN_PORT=$SIMMAN_PORT
       - REDIS_HOST=$REDIS_HOST
@@ -113,6 +113,10 @@ services:
       - EC_R_AMI_ID=$EC_R_AMI_ID
       - IAM_INSTANCE_PROFILE_ARN=$IAM_INSTANCE_PROFILE_ARN
       - EC_GAMA_AMI_ID=$EC_GAMA_AMI_ID
+      - RESVIEW_HOST=$RESVIEW_HOST
+      - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+      - AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION
     command:
       - nodemon
       - index.js
