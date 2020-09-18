@@ -74,6 +74,8 @@ EV Infrastructure Agent-based Model (eviabm), is an agent-based model for modeli
 
 3.	**Time**: A single simulation runs for 24 hours in 1-minute time-steps. This means that we simulate EV travel around the state for a period of one day at a time and update the states of our agents each minute. 
 
+.. _ccdm:
+
 Charging Choice Decision Model
 ------------------------------
 
