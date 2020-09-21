@@ -34,12 +34,12 @@ Benefits of MVC Architecture
 ============================
 MVC is a popular architecture for complex applications. The benefit in our case, is that we can deploy all the component applications of EVI-DSS namely the database, the EV Infrastructure Designer, the Results Viewer and Simuilation Manager on one machine, or we can deploy it across several machines allowing to scale the application as needed. Modular nature of EVI-DSS allows us to maintain the application with ease, and a develop can work on one component without affecting the others. This also makes deployment easier, as the components can all be containerized. 
 
-.. warning::
+.. .. warning::
     It would be prudent to note that EVI-DSS currently is not robust to database failure. So, if the database crashes, the processes depending on them are likely to crash or mis-behave. This is high on the wish-list along with reducing execution time for analysis.
 
 System Diagram
 ==============
-
+    
 :numref:`evi_dss_sys_diagram` shows the EVI-DSS System Diagram. 
 
 .. _evi_dss_sys_diagram: 
@@ -51,11 +51,14 @@ System Diagram
 
     EVI-DSS System Diagram
 
+.. Design Motivation
+-----------------
+
 
 Deployment
 ==========
 
-EVI-DSS can be readily deployed on an AWS EC2 instance using :code:`docker-compose`. The docker-compose `script is located here`_. It is suggested that the script be launched in an instance of type t3a.medium (2 vCPUs, 4 GB RAM) or larger. 
+EVI-DSS can be readily deployed on an AWS EC2 instance using :code:`docker-compose`. The docker-compose `script is located here`_. 
 
 
 Services
@@ -97,9 +100,14 @@ To log into a specific container for debugging etc. use the following command:
 
    $ docker exec -it <container-id> /bin/bash 
 
-.. AWS-Specific Settings
-    ^^^^^^^^^^^^^^^^^^^^^
-    Talk about the IAM policies.
+AWS-Specific Settings
+^^^^^^^^^^^^^^^^^^^^^
+
+It is suggested that the script be launched in an instance of type t3a.medium (2 vCPUs, 4 GB RAM) or larger. Other AWS-sepcific settings include:
+
+- **IAM Policies**: The EC2 instance with the docker-stack needs the following permissions:
+  
+  * Create EC2 Instances: THis can be achieved by attaching an IAM policy shown below:
 
 
 Observability
