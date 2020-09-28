@@ -93,6 +93,21 @@ The BEVs tab shows the detailed informatiion about EVs in our simulation. The co
     
     Results Viewer - BEVs Tab 
 
+EVs Stranded
+^^^^^^^^^^^^
+
+The red circle markers on the map show the location of the stranded EVs. To view the OD pair that caused this, click on the marker. The exact EV can be found by filtering the "List of EVs" table as shown in :numref:`results_viewer_ev_stranded1`. This EV is stranded because it is out of charge along a route with no charging stations. While the fact that there are no charging stations along the route was known apriori and should have prevented this vehicle trip in the VCDM, this trip went through because the EV could have made the trip to the destination on full charge but could not with 94% SOC, an SOC assigned randomnly between 80-100% during the last stage of VCDM (likely SOCs in EVs). 
+
+.. _results_viewer_ev_stranded1: 
+.. figure:: _static/ev_stranded1.png
+    :width: 800px
+    :align: center
+    :alt: Results Viewer EV Stranded - 1
+    :figclass: align-center
+    
+    Results Viewer EV Stranded - 1 
+
+
 EVSEs
 -----
 

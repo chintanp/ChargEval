@@ -52,7 +52,7 @@ System Diagram
     EVI-DSS System Diagram
 
 .. Design Motivation
------------------
+   -----------------
 
 
 Deployment
@@ -88,7 +88,7 @@ To start a docker container after making a change, use the following command to 
 
 Replace <container-name(s)> with the name(s) of the docker container you wish to start, for example, :code:`evides`, :code:`nginx` etc. 
 
-To start a stopped container, or start a container without (re)building it, use the following command:
+To start a stopped container, or restart a container without re-building it, but update environment variables, use the following command:
 
 .. code-block:: bash
 
@@ -105,10 +105,79 @@ AWS-Specific Settings
 
 It is suggested that the script be launched in an instance of type t3a.medium (2 vCPUs, 4 GB RAM) or larger. Other AWS-sepcific settings include:
 
-- **IAM Policies**: The EC2 instance with the docker-stack needs the following permissions:
-  
-  * Create EC2 Instances: THis can be achieved by attaching an IAM policy shown below:
+- **IAM Policies**: A new IAM role can be created by attaching the following policies to the EC2 instance with the docker-stack:
+    
+  * Send logs to CloudWatch: To be able to send logs from the instance using the `AWS CloudWatch agent`_, attach the pre-existing IAM policy: :code:`CloudWatchAgentServerPolicy`.
 
+  * Send emails using Amazon SES: To be able to send emails using the Amazon Simple Email Service (SES), attach the pre-existing policy: :code:`AmazonSESFullAccess`.
+
+  * Create EC2 Instances (of certains types only): This can be achieved by attaching an IAM policy like one shown below (`detailed explanation`_):
+
+.. code-block:: json
+
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:Describe*",
+                "ec2:GetConsole*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:TerminateInstances",
+                "ec2:DeleteTags",
+                "ec2:CreateTags",
+                "ec2:RunInstances",
+                "ec2:StopInstances"
+            ],
+            "Resource": [
+                "arn:aws:ec2:*:*:key-pair/*",
+                "arn:aws:ec2:*:*:instance/*",
+                "arn:aws:ec2:*:*:subnet/*",
+                "arn:aws:ec2:*:*:volume/*",
+                "arn:aws:ec2:*:*:security-group/*",
+                "arn:aws:ec2:*:*:network-interface/*",
+                "arn:aws:ec2:*::image/*"
+            ]
+        },
+        {
+            "Sid": "VisualEditor2",
+            "Effect": "Deny",
+            "Action": "ec2:RunInstances",
+            "Resource": [
+                "arn:aws:ec2:*:*:subnet/*",
+                "arn:aws:ec2:*:*:instance/*",
+                "arn:aws:ec2:*:*:volume/*",
+                "arn:aws:ec2:*:*:security-group/*",
+                "arn:aws:ec2:*:*:network-interface/*",
+                "arn:aws:ec2:*::image/*"
+            ],
+            "Condition": {
+                "ForAnyValue:StringNotLike": {
+                    "ec2:InstanceType": [
+                        "t2.nano",
+                        "t2.small",
+                        "t2.micro",
+                        "t2.medium",
+                        "t2.large"
+                    ]
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iam:PassRole",
+            "Resource": "*"
+        }
+    ]
+  }
 
 Observability
 -------------
@@ -117,7 +186,24 @@ Observability is the capability to be aware of the system and take quick remedia
 
 Logging
 ^^^^^^^
-EVI-DSS uses AWS CloudWatch as centralized log destination for all systems. Logs are sent from docker containers (evides, simman, resview, redis, nginx, flyway, tripgen) as well as from the launched EC2 instances tripgen and eviabm. Using a centralized log destination allows for log persistance and long term analytical capabilities.
+EVI-DSS uses AWS CloudWatch as centralized log destination for all systems. Logs are sent from docker containers (evides, simman, resview, redis, nginx, flyway, tripgen) as well as from the launched EC2 instances tripgen and eviabm. Using a centralized log destination allows for log persistance and long term analytical capabilities. The :code:`tripgen` logging allows for debugging, using queries. For example, the query below shows results in the log entry for origin = 98108, and destination = 98624, shown in :numref:`cw_insight_odtripgen`.The factors that affect the vehicle choice can be examined to verify their validity. 
+
+.. code-block:: sql
+
+  fields @timestamp, @message
+  | sort @timestamp desc
+  | filter @@fields.origin_zip = '98108'
+  | filter @@fields.destination_zip = '98624'
+  | limit 20
+
+.. _cw_insight_odtripgen: 
+.. figure:: _static/cw_insight_odtripgen.png
+    :width: 800px
+    :align: center
+    :alt: CloudWatch Logs Insight Example 
+    :figclass: align-center
+
+    CloudWatch Logs Insight Example
 
 Monitoring
 ^^^^^^^^^^
@@ -149,3 +235,5 @@ Currently, no instrumentation exists in the system that directly shows the trace
 .. _PostgreSQL: https://www.postgresql.org/about/news/1976/
 .. _PostGIS: https://postgis.net/2019/07/01/postgis-3.0.0alpha3/
 .. _pgRouting: https://docs.pgrouting.org/latest/en/index.html
+.. _detailed explanation: https://github.com/chintanp/cloudsecurity/blob/master/AWS/Guides/limiting_ec2_instance_types.md
+.. _AWS CloudWatch agent: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html
