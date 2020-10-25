@@ -44,7 +44,7 @@ html_sidebars = {
    '**': ['globaltoc.html']
 }
 html_favicon = '_static/favicon.ico'
-html_logo = '_static/logo3.png'
+html_logo = '_static/logo3c.png'
 
 html_theme = 'sphinx_materialdesign_theme'
 html_theme_path = ['../']
@@ -64,7 +64,7 @@ html_theme_options = {
     # https://material.io/icons/
     'header_links' : [
        ('Home', 'index', False, 'home'),
-       ("GitHub", " https://github.com/chintanp/evi-dss", True, 'link')
+       ("GitHub", " https://github.com/chintanp/chargeval", True, 'link')
     ],
 
     # Customize css colors.
