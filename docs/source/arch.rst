@@ -2,17 +2,17 @@
 System Architecture
 ===================
 
-EVI-DSS is based on the model-view-controller (MVC) architecture. In the MVC architecture, the model represents the data, the view refers to the interface(s) exposed to the user and the controller handles the user requests. The architecture of EVI-DSS is as shown in :numref:`evi_dss_arch`.
+ChargEval is based on the model-view-controller (MVC) architecture. In the MVC architecture, the model represents the data, the view refers to the interface(s) exposed to the user and the controller handles the user requests. The architecture of ChargEval is as shown in :numref:`evi_dss_arch`.
 
  
 .. _evi_dss_arch: 
 .. figure:: _static/wsdot_evse_arch.jpg
     :width: 800px
     :align: center
-    :alt: EVI-DSS System Architecture
+    :alt: ChargEval System Architecture
     :figclass: align-center
 
-    EVI-DSS System Architecture
+    ChargEval System Architecture
 	
 Model
 =====
@@ -22,34 +22,34 @@ Read :ref:`database:Database` for details about the database.
 
 View
 ====
-The view refers to the interface exposed to the users of EVI-DSS. The users interact with the views. EVI-DSS has two views - the :ref:`evi_des:EV Infrastructure Designer (evides)` can be used to select the locations of prospective charging stations and configure the details for the charging stations placed; and the :ref:`res_view:Results Viewer (resview)` can be used to view to the results of the simulation for the current EV infrastructure, which is the combination of built as well as proposed charging stations. 
+The view refers to the interface exposed to the users of ChargEval. The users interact with the views. ChargEval has two views - the :ref:`evi_des:EV Infrastructure Designer (evides)` can be used to select the locations of prospective charging stations and configure the details for the charging stations placed; and the :ref:`res_view:Results Viewer (resview)` can be used to view to the results of the simulation for the current EV infrastructure, which is the combination of built as well as proposed charging stations. 
 
 Controller
 ==========
-The controller is the application that manages the execution of a simulation process when a new analysis request is made. Due to the multi-user nature of EVI-DSS, many users may simultaneously submit analysis execution requests. The controller queues the analysis requests and allocates the available resources. 
+The controller is the application that manages the execution of a simulation process when a new analysis request is made. Due to the multi-user nature of ChargEval, many users may simultaneously submit analysis execution requests. The controller queues the analysis requests and allocates the available resources. 
 
 Read :ref:`sim_man:Simulation Manager (simman)` for more details about the controller. 
 
 Benefits of MVC Architecture
 ============================
-MVC is a popular architecture for complex applications. The benefit in our case, is that we can deploy all the component applications of EVI-DSS namely the database, the EV Infrastructure Designer, the Results Viewer and Simuilation Manager on one machine, or we can deploy it across several machines allowing to scale the application as needed. Modular nature of EVI-DSS allows us to maintain the application with ease, and a develop can work on one component without affecting the others. This also makes deployment easier, as the components can all be containerized. 
+MVC is a popular architecture for complex applications. The benefit in our case, is that we can deploy all the component applications of ChargEval namely the database, the EV Infrastructure Designer, the Results Viewer and Simuilation Manager on one machine, or we can deploy it across several machines allowing to scale the application as needed. Modular nature of ChargEval allows us to maintain the application with ease, and a develop can work on one component without affecting the others. This also makes deployment easier, as the components can all be containerized. 
 
 .. .. warning::
-    It would be prudent to note that EVI-DSS currently is not robust to database failure. So, if the database crashes, the processes depending on them are likely to crash or mis-behave. This is high on the wish-list along with reducing execution time for analysis.
+    It would be prudent to note that ChargEval currently is not robust to database failure. So, if the database crashes, the processes depending on them are likely to crash or mis-behave. This is high on the wish-list along with reducing execution time for analysis.
 
 System Diagram
 ==============
     
-:numref:`evi_dss_sys_diagram` shows the EVI-DSS System Diagram. 
+:numref:`evi_dss_sys_diagram` shows the ChargEval System Diagram. 
 
 .. _evi_dss_sys_diagram: 
 .. figure:: _static/evi_dss_sys_diagram.png
     :width: 800px
     :align: center
-    :alt: EVI-DSS System Diagram
+    :alt: ChargEval System Diagram
     :figclass: align-center
 
-    EVI-DSS System Diagram
+    ChargEval System Diagram
 
 .. Design Motivation
    -----------------
@@ -58,7 +58,7 @@ System Diagram
 Deployment
 ==========
 
-EVI-DSS can be readily deployed on an AWS EC2 instance using :code:`docker-compose`. The docker-compose `script is located here`_. 
+ChargEval can be readily deployed on an AWS EC2 instance using :code:`docker-compose`. The docker-compose `script is located here`_. 
 
 
 Services
@@ -186,7 +186,7 @@ Observability is the capability to be aware of the system and take quick remedia
 
 Logging
 ^^^^^^^
-EVI-DSS uses AWS CloudWatch as centralized log destination for all systems. Logs are sent from docker containers (evides, simman, resview, redis, nginx, flyway, tripgen) as well as from the launched EC2 instances tripgen and eviabm. Using a centralized log destination allows for log persistance and long term analytical capabilities. The :code:`tripgen` logging allows for debugging, using queries. For example, the query below shows results in the log entry for origin = 98108, and destination = 98624, shown in :numref:`cw_insight_odtripgen`.The factors that affect the vehicle choice can be examined to verify their validity. 
+ChargEval uses AWS CloudWatch as centralized log destination for all systems. Logs are sent from docker containers (evides, simman, resview, redis, nginx, flyway, tripgen) as well as from the launched EC2 instances tripgen and eviabm. Using a centralized log destination allows for log persistance and long term analytical capabilities. The :code:`tripgen` logging allows for debugging, using queries. For example, the query below shows results in the log entry for origin = 98108, and destination = 98624, shown in :numref:`cw_insight_odtripgen`.The factors that affect the vehicle choice can be examined to verify their validity. 
 
 .. code-block:: sql
 
@@ -207,16 +207,16 @@ EVI-DSS uses AWS CloudWatch as centralized log destination for all systems. Logs
 
 Monitoring
 ^^^^^^^^^^
-- AWS CloudWatch Dashboard - :numref:`evi_dss_sys_diagram` shows the EVI-DSS CloudWatch Dashboard. The dashboard shows the plot of average CPU utilization of the main EC2 instance, status of alarms, plot of database metrics like CPU utilization, number of database connections, free storage space, as well as logs from :code:`evides`, :code:`nginx` and :code:`simman`. 
+- AWS CloudWatch Dashboard - :numref:`evi_dss_sys_diagram` shows the ChargEval CloudWatch Dashboard. The dashboard shows the plot of average CPU utilization of the main EC2 instance, status of alarms, plot of database metrics like CPU utilization, number of database connections, free storage space, as well as logs from :code:`evides`, :code:`nginx` and :code:`simman`. 
 
 .. _evi_dss_cw_dashboard: 
 .. figure:: _static/evidss_cw_dashboard.png
     :width: 800px
     :align: center
-    :alt: EVI-DSS CloudWatch Dashboard
+    :alt: ChargEval CloudWatch Dashboard
     :figclass: align-center
 
-    EVI-DSS CloudWatch Dashboard
+    ChargEval CloudWatch Dashboard
 
 - dockprom: `dockprom`_ gives fine grained statistics for all the docker containers on the system. 
 

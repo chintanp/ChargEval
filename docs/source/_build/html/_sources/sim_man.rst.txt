@@ -1,7 +1,7 @@
 ==================
 Simulation Manager
 ==================
-The Simulation Manager is the controller in the EVI-DSS. The purpose of the Simulation Manager is to watch for the inserts into the database table 
+The Simulation Manager is the controller in the ChargEval. The purpose of the Simulation Manager is to watch for the inserts into the database table 
 :code:`analysis_record`. A record is inserted into this table whenever a user submits a charging station deployment scenario for analysis. The Simulation Manager receives the insert notification through the database trigger :code:`notify_new_order()` with the payload including the :code:`analysis_id` etc. and queues the analysis request for execution. The Simulation Manager process is shown in :numref:`sim_manager_flowchart`. 
 
 .. _sim_manager_flowchart: 

@@ -33,7 +33,7 @@ version = __version__
 release = __version__
 
 
-project = 'EVI-DSS'
+project = 'ChargEval'
 copyright = '2019, Chintan Pathak, Don MacKenzie'
 author = 'Chintan Pathak, Don MacKenzie'
 
@@ -44,7 +44,7 @@ html_sidebars = {
    '**': ['globaltoc.html']
 }
 html_favicon = '_static/favicon.ico'
-html_logo = '_static/logo2.png'
+html_logo = '_static/logo3.png'
 
 html_theme = 'sphinx_materialdesign_theme'
 html_theme_path = ['../']
@@ -133,7 +133,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'EVI-DSS.tex', 'EVI-DSS Documentation',
+    (master_doc, 'ChargEval.tex', 'ChargEval Documentation',
      'Chintan Pathak, Don MacKenzie', 'manual'),
 ]
 
@@ -143,7 +143,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'evi-dss', 'EVI-DSS Documentation',
+    (master_doc, 'evi-dss', 'ChargEval Documentation',
      [author], 1)
 ]
 
@@ -154,7 +154,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'EVI-DSS', 'EVI-DSS Documentation',
-     author, 'EVI-DSS', 'Decision Suspport System for EV Infrastructure Development.',
+    (master_doc, 'ChargEval', 'ChargEval Documentation',
+     author, 'ChargEval', 'Decision Suspport System for EV Infrastructure Development.',
      'Miscellaneous'),
 ]

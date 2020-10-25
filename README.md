@@ -1,7 +1,7 @@
-## EVI-DSS Solution Repository 
+## ChargEval Solution Repository 
 
-All the code related to EVI-DSS will be consolidated here. 
+All the code related to ChargEval will be consolidated here. 
 
-## EVI-DSS Documentation
+## ChargEval Documentation
 
 The documentation for the solution can be found online here: https://evi-dss.readthedocs.io/en/latest/

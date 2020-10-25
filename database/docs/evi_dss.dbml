@@ -2,12 +2,12 @@ Project EVI_DSS {
 database_type: 'PostgreSQL'
 description: 'Tested on PG 12, needs extensions PostGIS, pgRouting and hstore.'
 note: '''
-### EVI-DSS Database
+### ChargEval Database
 
 The database contains the data needed by the various applications for the simulations as well as stores the outputs of simulations. 
 
 #### About this documentation 
-This documentation was generated using dbdocs.io using the DBML script "./database/docs/evi_dss.dbml" in the EVI-DSS repository. The portal is password protected. To update the documentation, update the DBML and then run "dbdocs build {DBML filename}".
+This documentation was generated using dbdocs.io using the DBML script "./database/docs/evi_dss.dbml" in the ChargEval repository. The portal is password protected. To update the documentation, update the DBML and then run "dbdocs build {DBML filename}".
 
 #### Migrate using Flyway
 The database uses "flyway" for applying the migrations. The migrations are located in the "./database/migrations" directory. To apply the migrations use "flyway -configFiles={CONFIG_FILE_LOCATION} migrate", or specifying the parameters on the CLI, like so: "flyway -url=jdbc:postgresql://${MAIN_HOST}:${MAIN_PORT}/${MAIN_DB} -schemas=public -user=${MAIN_USER} -password=${MAIN_PWD} -locations=filesystem:{MIGRATION_FOLDER_PATH} migrate", where MAIN_HOST is database hostname or IP address, MAIN_PORT is the database port, MAIN_DB is the name of the database, MAIN_USER is the database username with appropriate rights, and MAIN_PWD is the database password. 

@@ -1,18 +1,18 @@
 .. _evi_dss:
 
 =======
-EVI-DSS
+ChargEval
 =======
 
-The electric vehicle infrastructure decision support system (EVI-DSS) is the tool to guide decision makers in planning the deployment of EV infrastructure. Public agencies as well as private companies can use the EVI-DSS, since it predicts KPIs relevant to each domain. The EVI-DSS has been developed in collaboration with and with funding from Washington State Department of Transportation. The results and scenarios presented in this paper are therefore for the Washington state region. However, the methodology described is general enough to be applied anywhere across the world. 
+The electric vehicle infrastructure decision support system (ChargEval) is the tool to guide decision makers in planning the deployment of EV infrastructure. Public agencies as well as private companies can use the ChargEval, since it predicts KPIs relevant to each domain. The ChargEval has been developed in collaboration with and with funding from Washington State Department of Transportation. The results and scenarios presented in this paper are therefore for the Washington state region. However, the methodology described is general enough to be applied anywhere across the world. 
 
-Goals of EVI-DSS 
+Goals of ChargEval 
 ================
-The EVI-DSS shows the infeasibility metric across the state and indication of where a high of volume of traffic flow is matched with a high spacing of charging stations. These areas are good candidates for charging stations if the objective is to maximize utilization. Once the sites are chosen, the EVI-DSS estimates the potential utilization for a chosen site. The utilization is outputted as energy and power. The total energy consumed per charging station in a month and the peak power draw in a month are important statistics that affect the economics of charging stations. 
+The ChargEval shows the infeasibility metric across the state and indication of where a high of volume of traffic flow is matched with a high spacing of charging stations. These areas are good candidates for charging stations if the objective is to maximize utilization. Once the sites are chosen, the ChargEval estimates the potential utilization for a chosen site. The utilization is outputted as energy and power. The total energy consumed per charging station in a month and the peak power draw in a month are important statistics that affect the economics of charging stations. 
 
 Components
 ==========
-The various components of the EVI-DSS are described below. For an in-depth technical exposition refer to the corresponding paper or contact the authors. 
+The various components of the ChargEval are described below. For an in-depth technical exposition refer to the corresponding paper or contact the authors. 
 
 Long Distance Travel Demand Model 
 ---------------------------------

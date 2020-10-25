@@ -4,7 +4,7 @@
 Data Requirement
 ================
 
-The data requirements of EVI-DSS can be classified into two categories, static and dynamic. 
+The data requirements of ChargEval can be classified into two categories, static and dynamic. 
 
 .. (also cross-link these with the respective models, so each model should have a link to the dataset it uses. Maybe here mention all the models that this dataset is used in.) 
 

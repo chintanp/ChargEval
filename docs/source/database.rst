@@ -10,10 +10,10 @@ The database is indeed the backbone of the system. The database documentation is
 .. figure:: _static/wsdot_evse_sql.png
     :width: 1200px
     :align: center
-    :alt: EVI-DSS Database Schema
+    :alt: ChargEval Database Schema
     :figclass: align-center
 
-    EVI-DSS Database Schema
+    ChargEval Database Schema
 
 Interactive diagram
 
@@ -31,7 +31,7 @@ Tables
 ======
 The database currently has the following tables in the public schema: 
 
-#. **analysis_record**: This is the key table in the database. Every time a user submits a request to perform analysis, a record is created in this table. The auto-increment primary key :code:`analysis_id` is used to create a one-to-many relation with several tables - :code:`evtrip_scenarios`, :code:`dest_charger`, :code:`evse_charging_session`, :code:`evse_evs_passed`, :code:`evse_power_draw`, :code:`evse_util`, :code:`ev_stranded`, :code:`ev_finished`, :code:`ev_info`, :code:`od_cd` and :code:`new_evses`. The table also has an associated trigger :code:`notify_new_order` that generates a notification using :code:`pg_notify()`, which can be used by processes listening for a notification. In the case of EVI-DSS, this notification is picked by the controller and an analysis request is queued. More details in the controller.
+#. **analysis_record**: This is the key table in the database. Every time a user submits a request to perform analysis, a record is created in this table. The auto-increment primary key :code:`analysis_id` is used to create a one-to-many relation with several tables - :code:`evtrip_scenarios`, :code:`dest_charger`, :code:`evse_charging_session`, :code:`evse_evs_passed`, :code:`evse_power_draw`, :code:`evse_util`, :code:`ev_stranded`, :code:`ev_finished`, :code:`ev_info`, :code:`od_cd` and :code:`new_evses`. The table also has an associated trigger :code:`notify_new_order` that generates a notification using :code:`pg_notify()`, which can be used by processes listening for a notification. In the case of ChargEval, this notification is picked by the controller and an analysis request is queued. More details in the controller.
 
 #. **wa\***: 
 
@@ -75,7 +75,7 @@ The database currently has the following tables in the public schema:
 
 #. **zipcode_record**: This table contains details about the location of centroid of all zip codes. 
 
-#. **user_details**: This table contains the details about the users logging onto the EVI-DSS. 
+#. **user_details**: This table contains the details about the users logging onto the ChargEval. 
 
 Besides the above tables in the public schema, the database also has an "audit" schema, that is responsible for capturing the changes on certain field. This is implemented using the `Audit Trigger`_. For example, when implemented on the :code:`analysis_record` table, the trigger captures when the status of the particular column changes. This way the time taken for a particular step (tripgen, eviabm) can be calculated and monitored over time to deduce performance trends.
 
