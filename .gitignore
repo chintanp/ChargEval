@@ -8,3 +8,5 @@ evides/.Renviron
 shiny_logs/
 ssl/
 redis-data/
+scripts/.ipynb_checkpoints/
+.ipynb_checkpoints/
