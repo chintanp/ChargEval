@@ -20,7 +20,7 @@ UI Details
 After logging in by providing email-id and password, the user is greeted with :numref:`evi_des_home`. 
 
 .. _evi_des_home: 
-.. figure:: _static/evi_des_home.png
+.. figure:: _static/evides_home.png
     :width: 800px
     :align: center
     :alt: EV Infrastructure Designer 
@@ -58,11 +58,11 @@ The script for calculating the `trip infeasibility is here`_. The basic algorith
 
 - For each zip code combination in the state, find the shortest path on the WA road network. This utilizes the SQL function :code:`sp_od2()` `shown here`_. 
 - Then all the charging stations within 10 miles of the shortest path are found using PostGIS function :code:`ST_DWithin()`. 
-- Ratios are found between 0 and 1, where the point closest to these charging stations lie on the shortest path using PostGIS function :code:`ST_LineLocatePoint()`. This means the origin has ratio 0m and detination has raio 1, and charging stations along the route have ratios between 0 and 1 depending on whether they are near origin or destination respectively. 
+- Ratios are found between 0 and 1, where the point closest to these charging stations lie on the shortest path using PostGIS function :code:`ST_LineLocatePoint()`. This means the origin has ratio 0.0 and destination has ratio 1.0, and charging stations along the route have ratios between 0 and 1 depending on whether they are near origin or destination respectively. 
 - After sorting the ratios, the successive differences in ratios are found using SQL function :code:`lag()`. 
-- Multiplying the lags with the length of the shortest path, gets us spacings between successive charging stations. 
-- We then filter out, all the ratios for which the spacings are less than 70 miles, since that is the critical distance between charging stations. 
-- The we find the geometry for these spacings, using PostGIS function :code:`ST_LineSubString()` using the shortest path as the line, and ratio -lag, ratio as the start and end fraction for the substring. 0 and 1 are added to ensure that we get the first and last segment as well. 
+- Multiplying the lags with the length of the shortest path, gets us (on-route) spacings between successive charging stations. 
+- We then filter out, all the ratios for which the spacings are less than 70 miles, since that is the critical distance between charging stations. Spacings greater than 70 miles represent the infeasible sections of the shortest path.
+- Then we find the geometry for these spacings, using PostGIS function :code:`ST_LineSubString()` using the shortest path as the line, and (ratio - lag), ratio as the start and end fraction for the substring respectively. 0 and 1 are added to ensure that we get the first and last segment as well. 
 - All these geometries, that are longer than 70 miles in length, are inserted in the :code:`trip_infeasibility` table in the database. If the geometry already exists, then the corresponding :code:`trip_count` is added to the new trip_count. To figure whether geometry already exists in the database, a unique index is added on the :code:`md5()` encoded value of geometry, as per the `recommendation here`_. This can be `upgraded to SHA512`_ for a better uniqueness guarantee. 
 - This process is repeated for all the OD pairs in our dataset and for both COMBO and CHAdeMO plug-type. 
 - It currently takes around 12 hours for this algorithm to calculate trip infeasibility with over 300k+ OD pairs. 
@@ -89,6 +89,34 @@ The above algorithm resulted in a geometry table with 6000+ rows and size 700 MB
 
 - The above method is used to generate trip infeasibility overlays for both COMBO and CHAdeMO plug types. The styles are transparent and therefore need to be overlaid on other tiles for context. 
 
+Trip Infeasibility - CHAdeMO
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The trip infeasibility for the CHAdeMO network can be seen in :numref:`trip_inf_chademo`. 
+
+.. _trip_inf_chademo: 
+.. figure:: _static/infeasibility_chademo.PNG
+    :width: 800px
+    :align: center
+    :alt: Trip Infeasibility for CHAdeMO Network
+    :figclass: align-center
+    
+    Trip Infeasibility for CHAdeMO Network
+
+
+Trip Infeasibility - COMBO
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The trip infeasibility for the COMBO network can be seen in :numref:`trip_inf_combo`. 
+
+.. _trip_inf_combo: 
+.. figure:: _static/infeasibility_combo.PNG
+    :width: 800px
+    :align: center
+    :alt: Trip Infeasibility for COMBO Network
+    :figclass: align-center
+    
+    Trip Infeasibility for COMBO Network
+
 Buffer
 ******
 
@@ -96,13 +124,27 @@ The checkbox called "Buffer" toggles the display of a buffer around the road net
 
 :numref:`wsdot_road_network` shows a selected charger location with a marker. The UI will only allow charger placement in the buffer region around the roads and the successful click results in a marker as shown. As many charging station locations can be picked as desired. 
 
+Parameters
+----------
+It is now also possible to set the simulation parameters from the EVIDES UI from the "Parameters" tab by adjusting the sliders as can be seen from :numref:`params_tab`. 
+
+.. _params_tab: 
+.. figure:: _static/evides_params.PNG
+    :align: center
+    :width: 800px
+    :alt: Parameters tab
+    :figclass: align-center
+    
+    Parameters Tab
+
 New Site List
 -------------
 The New Site List card lists all the chosen sites with options to configure or cancel the selection as shown in :numref:`new_site_list_closed`. 
 
 .. _new_site_list_closed: 
-.. figure:: _static/new_site_list_closed.PNG
+.. figure:: _static/place_new_charging_stations.PNG
     :align: center
+    :width: 800px
     :alt: New Site List
     :figclass: align-center
     
@@ -129,7 +171,7 @@ Once satisfactory counts of charging stations with appropriate configuration hav
 The New Site List card then displays a successful analysis submission message with the submission date time as shown in :numref:`submitted_analysis`. Since the analysis process involving re-calculation of destination chargers, charging distances, EV trips and subsequent agent-based simulation is a computationally-intensive long process, taking several hours at the time of this writing, the user is informed about the successful completion of analysis via an email at the registered email address. The results can then be viewed for the particular simulation date time of interest. 
 
 .. _submitted_analysis: 
-.. figure:: _static/submitted_analysis.png
+.. figure:: _static/submit_success_msg.png
     :align: center
     :alt: Analysis Submission View
     :figclass: align-center
@@ -146,7 +188,7 @@ User Identity
 
 
 .. Environment Variables
----------------------
+------------------------
 The application depends on several environment variables. A template :code:`.Renviron` file is `here`_. The :code:`AUTH0*` variables allow access to AUTH0. The AFDC API key allows access to the information about charging stations. :code:`MAPBOX_ACCESS_TOKEN` allows access to the MapBox service that is responsible for the map tiles. The variables :code:`MAIN*` are related to the database. The database environment variables have to be consistent across the EV Infrastructure Designer, Results Viewer and Simulation Manager, so they all access the same database. 
 
 .. _ev_infrastructure_designer: https://github.com/chintanp/ev_infrastructure_designer

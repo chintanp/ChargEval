@@ -9,3 +9,5 @@ shiny_logs/
 ssl/
 redis-data/
 connect/*.json
+scripts/.ipynb_checkpoints/
+.ipynb_checkpoints/
