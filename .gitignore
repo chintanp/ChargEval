@@ -8,3 +8,4 @@ evides/.Renviron
 shiny_logs/
 ssl/
 redis-data/
+connect/*.json
