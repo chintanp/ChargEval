@@ -40,10 +40,10 @@ MVC is a popular architecture for complex applications. The benefit in our case,
 System Diagram
 ==============
     
-:numref:`evi_dss_sys_diagram` shows the ChargEval System Diagram. 
+:numref:`chargeval_sys_diagram` shows the ChargEval System Diagram. 
 
-.. _evi_dss_sys_diagram: 
-.. figure:: _static/evi_dss_sys_diagram.png
+.. _chargeval_sys_diagram: 
+.. figure:: _static/chargeval_sys_diagram.png
     :width: 800px
     :align: center
     :alt: ChargEval System Diagram

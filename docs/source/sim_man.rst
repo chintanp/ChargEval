@@ -8,14 +8,17 @@ The Simulation Manager is the controller in the ChargEval. The purpose of the Si
 
 .. _sim_manager_flowchart: 
 .. figure:: _static/simman.png
-    :width: 400px
+    :width: 800px
     :align: center
     :alt: Simulation Manager Process Flowchart 
     :figclass: align-center
     
     Simulation Manager Process Flowchart 
 
-Simulation Manager and the sub-processes (in R and GAMA) all read the input data from the database and write the output to it. :code:`analysis_id` is passed between processes and all the relevant records from the database can be looked up using the :code:`analysis_id`. 
+Simulation Manager and the sub-processes (in R and GAMA) all read the input data from the database and write the output to it. :code:`analysis_id` is passed between processes and all the relevant records from the database can be looked up using the :code:`analysis_id`. Since the notification processing is handled asynchronously and; trip generation and agent-based simulation happen in their own dedicated instances, the simulation manager is always ready to receive new requests and queue them. 
+
+.. note::
+    If no limits are placed on the number of tripgen and eviabm instances, then theoretically infinite simulations requests can be handled in parallel, and the database then is the bottleneck. 
 
 Implementation Details 
 ======================
