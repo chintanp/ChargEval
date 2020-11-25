@@ -32,5 +32,5 @@ The decision to build EVI is a complex one and is dependent on several factors. 
    res_view
 
 
-.. _here: https://cp84.shinyapps.io/evi_des/
-.. _Results Viewer here: https://cp84.shinyapps.io/res_view/
+.. _here: https://stlab.shinyapps.io/evides2
+.. _Results Viewer here: https://stlab.shinyapps.io/resview

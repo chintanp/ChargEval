@@ -139,7 +139,20 @@ Redash
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/8ud7pJlq8H4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/8ud7pJlq8H4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <br/><br/>
+
+
+
+| An example comparison of results using Redash is shown in :numref:`redash_compare`. 
+
+.. _redash_compare: 
+.. figure:: _static/redash_comparison.png
+    :width: 800px
+    :align: center
+    :alt: Results Comparison in Redash
+    :figclass: align-center
+    
+    Results Comparison in Redash 
 
 .. _here: https://github.com/chintanp/wsdot_evse_results_viewer
 .. _Click here: https://cp84.shinyapps.io/res_view/
