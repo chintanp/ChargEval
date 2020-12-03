@@ -230,6 +230,26 @@ Distributed Tracing
 ^^^^^^^^^^^^^^^^^^^
 Currently, no instrumentation exists in the system that directly shows the trace of an analysis request, i.e. which step of the process is currently executing. But since, the simulation manager is controlled by the three triggers, namely, :code:`notify_new_order()`, :code:`notify_trips_generated()` and :code:`notify_solved()`, observing the database for status changes alongwith the audit trigger on the :code:`analysis_record` table gives us an indication of the step. 
 
+New Deployment
+--------------
+
+To create a new deployment, start with an Ubuntu EC2 instance of type T3a.medium or larger and follow the following steps: 
+
+* Install docker, and docker-compose. 
+* Clone the repo, initiate the submodules, and update them to the latest commit. 
+* Update the services in docker-compose-prod.yml as per the requirement. Create a new log group to send the container logs to, and comment out services not required.
+* Purchase a domain name and update the environment variables appropriately. 
+* For a new database, perform the database migrations by running the flyway container like so: 
+
+.. code-block:: bash
+
+   $ docker-compose -f docker-compose-prod.yml up -d flyway 
+
+* Update the EVSE and EV population, using :code:`tripgen::update_evses()` and :code:`tripgen::update_wa_bevs()`. 
+* Add _auth0.yml file at the required location. 
+* Generate `SSL certificate`_ and copy it to the SSL folder. Also, add the required entries in Route 52 for the new domain related to the SSL certificate authentication.
+* 
+
 .. _dockprom: https://github.com/stefanprodan/dockprom
 .. _script is located here: https://github.com/chintanp/evi-dss/blob/master/docker-compose.yml
 .. _PostgreSQL: https://www.postgresql.org/about/news/1976/
@@ -237,3 +257,4 @@ Currently, no instrumentation exists in the system that directly shows the trace
 .. _pgRouting: https://docs.pgrouting.org/latest/en/index.html
 .. _detailed explanation: https://github.com/chintanp/cloudsecurity/blob/master/AWS/Guides/limiting_ec2_instance_types.md
 .. _AWS CloudWatch agent: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html
+.. _SSL certificate: https://medium.com/@saurabh6790/generate-wildcard-ssl-certificate-using-lets-encrypt-certbot-273e432794d7
