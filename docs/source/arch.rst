@@ -247,8 +247,13 @@ To create a new deployment, start with an Ubuntu EC2 instance of type T3a.medium
 
 * Update the EVSE and EV population, using :code:`tripgen::update_evses()` and :code:`tripgen::update_wa_bevs()`. 
 * Add _auth0.yml file at the required location. 
-* Generate `SSL certificate`_ and copy it to the SSL folder. Also, add the required entries in Route 52 for the new domain related to the SSL certificate authentication.
-* 
+* Generate `SSL certificate`_ and copy it to the SSL folder. Also, add the required entries in Route 52 for the new domain related to the SSL certificate authentication. To renew the SSL certificate run: 
+
+.. code-block:: bash
+
+    $ certbot certonly --manual --preferred-challenges=dns --email cp84@uw.edu --server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d evidss.org -d www.evidss.org 
+
+ 
 
 .. _dockprom: https://github.com/stefanprodan/dockprom
 .. _script is located here: https://github.com/chintanp/evi-dss/blob/master/docker-compose.yml
