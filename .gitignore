@@ -11,3 +11,4 @@ redis-data/
 connect/*.json
 scripts/.ipynb_checkpoints/
 .ipynb_checkpoints/
+database/scripts/
