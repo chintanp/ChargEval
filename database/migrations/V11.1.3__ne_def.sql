@@ -1,0 +1,1 @@
+ALTER TABLE new_evses ALTER COLUMN in_service SET DEFAULT TRUE;
