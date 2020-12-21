@@ -27,8 +27,9 @@ services:
     command: -url=jdbc:postgresql://${MAIN_HOST}:${MAIN_PORT}/${MAIN_DB} -schemas=public -user=${DBWRITE_USER} -password=${DBWRITE_PWD} migrate
     volumes:
       - ./database/migrations:/flyway/sql
-    networks:
-      - evidssnet    
+#    networks:
+#     - evidssnet
+    network_mode: host    
   evides:
     build: './evides'
     ports:
