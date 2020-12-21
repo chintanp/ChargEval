@@ -14,7 +14,7 @@ CREATE TABLE public.wa_roads_ferries_vertices_pgr (
 );
 
 
-ALTER TABLE public.wa_roads_ferries_vertices_pgr OWNER TO postgres;
+-- ALTER TABLE public.wa_roads_ferries_vertices_pgr OWNER TO postgres;
 
 --
 -- TOC entry 4316 (class 0 OID 28557)
