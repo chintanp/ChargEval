@@ -28,7 +28,8 @@ services:
     volumes:
       - ./database/migrations:/flyway/sql
     networks:
-      - evidssnet    
+      - evidssnet
+  #  network_mode: host    
   evides:
     build: './evides'
     ports:
