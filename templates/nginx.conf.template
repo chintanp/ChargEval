@@ -10,7 +10,7 @@
   }
 
   upstream grafana {
-    server 127.0.0.1:${GRAFANA_PORT};
+    server ${GRAFANA_IP}:${GRAFANA_PORT};
   }
 
   server {
@@ -45,9 +45,9 @@
       return 301 http://${REDASH_IP}/;
     }
 
-    location ~ ^/grafana(?:/(.*))?$ {
-      return 301 http://${GRAFANA_HOST}:${GRAFANA_PORT};
-    }
+ #   location ~ ^/grafana(?:/(.*))?$ {
+ #     return 301 http://${GRAFANA_HOST}:${GRAFANA_PORT};
+ #   }
  
     location /evides/ {
 
@@ -79,4 +79,16 @@
       proxy_pass http://resview/;
 
     }
+
+   location /grafana/ {
+
+     proxy_buffering off;
+     proxy_redirect off;
+     proxy_http_version 1.1;
+     proxy_set_header Connection "";
+     proxy_set_header Upgrade $http_upgrade;
+     proxy_set_header Connection "Upgrade";
+     proxy_pass http://grafana/;
+
+   }
   }

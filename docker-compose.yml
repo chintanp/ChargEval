@@ -1,29 +1,40 @@
 version: '3.8'
 
 networks:
-  evidssnet: 
-    name: evidssnet
+#  evidssnet: 
+#    name: evidssne
+  vpcbr: # virtual network name
+    driver: bridge
+    ipam:
+     config: # here, we define our ip space
+       - subnet: 10.5.0.0/16
+         gateway: 10.5.0.1
 
 volumes:
     prometheus_data: {}
     grafana_data: {}
-    loki-data:
+    loki-data: {}
+
+#configs:
+#  loki_config:
+#    file: ./dockprom/loki/config/loki.yaml
 
 # this is a YAML anchor to avoid repetition
 x-logging: &logging
   logging:
     driver: loki
     options: # note: the ip is the ip we will assign later to loki in this file
-      loki-url: https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+      loki-url: "http://10.5.0.2:3100/loki/api/v1/push" # https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
 
 services:
   nginx:
-    logging:
-      driver: loki #awslogs
-      options:
+    # logging:
+    #  driver: loki #awslogs
+    #  options:
         # awslogs-group: "cp84-evi-dss-mainEC2"
         # awslogs-stream: "nginx"
-        loki-url: "http://loki:3100/loki/api/v1/push" #"https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    #    loki-url: "http://loki:3100/loki/api/v1/push" #"https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    <<: *logging
     image: nginx:1.19.2
     restart: always
     ports:
@@ -36,7 +47,8 @@ services:
       - evides
       - resview
     networks:
-      - evidssnet 
+      vpcbr :
+        ipv4_address: 10.5.0.3
     environment:
       - EVIDSSDOCS_IP=$EVIDSSDOCS_IP
       - EVIDES_IP=$EVIDES_IP
@@ -46,32 +58,35 @@ services:
       - EVIDES_PORT=$EVIDES_PORT
       - RESVIEW_PORT=$RESVIEW_PORT
       - GRAFANA_PORT=$GRAFANA_PORT
-      - GRAFANA_HOST=$GRAFANA_HOST
+      - GRAFANA_IP=$GRAFANA_IP
   flyway:
-    logging:
-      driver: loki # awslogs
-      options:
+    # logging:
+    #   driver: loki # awslogs
+    #   options:
         # awslogs-group: "cp84-evi-dss-mainEC2"
         # awslogs-stream: "flyway"
-        loki-url: "https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    #     loki-url: "http://loki:3100/loki/api/v1/push" # "https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    <<: *logging
     image: flyway/flyway
     command: -url=jdbc:postgresql://${MAIN_HOST}:${MAIN_PORT}/${MAIN_DB} -schemas=public -user=${DBWRITE_USER} -password=${DBWRITE_PWD} migrate
     volumes:
       - ./database/migrations:/flyway/sql
-    networks:
-      - evidssnet    
+#    networks:
+#      - evidssnet    
   evides:
-    logging:
-      driver: loki # awslogs
-      options:
+    # logging:
+    #   driver: loki # awslogs
+    #   options:
         # awslogs-group: "cp84-evi-dss-mainEC2" 
         # awslogs-stream: "evides"
-        loki-url: "https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    #     loki-url: "https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    <<: *logging
     build: './evides'
     ports:
       - '${EVIDES_PORT}:${EVIDES_PORT}'
     networks:
-      - evidssnet
+       vpcbr: # evidssnet
+         ipv4_address: 10.5.0.4
     environment:
       - GITHUB_PAT=$GITHUB_PAT
       - EVIDES_PORT=$EVIDES_PORT
@@ -87,18 +102,20 @@ services:
       - MAIN_DB=$MAIN_DB
     restart: always
   resview:
-    logging:
-      driver: loki # awslogs
-      options:
+    # logging:
+    #   driver: loki # awslogs
+    #   options:
         # awslogs-group: "cp84-evi-dss-mainEC2" 
         # awslogs-stream: "resview"
         # awslogs-region: us-west-2
-        loki-url: "https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    #     loki-url: "https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    <<: *logging
     build: './resview'
     ports:
       - '${RESVIEW_PORT}:${RESVIEW_PORT}'
     networks:
-      - evidssnet
+      vpcbr:
+        ipv4_address: 10.5.0.5
     environment:
       - GITHUB_PAT=$GITHUB_PAT
       - RESVIEW_PORT=$RESVIEW_PORT
@@ -111,15 +128,16 @@ services:
       - MAIN_DB=$MAIN_DB
     restart: always
   tripgen:
-    logging:
-      driver: loki # awslogs
-      options:
+    # logging:
+    #   driver: loki # awslogs
+    #   options:
         # awslogs-group: "cp84-evi-dss-mainEC2" 
         # awslogs-stream: "tripgen"
-        loki-url: "https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    #     loki-url: "https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    <<: *logging
     build: './tripgen'
-    networks:
-      - evidssnet
+ #   networks:
+ #     - evidssnet
     environment:
       - GITHUB_PAT=$GITHUB_PAT
       - AFDC_API_KEY=$AFDC_API_KEY
@@ -132,34 +150,36 @@ services:
       - SOCRATA_APP_TOKEN=$SOCRATA_APP_TOKEN
       - MAILGUN_API_KEY=$MAILGUN_API_KEY
   redis:
-    logging:
-      driver: loki # awslogs
-      options:
+    # logging:
+    #   driver: loki # awslogs
+    #   options:
         # awslogs-group: "cp84-evi-dss-mainEC2" 
         # awslogs-stream: "redis"
-        loki-url: "https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    #     loki-url: "https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    <<: *logging
     image: 'redis:6.0.6'
     volumes:
       - $PWD/redis-data:/var/lib/redis
     ports:
       - '6379:6379'
     networks:
-      - evidssnet
+      - vpcbr
     restart: always
   simman:
-    logging:
-      driver: loki # awslogs
-      options:
+    # logging:
+    #   driver: loki # awslogs
+    #   options:
         # awslogs-group: "cp84-evi-dss-mainEC2" 
         # awslogs-stream: "simman"
-        loki-url: "https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    #     loki-url: "https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    <<: *logging
     build: './simman'
     depends_on:
       - redis
     ports:
       - '${SIMMAN_PORT}:${SIMMAN_PORT}'
-    networks:
-      - evidssnet
+  #  networks:
+  #    - evidssnet
     volumes:
       - $HOME/.aws/credentials:/home/app/.aws/credentials:ro
     environment:
@@ -202,7 +222,7 @@ services:
     expose:
       - 9090
     networks:
-      - evidssnet
+      - vpcbr
     labels:
       org.label-schema.group: "monitoring"
 
@@ -218,7 +238,7 @@ services:
     expose:
       - 9093
     networks:
-      - evidssnet
+      - vpcbr
     labels:
       org.label-schema.group: "monitoring"
 
@@ -238,7 +258,7 @@ services:
     expose:
       - 9100
     networks:
-      - evidssnet
+      - vpcbr
     labels:
       org.label-schema.group: "monitoring"
 
@@ -255,12 +275,12 @@ services:
     expose:
       - 8080
     networks:
-      - evidssnet
+      - vpcbr
     labels:
       org.label-schema.group: "monitoring"
 
   grafana:
-    image: grafana/grafana:7.3.7
+    image: grafana/grafana:latest
     container_name: grafana
     volumes:
       - grafana_data:/var/lib/grafana
@@ -270,10 +290,13 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
       - GF_USERS_ALLOW_SIGN_UP=false
     restart: unless-stopped
-    expose:
-      - 3000
+    #expose:
+    #  - 3000
+    ports: 
+      - '3000:3000'   
     networks:
-      - evidssnet
+      vpcbr: # evidssnet
+        ipv4_address: 10.5.0.6
     labels:
       org.label-schema.group: "monitoring"
 
@@ -284,7 +307,7 @@ services:
     expose:
       - 9091
     networks:
-      - evidssnet
+      - vpcbr
     labels:
       org.label-schema.group: "monitoring"
 
@@ -303,19 +326,15 @@ services:
       - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
     restart: unless-stopped
     networks:
-      - evidssnet
+      - vpcbr
     labels:
       org.label-schema.group: "monitoring"
-
   loki:
-    image: grafana/loki:2.1.0
-    container_name: loki
-    command: -config.file=/mnt/config/loki-config.yml
-    restart: unless-stopped
-    volumes:
-      - ./dockprom/loki/config/loki.yaml:/mnt/config/loki-config.yml
-      - loki-data:/loki
+    image: grafana/loki:2.0.0
     ports:
-      - 127.0.0.1:3100:3100
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
     networks:
-      - evidssnet
+      # - evidssnet
+      vpcbr:
+        ipv4_address: 10.5.0.2
