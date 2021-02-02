@@ -88,6 +88,7 @@
      proxy_set_header Connection "";
      proxy_set_header Upgrade $http_upgrade;
      proxy_set_header Connection "Upgrade";
+     add_header Content-Security-Policy "script-src: 'unsafe-eval' 'unsafe-inline';";
      proxy_pass http://grafana/;
 
    }

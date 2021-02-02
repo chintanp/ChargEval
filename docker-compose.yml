@@ -36,7 +36,7 @@ services:
     #    loki-url: "http://loki:3100/loki/api/v1/push" #"https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
     <<: *logging
     image: nginx:1.19.2
-    restart: always
+    restart: unless-stopped
     ports:
       - 80:80
       - 443:443
@@ -100,7 +100,7 @@ services:
       - MAIN_HOST=$MAIN_HOST
       - MAIN_PORT=$MAIN_PORT
       - MAIN_DB=$MAIN_DB
-    restart: always
+    restart: unless-stopped
   resview:
     # logging:
     #   driver: loki # awslogs
@@ -126,7 +126,7 @@ services:
       - MAIN_HOST=$MAIN_HOST
       - MAIN_PORT=$MAIN_PORT
       - MAIN_DB=$MAIN_DB
-    restart: always
+    restart: unless-stopped
   tripgen:
     # logging:
     #   driver: loki # awslogs
@@ -163,7 +163,8 @@ services:
     ports:
       - '6379:6379'
     networks:
-      - vpcbr
+      vpcbr:
+        ipv4_address: 10.5.0.13
     restart: always
   simman:
     # logging:
@@ -178,8 +179,9 @@ services:
       - redis
     ports:
       - '${SIMMAN_PORT}:${SIMMAN_PORT}'
-  #  networks:
-  #    - evidssnet
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.14
     volumes:
       - $HOME/.aws/credentials:/home/app/.aws/credentials:ro
     environment:
@@ -204,7 +206,9 @@ services:
       - nodemon
       - index.js
     restart: always
-
+  #######################################################
+  # Dockprom containers (and Loki) - for monitoring and logging only
+  ####################################################### 
   prometheus:
     image: prom/prometheus:v2.24.0
     container_name: prometheus
@@ -222,7 +226,8 @@ services:
     expose:
       - 9090
     networks:
-      - vpcbr
+      vpcbr:
+        ipv4_address: 10.5.0.7
     labels:
       org.label-schema.group: "monitoring"
 
@@ -238,7 +243,8 @@ services:
     expose:
       - 9093
     networks:
-      - vpcbr
+      vpcbr:
+        ipv4_address: 10.5.0.8
     labels:
       org.label-schema.group: "monitoring"
 
@@ -258,7 +264,8 @@ services:
     expose:
       - 9100
     networks:
-      - vpcbr
+      vpcbr:
+        ipv4_address: 10.5.0.9
     labels:
       org.label-schema.group: "monitoring"
 
@@ -275,7 +282,8 @@ services:
     expose:
       - 8080
     networks:
-      - vpcbr
+      vpcbr:
+        ipv4_address: 10.5.0.10
     labels:
       org.label-schema.group: "monitoring"
 
@@ -289,6 +297,12 @@ services:
       - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
       - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
       - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource,grafana-worldmap-panel
+      - GF_SERVER_HTTP_PORT=${GRAFANA_PORT}
+      - GF_SERVER_PROTOCOL=http
+      - GF_SERVER_DOMAIN=www.${EVIDSS_DOMAINNAME}
+      - GF_SERVER_ROOT_URL=https://www.${EVIDSS_DOMAINNAME}/grafana/
+      - GF_SERVER_SERVE_FROM_SUB_PATH=true
     restart: unless-stopped
     #expose:
     #  - 3000
@@ -307,33 +321,36 @@ services:
     expose:
       - 9091
     networks:
-      - vpcbr
+      vpcbr:
+        ipv4_address: 10.5.0.11
     labels:
       org.label-schema.group: "monitoring"
 
-  caddy:
-    image: stefanprodan/caddy
-    container_name: caddy
-    ports:
-      - "3000:3000"
-      - "9090:9090"
-      - "9093:9093"
-      - "9091:9091"
-    volumes:
-      - ./dockprom/caddy:/etc/caddy
-    environment:
-      - ADMIN_USER=${ADMIN_USER:-admin}
-      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
-    restart: unless-stopped
-    networks:
-      - vpcbr
-    labels:
-      org.label-schema.group: "monitoring"
+  # caddy:
+  #   image: stefanprodan/caddy
+  #   container_name: caddy
+  #   ports:
+  #     - "3000:3000"
+  #     - "9090:9090"
+  #     - "9093:9093"
+  #     - "9091:9091"
+  #   volumes:
+  #     - ./dockprom/caddy:/etc/caddy
+  #   environment:
+  #     - ADMIN_USER=${ADMIN_USER:-admin}
+  #     - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+  #   restart: unless-stopped
+  #   networks:
+  #     vpcbr:
+  #       ipv4_address: 10.5.0.12
+  #   labels:
+  #     org.label-schema.group: "monitoring"
   loki:
     image: grafana/loki:2.0.0
     ports:
       - "3100:3100"
     command: -config.file=/etc/loki/local-config.yaml
+    restart: unless-stopped
     networks:
       # - evidssnet
       vpcbr:
