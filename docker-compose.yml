@@ -59,6 +59,10 @@ services:
       - RESVIEW_PORT=$RESVIEW_PORT
       - GRAFANA_PORT=$GRAFANA_PORT
       - GRAFANA_IP=$GRAFANA_IP
+      - ALERTMANAGER_PORT=$ALERTMANAGER_PORT
+      - ALERTMANAGER_IP=$ALERTMANAGER_IP
+      - LOKI_IP=$LOKI_IP
+      - LOKI_PORT=$LOKI_PORT
   flyway:
     # logging:
     #   driver: loki # awslogs
@@ -240,8 +244,10 @@ services:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--storage.path=/alertmanager'
     restart: unless-stopped
-    expose:
-      - 9093
+    # expose:
+    #  - 9093
+    ports: 
+      - '9093:9093'  
     networks:
       vpcbr:
         ipv4_address: 10.5.0.8
@@ -288,7 +294,7 @@ services:
       org.label-schema.group: "monitoring"
 
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:7.4.0
     container_name: grafana
     volumes:
       - grafana_data:/var/lib/grafana
@@ -355,3 +361,13 @@ services:
       # - evidssnet
       vpcbr:
         ipv4_address: 10.5.0.2
+  promtail:
+    image: grafana/promtail:latest
+    volumes:
+      - $PWD/dockprom/promtail:/etc/promtail
+      - /var/log:/var/log
+    command: -config.file=/etc/promtail/docker-config.yaml
+    networks:
+      # - evidssnet
+      vpcbr:
+        ipv4_address: 10.5.0.15

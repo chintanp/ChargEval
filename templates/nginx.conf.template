@@ -13,6 +13,15 @@
     server ${GRAFANA_IP}:${GRAFANA_PORT};
   }
 
+  upstream alertmanager {
+    server ${ALERTMANAGER_IP}:${ALERTMANAGER_PORT};
+  }
+
+  upstream loki {
+    server ${LOKI_IP}:${LOKI_PORT};
+    keepalive 15;
+  }
+
   server {
     listen 80;
     server_name ${EVIDSS_DOMAINNAME};
@@ -90,6 +99,32 @@
      proxy_set_header Connection "Upgrade";
      add_header Content-Security-Policy "script-src: 'unsafe-eval' 'unsafe-inline';";
      proxy_pass http://grafana/;
+
+   }
+
+   location /alertmanager/ {
+
+     proxy_buffering off;
+     proxy_redirect off;
+     proxy_http_version 1.1;
+     proxy_set_header Connection "";
+     proxy_set_header Upgrade $http_upgrade;
+     proxy_set_header Connection "Upgrade";
+     # add_header Content-Security-Policy "script-src: 'unsafe-eval' 'unsafe-inline';";
+     proxy_pass http://alertmanager/;
+
+   }
+
+   location /loki/ {
+
+     proxy_buffering off;
+     proxy_redirect off;
+     proxy_http_version 1.1;
+     proxy_set_header Connection "";
+     proxy_set_header Upgrade $http_upgrade;
+     proxy_set_header Connection "Upgrade";
+     # add_header Content-Security-Policy "script-src: 'unsafe-eval' 'unsafe-inline';";
+     proxy_pass http://loki/;
 
    }
   }
