@@ -1,13 +1,42 @@
-version: '3'
+version: '3.8'
+
+networks:
+#  evidssnet: 
+#    name: evidssne
+  vpcbr: # virtual network name
+    driver: bridge
+    ipam:
+     config: # here, we define our ip space
+       - subnet: 10.5.0.0/16
+         gateway: 10.5.0.1
+
+volumes:
+    prometheus_data: {}
+    grafana_data: {}
+    loki-data: {}
+
+#configs:
+#  loki_config:
+#    file: ./dockprom/loki/config/loki.yaml
+
+# this is a YAML anchor to avoid repetition
+x-logging: &logging
+  logging:
+    driver: loki
+    options: # note: the ip is the ip we will assign later to loki in this file
+      loki-url: "http://10.5.0.2:3100/loki/api/v1/push" # https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+
 services:
   nginx:
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: "cp84-evi-dss-mainEC2"
-        awslogs-stream: "nginx"
+    # logging:
+    #  driver: loki #awslogs
+    #  options:
+        # awslogs-group: "cp84-evi-dss-mainEC2"
+        # awslogs-stream: "nginx"
+    #    loki-url: "http://loki:3100/loki/api/v1/push" #"https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    <<: *logging
     image: nginx:1.19.2
-    restart: always
+    restart: unless-stopped
     ports:
       - 80:80
       - 443:443
@@ -18,7 +47,8 @@ services:
       - evides
       - resview
     networks:
-      - evidssnet 
+      vpcbr :
+        ipv4_address: 10.5.0.3
     environment:
       - EVIDSSDOCS_IP=$EVIDSSDOCS_IP
       - EVIDES_IP=$EVIDES_IP
@@ -28,30 +58,39 @@ services:
       - EVIDES_PORT=$EVIDES_PORT
       - RESVIEW_PORT=$RESVIEW_PORT
       - GRAFANA_PORT=$GRAFANA_PORT
-      - GRAFANA_HOST=$GRAFANA_HOST
+      - GRAFANA_IP=$GRAFANA_IP
+      - ALERTMANAGER_PORT=$ALERTMANAGER_PORT
+      - ALERTMANAGER_IP=$ALERTMANAGER_IP
+      - LOKI_IP=$LOKI_IP
+      - LOKI_PORT=$LOKI_PORT
   flyway:
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: "cp84-evi-dss-mainEC2"
-        awslogs-stream: "flyway"
+    # logging:
+    #   driver: loki # awslogs
+    #   options:
+        # awslogs-group: "cp84-evi-dss-mainEC2"
+        # awslogs-stream: "flyway"
+    #     loki-url: "http://loki:3100/loki/api/v1/push" # "https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    <<: *logging
     image: flyway/flyway
     command: -url=jdbc:postgresql://${MAIN_HOST}:${MAIN_PORT}/${MAIN_DB} -schemas=public -user=${DBWRITE_USER} -password=${DBWRITE_PWD} migrate
     volumes:
       - ./database/migrations:/flyway/sql
-    networks:
-      - evidssnet    
+#    networks:
+#      - evidssnet    
   evides:
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: "cp84-evi-dss-mainEC2" 
-        awslogs-stream: "evides"
+    # logging:
+    #   driver: loki # awslogs
+    #   options:
+        # awslogs-group: "cp84-evi-dss-mainEC2" 
+        # awslogs-stream: "evides"
+    #     loki-url: "https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    <<: *logging
     build: './evides'
     ports:
       - '${EVIDES_PORT}:${EVIDES_PORT}'
     networks:
-      - evidssnet
+       vpcbr: # evidssnet
+         ipv4_address: 10.5.0.4
     environment:
       - GITHUB_PAT=$GITHUB_PAT
       - EVIDES_PORT=$EVIDES_PORT
@@ -65,19 +104,22 @@ services:
       - MAIN_HOST=$MAIN_HOST
       - MAIN_PORT=$MAIN_PORT
       - MAIN_DB=$MAIN_DB
-    restart: always
+    restart: unless-stopped
   resview:
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: "cp84-evi-dss-mainEC2" 
-        awslogs-stream: "resview"
-        awslogs-region: us-west-2
+    # logging:
+    #   driver: loki # awslogs
+    #   options:
+        # awslogs-group: "cp84-evi-dss-mainEC2" 
+        # awslogs-stream: "resview"
+        # awslogs-region: us-west-2
+    #     loki-url: "https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    <<: *logging
     build: './resview'
     ports:
       - '${RESVIEW_PORT}:${RESVIEW_PORT}'
     networks:
-      - evidssnet
+      vpcbr:
+        ipv4_address: 10.5.0.5
     environment:
       - GITHUB_PAT=$GITHUB_PAT
       - RESVIEW_PORT=$RESVIEW_PORT
@@ -88,16 +130,18 @@ services:
       - MAIN_HOST=$MAIN_HOST
       - MAIN_PORT=$MAIN_PORT
       - MAIN_DB=$MAIN_DB
-    restart: always
+    restart: unless-stopped
   tripgen:
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: "cp84-evi-dss-mainEC2" 
-        awslogs-stream: "tripgen"
+    # logging:
+    #   driver: loki # awslogs
+    #   options:
+        # awslogs-group: "cp84-evi-dss-mainEC2" 
+        # awslogs-stream: "tripgen"
+    #     loki-url: "https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    <<: *logging
     build: './tripgen'
-    networks:
-      - evidssnet
+ #   networks:
+ #     - evidssnet
     environment:
       - GITHUB_PAT=$GITHUB_PAT
       - AFDC_API_KEY=$AFDC_API_KEY
@@ -110,32 +154,38 @@ services:
       - SOCRATA_APP_TOKEN=$SOCRATA_APP_TOKEN
       - MAILGUN_API_KEY=$MAILGUN_API_KEY
   redis:
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: "cp84-evi-dss-mainEC2" 
-        awslogs-stream: "redis"
+    # logging:
+    #   driver: loki # awslogs
+    #   options:
+        # awslogs-group: "cp84-evi-dss-mainEC2" 
+        # awslogs-stream: "redis"
+    #     loki-url: "https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    <<: *logging
     image: 'redis:6.0.6'
     volumes:
       - $PWD/redis-data:/var/lib/redis
     ports:
       - '6379:6379'
     networks:
-      - evidssnet
+      vpcbr:
+        ipv4_address: 10.5.0.13
     restart: always
   simman:
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: "cp84-evi-dss-mainEC2" 
-        awslogs-stream: "simman"
+    # logging:
+    #   driver: loki # awslogs
+    #   options:
+        # awslogs-group: "cp84-evi-dss-mainEC2" 
+        # awslogs-stream: "simman"
+    #     loki-url: "https://${GRAFANA_CLOUD_USERNAME}:${GRAFANA_CLOUD_PWD}@${GRAFANA_CLOUD_URL}/loki/api/v1/push"
+    <<: *logging
     build: './simman'
     depends_on:
       - redis
     ports:
       - '${SIMMAN_PORT}:${SIMMAN_PORT}'
     networks:
-      - evidssnet
+      vpcbr:
+        ipv4_address: 10.5.0.14
     volumes:
       - $HOME/.aws/credentials:/home/app/.aws/credentials:ro
     environment:
@@ -160,64 +210,164 @@ services:
       - nodemon
       - index.js
     restart: always
-
-  connect:
-    build:
-      context: ./connect
-    hostname: connect
-    container_name: connect
+  #######################################################
+  # Dockprom containers (and Loki) - for monitoring and logging only
+  ####################################################### 
+  prometheus:
+    image: prom/prometheus:v2.24.0
+    container_name: prometheus
+    volumes:
+      - ./dockprom/prometheus:/etc/prometheus
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    expose:
+      - 9090
     networks:
-      - evidssnet
-    ports:
-      - "8083:8083"
+      vpcbr:
+        ipv4_address: 10.5.0.7
+    labels:
+      org.label-schema.group: "monitoring"
+
+  alertmanager:
+    image: prom/alertmanager:v0.21.0
+    container_name: alertmanager
+    volumes:
+      - ./dockprom/alertmanager:/etc/alertmanager
+    command:
+      - '--config.file=/etc/alertmanager/config.yml'
+      - '--storage.path=/alertmanager'
+    restart: unless-stopped
+    # expose:
+    #  - 9093
+    ports: 
+      - '9093:9093'  
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.8
+    labels:
+      org.label-schema.group: "monitoring"
+
+  nodeexporter:
+    image: prom/node-exporter:v1.0.1
+    container_name: nodeexporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
+    restart: unless-stopped
+    expose:
+      - 9100
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.9
+    labels:
+      org.label-schema.group: "monitoring"
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.38.7
+    container_name: cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      #- /cgroup:/cgroup:ro #doesn't work on MacOS only for Linux
+    restart: unless-stopped
+    expose:
+      - 8080
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.10
+    labels:
+      org.label-schema.group: "monitoring"
+
+  grafana:
+    image: grafana/grafana:7.4.0
+    container_name: grafana
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./dockprom/grafana/provisioning:/etc/grafana/provisioning
     environment:
-      - CONNECT_BOOTSTRAP_SERVERS=$KAFKA_BOOTSTRAP_SERVER
-      - CONNECT_CONFLUENT_TOPIC_BOOTSTRAP_SERVERS=$KAFKA_BOOTSTRAP_SERVER
-      - CONNECT_USERNAME=$CONFLUENT_API_KEY
-      - CONNECT_PASSWORD=$CONFLUENT_API_SECRET
-      - CONNECT_REST_ADVERTISED_HOST_NAME=connect
-      - CONNECT_REST_PORT=8083
-      - CONNECT_REPLICATION_FACTOR=3
-      - CONNECT_GROUP_ID=compose-connect-group
-      - CONNECT_CONFIG_STORAGE_TOPIC=docker-connect-configs
-      - CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR=3
-      - CONNECT_OFFSET_FLUSH_INTERVAL_MS=10000
-      - CONNECT_OFFSET_STORAGE_TOPIC=docker-connect-offsets
-      - CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR=3
-      - CONNECT_STATUS_STORAGE_TOPIC=docker-connect-status
-      - CONNECT_STATUS_STORAGE_REPLICATION_FACTOR=3
-      - CONNECT_KEY_CONVERTER=org.apache.kafka.connect.json.JsonConverter
-      - CONNECT_VALUE_CONVERTER=org.apache.kafka.connect.json.JsonConverter
-      - CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE=false
-      - CONNECT_INTERNAL_KEY_CONVERTER=org.apache.kafka.connect.json.JsonConverter
-      - CONNECT_INTERNAL_VALUE_CONVERTER=org.apache.kafka.connect.json.JsonConverter
-      # CLASSPATH required due to CC-2422
-      - CLASSPATH=/usr/share/java/monitoring-interceptors/monitoring-interceptors-6.0.0.jar
-      - CONNECT_PRODUCER_INTERCEPTOR_CLASSES="io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor"
-      - CONNECT_CONSUMER_INTERCEPTOR_CLASSES= "io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor"
-      - CONNECT_PLUGIN_PATH="/usr/share/java,/usr/share/confluent-hub-components"
-      - CONNECT_LOG4J_ROOT_LOGLEVEL=INFO
-      - CONNECT_LOG4J_LOGGERS=org.reflections=ERROR
-      - CONNECT_SECURITY_PROTOCOL=SASL_SSL
-      - CONNECT_SASL_MECHANISM=PLAIN
-      - CONNECT_CONFLUENT_TOPIC_SECURITY_PROTOCOL=SASL_SSL
-      - CONNECT_CONFLUENT_TOPIC_SASL_MECHANISM=PLAIN
-      - CONNECT_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="${CONFLUENT_API_KEY}" password="${CONFLUENT_API_SECRET}";
-      - CONNECT_PRODUCER_CONFLUENT_MONITORING_INTERCEPTOR_SECURITY_PROTOCOL=SASL_SSL
-      - CONNECT_PRODUCER_CONFLUENT_MONITORING_INTERCEPTOR_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="${CONFLUENT_API_KEY}" password="${CONFLUENT_API_SECRET}";
-      - CONNECT_PRODUCER_CONFLUENT_MONITORING_INTERCEPTOR_SASL_MECHANISM=PLAIN
-      - CONNECT_REQUEST_TIMEOUT_MS=20000
-      - CONNECT_RETRY_BACKOFF_MS=500
-      - CONNECT_CONSUMER_SASL_MECHANISM=PLAIN
-      - CONNECT_CONSUMER_REQUEST_TIMEOUT_MS=20000
-      - CONNECT_CONSUMER_RETRY_BACKOFF_MS=500
-      - CONNECT_CONSUMER_SECURITY_PROTOCOL=SASL_SSL
-      - CONNECT_PRODUCER_SASL_MECHANISM=PLAIN
-      - CONNECT_PRODUCER_REQUEST_TIMEOUT_MS=20000
-      - CONNECT_PRODUCER_RETRY_BACKOFF_MS=500
-      - CONNECT_PRODUCER_SECURITY_PROTOCOL=SASL_SSL
-      - CONNECT_CONSUMER_CONFLUENT_MONITORING_INTERCEPTOR_SECURITY_PROTOCOL=SASL_SSL
-      - CONNECT_CONSUMER_CONFLUENT_MONITORING_INTERCEPTOR_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username="${CONFLUENT_API_KEY}" password="${CONFLUENT_API_SECRET}";
-      - CONNECT_CONSUMER_CONFLUENT_MONITORING_INTERCEPTOR_SASL_MECHANISM=PLAIN   
-networks:
-  evidssnet: null
+      - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource,grafana-worldmap-panel
+      - GF_SERVER_HTTP_PORT=${GRAFANA_PORT}
+      - GF_SERVER_PROTOCOL=http
+      - GF_SERVER_DOMAIN=www.${EVIDSS_DOMAINNAME}
+      - GF_SERVER_ROOT_URL=https://www.${EVIDSS_DOMAINNAME}/grafana/
+      - GF_SERVER_SERVE_FROM_SUB_PATH=true
+    restart: unless-stopped
+    #expose:
+    #  - 3000
+    ports: 
+      - '3000:3000'   
+    networks:
+      vpcbr: # evidssnet
+        ipv4_address: 10.5.0.6
+    labels:
+      org.label-schema.group: "monitoring"
+
+  pushgateway:
+    image: prom/pushgateway:v1.3.1
+    container_name: pushgateway
+    restart: unless-stopped
+    expose:
+      - 9091
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.11
+    labels:
+      org.label-schema.group: "monitoring"
+
+  # caddy:
+  #   image: stefanprodan/caddy
+  #   container_name: caddy
+  #   ports:
+  #     - "3000:3000"
+  #     - "9090:9090"
+  #     - "9093:9093"
+  #     - "9091:9091"
+  #   volumes:
+  #     - ./dockprom/caddy:/etc/caddy
+  #   environment:
+  #     - ADMIN_USER=${ADMIN_USER:-admin}
+  #     - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+  #   restart: unless-stopped
+  #   networks:
+  #     vpcbr:
+  #       ipv4_address: 10.5.0.12
+  #   labels:
+  #     org.label-schema.group: "monitoring"
+  loki:
+    image: grafana/loki:2.0.0
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    restart: unless-stopped
+    networks:
+      # - evidssnet
+      vpcbr:
+        ipv4_address: 10.5.0.2
+  promtail:
+    image: grafana/promtail:latest
+    volumes:
+      - $PWD/dockprom/promtail:/etc/promtail
+      - /var/log:/var/log
+    command: -config.file=/etc/promtail/docker-config.yaml
+    networks:
+      # - evidssnet
+      vpcbr:
+        ipv4_address: 10.5.0.15

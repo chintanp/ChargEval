@@ -10,7 +10,16 @@
   }
 
   upstream grafana {
-    server 127.0.0.1:${GRAFANA_PORT};
+    server ${GRAFANA_IP}:${GRAFANA_PORT};
+  }
+
+  upstream alertmanager {
+    server ${ALERTMANAGER_IP}:${ALERTMANAGER_PORT};
+  }
+
+  upstream loki {
+    server ${LOKI_IP}:${LOKI_PORT};
+    keepalive 15;
   }
 
   server {
@@ -45,9 +54,9 @@
       return 301 http://${REDASH_IP}/;
     }
 
-    location ~ ^/grafana(?:/(.*))?$ {
-      return 301 http://${GRAFANA_HOST}:${GRAFANA_PORT};
-    }
+ #   location ~ ^/grafana(?:/(.*))?$ {
+ #     return 301 http://${GRAFANA_HOST}:${GRAFANA_PORT};
+ #   }
  
     location /evides/ {
 
@@ -79,4 +88,43 @@
       proxy_pass http://resview/;
 
     }
+
+   location /grafana/ {
+
+     proxy_buffering off;
+     proxy_redirect off;
+     proxy_http_version 1.1;
+     proxy_set_header Connection "";
+     proxy_set_header Upgrade $http_upgrade;
+     proxy_set_header Connection "Upgrade";
+     add_header Content-Security-Policy "script-src: 'unsafe-eval' 'unsafe-inline';";
+     proxy_pass http://grafana/;
+
+   }
+
+   location /alertmanager/ {
+
+     proxy_buffering off;
+     proxy_redirect off;
+     proxy_http_version 1.1;
+     proxy_set_header Connection "";
+     proxy_set_header Upgrade $http_upgrade;
+     proxy_set_header Connection "Upgrade";
+     # add_header Content-Security-Policy "script-src: 'unsafe-eval' 'unsafe-inline';";
+     proxy_pass http://alertmanager/;
+
+   }
+
+   location /loki/ {
+
+     proxy_buffering off;
+     proxy_redirect off;
+     proxy_http_version 1.1;
+     proxy_set_header Connection "";
+     proxy_set_header Upgrade $http_upgrade;
+     proxy_set_header Connection "Upgrade";
+     # add_header Content-Security-Policy "script-src: 'unsafe-eval' 'unsafe-inline';";
+     proxy_pass http://loki/;
+
+   }
   }

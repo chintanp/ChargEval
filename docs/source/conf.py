@@ -34,7 +34,7 @@ release = __version__
 
 
 project = 'ChargEval'
-copyright = '2019, Chintan Pathak, Don MacKenzie'
+copyright = '2019-2021, Chintan Pathak, Don MacKenzie'
 author = 'Chintan Pathak, Don MacKenzie'
 
 language = 'en'
@@ -44,7 +44,7 @@ html_sidebars = {
    '**': ['globaltoc.html']
 }
 html_favicon = '_static/favicon.ico'
-html_logo = '_static/logo3c.png'
+html_logo = '_static/logo_3cev.png'
 
 html_theme = 'sphinx_materialdesign_theme'
 html_theme_path = ['../']
