@@ -20,7 +20,7 @@ UI Details
 After logging in by providing email-id and password, the user is greeted with :numref:`evi_des_home`. 
 
 .. _evi_des_home: 
-.. figure:: _static/evides_home.png
+.. figure:: _static/evides_home.PNG
     :width: 800px
     :align: center
     :alt: EV Infrastructure Designer 
