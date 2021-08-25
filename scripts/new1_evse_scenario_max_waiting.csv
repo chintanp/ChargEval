@@ -1,0 +1,6 @@
+latitude, longitude, dcfc_plug_count, dcfc_power, level2_plug_count, level2_power, dcfc_fixed_charging_price, dcfc_var_charging_price_unit, dcfc_var_charging_price, dcfc_fixed_parking_price, dcfc_var_parking_price_unit, dcfc_var_parking_price, level2_fixed_charging_price, level2_var_charging_price_unit, level2_var_charging_price, level2_fixed_parking_price, level2_var_parking_price_unit, level2_var_parking_price, connector_code, station_type, comments
+47.429,-121.61,10,50,1,10,0.5,min,0.5,0.5,min,0.5,0.5,min,0.5,0.5,min,0.5,3,new,73433
+47.199,-120.96,10,50,1,10,0.5,min,0.5,0.5,min,0.5,0.5,min,0.5,0.5,min,0.5,3,new,167497
+47.539,-120.52,10,50,1,10,0.5,min,0.5,0.5,min,0.5,0.5,min,0.5,0.5,min,0.5,3,new,105362
+47.083,-120.74,10,50,1,10,0.5,min,0.5,0.5,min,0.5,0.5,min,0.5,0.5,min,0.5,3,new,99297
+46.706,-122.97,10,50,1,10,0.5,min,0.5,0.5,min,0.5,0.5,min,0.5,0.5,min,0.5,3,new,143835
