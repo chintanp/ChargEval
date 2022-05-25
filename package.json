@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/chintanp/wsdot_evse_docs#readme",
   "dependencies": {
-    "grunt": "^1.0.4",
+    "grunt": "^1.5.3",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-shell": "^3.0.1",
     "public-ip": "^4.0.2"
